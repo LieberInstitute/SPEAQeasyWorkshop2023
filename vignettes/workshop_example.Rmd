@@ -289,6 +289,8 @@ head(colData(rse_gene_nic), 2)
 
 ## Differential Expression Analysis
 
+**TODO**
+
 <figure>
     <img src="figs/Analyses.jpg" width="700px" align=center />
         <figcaption style="color: gray; line-height: 0.87; text-align: justify">
