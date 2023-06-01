@@ -31,7 +31,7 @@ Description: This package introduces SPEAQeasy, an RNA-seq processing pipeline
             Expression Analysis will be performed on a real bulk RNA-seq dataset 
             directly generated from the pipeline. 
 License: MIT + file LICENSE
-URL: https://github.com/LieberInstitute/SPEAQeasyWorkshop2023
+URL: https://LieberInstitute.github.io/SPEAQeasyWorkshop2023/
 BugReports: https://support.bioconductor.org/t/SPEAQeasyWorkshop2023
 Depends: 
     Biobase
