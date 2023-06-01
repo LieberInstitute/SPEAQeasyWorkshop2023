@@ -31,20 +31,22 @@ Description: This package introduces SPEAQeasy, an RNA-seq processing pipeline
             Expression Analysis will be performed on a real bulk RNA-seq dataset 
             directly generated from the pipeline. 
 License: MIT + file LICENSE
-Encoding: UTF-8
-LazyData: true
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.0
+URL: https://github.com/LieberInstitute/SPEAQeasyWorkshop2023
+BugReports: https://support.bioconductor.org/t/SPEAQeasyWorkshop2023
 Depends: 
     Biobase
+Encoding: UTF-8
+LazyData: true
+biocViews: Workshop, DifferentialExpression, GeneExpression,
+    RNASeq, Sequencing, DataImport
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.0
+DockerImage: ghcr.io/seandavi/buildabiocworkshop:latest
 Suggests: 
     knitr,
     rmarkdown,
     pkgdown
-URL: https://github.com/daianna21/SPEAQeasyWorkshop2023
-BugReports: https://github.com/seandavi/BuildABiocWorkshop/issues/new/choose
 VignetteBuilder: knitr
-DockerImage: ghcr.io/seandavi/buildabiocworkshop:latest
 Imports: 
     SummarizedExperiment,
     recount,
