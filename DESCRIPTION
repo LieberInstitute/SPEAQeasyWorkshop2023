@@ -9,39 +9,36 @@ Authors@R:
            comment = c(ORCID = "0000-0002-9808-5254")),
     person(given = "Daianna",
            family = "Gonzalez-Padilla",
-           role = c("aut", "cre"),
+           role = c("aut"),
            email = "glezdaianna@gmail.com",
            comment = c(ORCID = "0009-0005-8348-3195")), 
     person(given = "Renee",
            family = "Garcia-Flores",
-           role = c("aut", "cre"),
-           email = "0000-0001-8812-120X",
-           comment = c(ORCID = " "))
+           role = c("aut"),
+           email = "renee.garciaflores@gmail.com",
+           comment = c(ORCID = "0000-0001-8812-120X")),
     person(given = "Leonardo",
            family = "Collado-Torres",
            role = c("ctb"),
            email = "lcolladotor@gmail.com",
            comment = c(ORCID = "0000-0003-2140-308X"))
-           
-           
   )
 Description: This package introduces SPEAQeasy, an RNA-seq processing pipeline 
             that generates manageable R objects ready for usage in downstream
             analyses. As an example of its usage and usefulness, a Differential 
             Expression Analysis will be performed on a real bulk RNA-seq dataset 
             directly generated from the pipeline. 
-License: MIT + file LICENSE
+License: Artistic-2.0
 URL: https://LieberInstitute.github.io/SPEAQeasyWorkshop2023/
 BugReports: https://support.bioconductor.org/t/SPEAQeasyWorkshop2023
-Depends: 
-    Biobase
+Depends: R (>= 4.0.0)
 Encoding: UTF-8
 LazyData: true
 biocViews: Workshop, DifferentialExpression, GeneExpression,
     RNASeq, Sequencing, DataImport
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.0
-DockerImage: ghcr.io/seandavi/buildabiocworkshop:latest
+RoxygenNote: 7.1.1
+DockerImage: ghcr.io/LieberInstitute/SPEAQeasyWorkshop2023:latest
 Suggests: 
     knitr,
     rmarkdown,
@@ -52,14 +49,14 @@ Imports:
     recount,
     edgeR,
     limma,
-    jaffelab,
     RColorBrewer,
     clusterProfiler,
-    org.Hs.eg.db,
     pheatmap,
     here,
     BiocStyle,
     sessioninfo,
+    org.Hs.eg.db,
+    jaffelab,
     tidyr,
     VariantAnnotation,
     dplyr,
