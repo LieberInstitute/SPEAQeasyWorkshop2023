@@ -151,9 +151,9 @@ are others.
 
 Some examples:
 
-* describe how to...
-* identify methods for...
-* understand the difference between...
+* Understand what SPEAQeasy is and how to include in a RNA-seq processing workflow
+* Become familiar with SPEAQeasy outputs
+* Perform a differential expression anlysis with real data after analyzed with SPEAQeasy
 
 ### Learning objectives
 
@@ -161,6 +161,14 @@ Some examples:
 * create xyz plots
 * evaluate xyz data for artifacts
 
+## Citing `SPEAQeasy`
+
+We hope that `SPEAQeasy` `r Citep(bib[["SPEAQeasy"]])` will be useful for your research. Please use the following information to cite the package and the overall approach. Thank you!
+
+```{r "citation"}
+## Citation info
+citation("SPEAQeasyWorkshop2020")[2]
+```
 
 # Workshop
 **TODO**
@@ -171,7 +179,6 @@ work on the code idependently -- do not be too ambitious in the
 material that you present.
 
 ## Introduction 
-**TODO**
 
 ### SPEAQeasy Overview
 **TODO**
