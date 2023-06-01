@@ -1,52 +1,52 @@
-# BuildABiocWorkshop
+---
+output: github_document
+---
 
-This package is a template for building a Bioconductor workshop. The package
-includes Github actions to:
+<!-- README.md is generated from README.Rmd. Please edit that file -->
 
-1. Set up bioconductor/bioconductor_docker:devel on Github resources
-2. Install package dependencies for your package (based on the `DESCRIPTION` file)
-3. Run `rcmdcheck::rcmdcheck`
-4. Build a pkgdown website and push it to github pages
-5. Build a docker image with the installed package and dependencies and deploy to [the Github Container Repository](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#pulling-container-images) at the name `ghcr.io/gihub_user/repo_name`, all lowercase. 
-
-## Responsibilities
-
-Package authors are primarily responsible for:
-
-1. Creating a landing site of their choosing for their workshops (a website). This website should be listed in the `DESCRIPTION` file as the `URL`.
-2. Creating a docker image that will contain workshop materials and the installed packages necessary to run those materials. The name of the resulting docker image, including "tag" if desired, should be listed in a non-standard tag, `DockerImage:` in the `DESCRIPTION` file. 
-
-Both of those tasks can be accomplished using the Github actions included in this template package. The vignette accompanying this package describes how to accomplish both of these tasks.
-
-## Details
-
-For detailed instructions, see the `How to build a workshop` article/vignette.
-
-## Results of successful deployment
-
-- A working docker image that contains the installed package and dependencies.
-- An up-to-date `pkgdown` website at https://YOURUSERNAME.github.io/YOURREPOSITORYNAME/
-- Docker image will be tagged with `latest`, `sha-XXXXXX` where `XXXXXX` is the hash of the current `master` commit, and `master`. 
-
-## To use the resulting image:
-
-```sh
-docker run -e PASSWORD=<choose_a_password_for_rstudio> -p 8787:8787 YOURDOCKERIMAGENAME
-```
-Once running, navigate to http://localhost:8787/ and then login with `rstudio`:`yourchosenpassword`. 
-
-To try with **this** repository docker image:
-
-```sh
-docker run -e PASSWORD=abc -p 8787:8787 ghcr.io/bioconductor/buildabiocworkshop
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+    collapse = TRUE,
+    comment = "#>",
+    fig.path = "man/figures/README-",
+    out.width = "100%"
+)
 ```
 
-*NOTE*: Running docker that uses the password in plain text like above exposes the password to others 
-in a multi-user system (like a shared workstation or compute node). In practice, consider using an environment 
-variable instead of plain text to pass along passwords and other secrets in docker command lines. 
+# SPEAQeasyWorkshop2020
 
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![R build status](https://github.com/LieberInstitute/SPEAQeasyWorkshop2020/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/LieberInstitute/SPEAQeasyWorkshop2020/actions)
+<!-- badges: end -->
 
-## Whatcha get
+This workshop aims to describe the `SPEAQeasy` RNA-seq processing pipeline, show how to use it, and then illustrate how the results can be analyzed using Bioconductor R packages for differential expression analyses.
 
-- https://bioconductor.github.io/BuildABiocWorkshop
-- A Docker image that you can run locally, in the cloud, or (usually) even as a singularity container on HPC systems. 
+SPEAQeasy is a [Nextflow](https://www.nextflow.io/)-based **S**calable RNA-seq processing **P**ipeline for **E**xpression **A**nalysis and **Q**uantification that produces R objects ready for analysis with Bioconductor tools. Partipants will become familiar with SPEAQeasy set-up, execution on real data, and practice configuring some common settings. We will walk through a complete differential expression analysis, utilizing popular packages such as [limma](https://www.bioconductor.org/packages/limma), [edgeR](http://bioconductor.org/packages/edgeR), and [clusterProfiler](https://bioconductor.org/packages/clusterProfiler).
+
+## Citation
+
+Below is the citation output from using `citation('SPEAQeasyWorkshop2020')` in R. Please
+run this yourself to check for any updates on how to cite __SPEAQeasyWorkshop2020__.
+
+```{r 'citation', eval = requireNamespace('SPEAQeasyWorkshop2020')}
+print(citation("SPEAQeasyWorkshop2020"), bibtex = TRUE)
+```
+
+Please note that the `SPEAQeasyWorkshop2020` was only made possible thanks to many other R and bioinformatics software authors, which are cited either in the vignettes and/or the paper(s) describing this package.
+
+## Code of Conduct
+
+Please note that the `SPEAQeasyWorkshop2020` project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
+
+## Development tools
+
+* Continuous code testing is possible thanks to [GitHub actions](https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/)  through `r BiocStyle::CRANpkg('usethis')`, `r BiocStyle::CRANpkg('remotes')`, and `r BiocStyle::CRANpkg('rcmdcheck')` customized to use [Bioconductor's docker containers](https://www.bioconductor.org/help/docker/) and `r BiocStyle::Biocpkg('BiocCheck')`.
+* Code coverage assessment is possible thanks to [codecov](https://codecov.io/gh) and `r BiocStyle::CRANpkg('covr')`.
+* The [documentation website](http://LieberInstitute.github.io/SPEAQeasyWorkshop2020) is automatically updated thanks to `r BiocStyle::CRANpkg('pkgdown')`.
+* The code is styled automatically thanks to `r BiocStyle::CRANpkg('styler')`.
+* The documentation is formatted thanks to `r BiocStyle::CRANpkg('devtools')` and `r BiocStyle::CRANpkg('roxygen2')`.
+
+For more details, check the `dev` directory.
+
+This package was developed using `r BiocStyle::Biocpkg('biocthis')`.
