@@ -118,13 +118,13 @@ Participants are expected to follow
 List any _R_ / _Bioconductor_ packages that will be explicitly covered.
 
 ## Time outline
-**TODO**
+**Check this with Leo**
 
 | Activity                     | Time |
 |------------------------------|------|
-| Introduction to SPEAQeasy               | 15m |
-| Data overview                           | 20m |
-| Differential Expression Analysis        | 55m |
+| Introduction to SPEAQeasy                 | 25m |
+| Understanding SPEAQeasy outputs           | 25m |
+| Differential Expression Analysis          | 40m |
 
 Total: a 90 minute session.
 
