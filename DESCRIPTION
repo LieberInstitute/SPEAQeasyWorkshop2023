@@ -12,10 +12,10 @@ Authors@R:
            role = c("aut", "cre"),
            email = "glezdaianna@gmail.com",
            comment = c(ORCID = "0009-0005-8348-3195")), 
-    person(given = "Fernanda ",
-           family = " ",
+    person(given = "Renee",
+           family = "Garcia-Flores",
            role = c("aut", "cre"),
-           email = " ",
+           email = "0000-0001-8812-120X",
            comment = c(ORCID = " "))
     person(given = "Leonardo",
            family = "Collado-Torres",
