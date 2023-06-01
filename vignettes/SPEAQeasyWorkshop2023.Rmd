@@ -8,7 +8,7 @@ author:
   - name: Renee Garcia-Flores
     affiliation:
     - &libd Lieber Institute for Brain Development
-    email:  renee.garciaflores@gmail.com
+    email: renee.garciaflores@gmail.com
   - name: Nicholas J. Eagles
     affiliation:
     - &libd Lieber Institute for Brain Development, Johns Hopkins Medical Campus
