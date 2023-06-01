@@ -89,19 +89,9 @@ bib <- c(
 
 # Overview
 
-**TODO**
 This workshop aims to present the `SPEAQeasy` `r Citep(bib[["SPEAQeasy"]])` RNA-seq processing pipeline, show how to use it and demonstrate how its outputs can be analyzed for differential expression analyses (DEA) using other Bioconductor R packages.
 
-SPEAQeasy is a [Nextflow](https://www.nextflow.io/)-based **S**calable RNA-seq processing **P**ipeline for **E**xpression **A**nalysis and **Q**uantification that produces R objects ready for analysis with Bioconductor tools. Partipants will become familiar with execution on real data from [smokingMouse](https://github.com/LieberInstitute/smokingMouse), and practice configuring some common settings. We will walk through a complete differential expression analysis, utilizing popular packages such as [limma](https://www.bioconductor.org/packages/limma), [edgeR](http://bioconductor.org/packages/edgeR), and [clusterProfiler](https://bioconductor.org/packages/clusterProfiler).
-
-
-## Description
-**TODO**
-In this demo, participants will be able to understand what the pipeline does 
-and what it returns through a Differential Expression Analysis performed on a SPEAQeasy 
-dataset from the `smokingMouse` `r Citep(bib[["smokingMouse"]])` Bioconductor package 
-which contains gene expression data and sample information from an RNA-sequencing 
-experiment in mice. 
+SPEAQeasy is a [Nextflow](https://www.nextflow.io/)-based **S**calable RNA-seq processing **P**ipeline for **E**xpression **A**nalysis and **Q**uantification that produces R objects ready for analysis with Bioconductor tools. Partipants will become familiar with execution on real data from [smokingMouse](https://github.com/LieberInstitute/smokingMouse), which contains gene expression data and sample information from an RNA-sequencing. As well as practice configuring some common settings. We will walk through a complete differential expression analysis, utilizing popular packages such as [limma](https://www.bioconductor.org/packages/limma), [edgeR](http://bioconductor.org/packages/edgeR), and [clusterProfiler](https://bioconductor.org/packages/clusterProfiler).
 
 
 ## Instructors
