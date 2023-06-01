@@ -19,11 +19,19 @@ author:
     - &ccb Center for Computational Biology, Johns Hopkins University
     email: lcolladotor@gmail.com
     
-output: rmarkdown::html_vignette
+output: 
+  BiocStyle::html_document:
+    self_contained: yes
+    toc: true
+    toc_float: true
+    toc_depth: 2
+    code_folding: show
+date: "`r doc_date()`"
+package: "`r pkg_ver('SPEAQeasyWorkshop2023')`"
 vignette: >
-  %\VignetteIndexEntry{An Example Workshop}
+  %\VignetteIndexEntry{SPEAQeasy: a Scalable Pipeline for Expression Analysis and Quantification for R/Bioconductor-powered RNA-seq analyses}
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+  %\VignetteEncoding{UTF-8}  
 ---
 
 
@@ -49,18 +57,22 @@ bib <- c(
     knitr = citation("knitr")[1],
     rmarkdown = citation("rmarkdown")[1],
     sessioninfo = citation("sessioninfo")[1],
+    SPEAQeasyWorkshop2023 = citation("SPEAQeasyWorkshop2023")[1],
+    SPEAQeasy = citation("SPEAQeasyWorkshop2023")[2],
+    smokingMouse = citation("smokingMouse")[1],
     clusterProfiler = citation("clusterProfiler"),
     edgeR = citation("edgeR"),
-    SPEAQeasy = citation("SPEAQeasyWorkshop2020")[2],
-    smokingMouse = citation("smokingMouse")[1],
     here = citation("here"),
     jaffelab = citation("jaffelab"),
     limma = citation("limma"),
     org.Hs.eg.db = citation("org.Hs.eg.db"),
     pheatmap = citation("pheatmap"),
     rmarkdown = citation("rmarkdown"),
+    recount = citation("recount"),
     RefManageR = citation("RefManageR")[1],
     SummarizedExperiment = citation("SummarizedExperiment"),
+    tidyr = citation("tidyr")[1],
+    VariantAnnotation = citation("VariantAnnotation")[1],
     voom = RefManageR::BibEntry(
         "article",
         key = "voom",
