@@ -1,5 +1,4 @@
-url: https://LieberInstitute.github.io/SPEAQeasyWorkshop2023/
-
+url: http://research.libd.org/SPEAQeasyWorkshop2023/
 template:
   params:
     bootswatch: flatly
