@@ -5,7 +5,7 @@ author:
     affiliation:
     - &libd Lieber Institute for Brain Development
     email: glezdaianna@gmail.com
-  - name: Fernanda Renee Garcia-Flores
+  - name: Renee Garcia-Flores
     affiliation:
     - &libd Lieber Institute for Brain Development
     email:  renee.garciaflores@gmail.com
