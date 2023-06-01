@@ -27,7 +27,7 @@ SPEAQeasy is a [Nextflow](https://www.nextflow.io/)-based **S**calable RNA-seq p
 ## Citation
 
 Below is the citation output from using `citation('SPEAQeasyWorkshop2023')` in R. Please
-run this yourself to check for any updates on how to cite __SPEAQeasyWorkshop2020__.
+run this yourself to check for any updates on how to cite __SPEAQeasyWorkshop2023__.
 
 ```{r 'citation', eval = requireNamespace('SPEAQeasyWorkshop2023')}
 print(citation("SPEAQeasyWorkshop2023"), bibtex = TRUE)
