@@ -11,7 +11,7 @@ c(
         author = c(
             as.person("Daianna Gomez-Padilla"),
             as.person("Renee Garcia-Flores"),
-            as.person("Nicholas J. Eagles"),
+            as.person("Nicholas J. Eagles")
         ),
         year = format(Sys.Date(), "%Y"),
         url = "http://www.bioconductor.org/packages/SPEAQeasyWorkshop2023",
