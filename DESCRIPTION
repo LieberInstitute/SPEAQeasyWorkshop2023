@@ -61,5 +61,6 @@ Imports:
     VariantAnnotation,
     dplyr,
     statmod,
-    backports
+    backports,
+    RefManageR
 Remotes: LieberInstitute/jaffelab

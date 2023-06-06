@@ -10,7 +10,7 @@ c(
         title = "Bioc2023 SPEAQeasy workshop",
         author = personList(
             as.person("Daianna Gomez-Padilla"),
-            as.person("Renee Garcia-Flores")
+            as.person("Renee Garcia-Flores"),
             as.person("Nicholas J. Eagles"),
         ),
         year = format(Sys.Date(), "%Y"),
