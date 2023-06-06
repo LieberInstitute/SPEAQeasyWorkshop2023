@@ -8,7 +8,7 @@ c(
 
     bibentry(bibtype="manual",
         title = "Bioc2023 SPEAQeasy workshop",
-        author = personList(
+        author = c(
             as.person("Daianna Gomez-Padilla"),
             as.person("Renee Garcia-Flores"),
             as.person("Nicholas J. Eagles"),
@@ -20,7 +20,7 @@ c(
     ),
     bibentry(bibtype="article",
         title = "SPEAQeasy: a Scalable Pipeline for Expression Analysis and Quantification for R/Bioconductor-powered RNA-seq analyses",
-        author = personList(
+        author = c(
             as.person("Nicholas J. Eagles"),
             as.person("Emily E. Burke"),
             as.person("Jacob Leonard"),
