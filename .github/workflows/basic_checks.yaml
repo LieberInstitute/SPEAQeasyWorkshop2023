@@ -43,6 +43,7 @@ jobs:
         run: |
           BiocManager::repositories()
           remotes::install_deps(dependencies = TRUE, repos = BiocManager::repositories())
+          remotes::install_cran("RefManageR")
           remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
 

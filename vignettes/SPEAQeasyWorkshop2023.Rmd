@@ -245,7 +245,7 @@ qsub run_pipeline_jhpce.sh
 
 Here's an example of such a file (TODO!)
 
-```{r "example_run_file"}
+```{r "example_run_file", eval = FALSE}
 ## Root for our example files
 example_files <- system.file(
     "extdata",
