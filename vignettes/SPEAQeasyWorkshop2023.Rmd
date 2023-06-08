@@ -1,6 +1,7 @@
 ---
 title: "SPEAQeasy: a Scalable Pipeline for Expression Analysis and Quantification, a demonstration of its usage on real data"
 author: 
+    
   - name: Daianna Gonzalez-Padilla
     affiliation:
     - &libd Lieber Institute for Brain Development
@@ -18,7 +19,6 @@ author:
     - &libd Lieber Institute for Brain Development
     - &ccb Center for Computational Biology, Johns Hopkins University
     email: lcolladotor@gmail.com
-    
 output: 
   BiocStyle::html_document:
     self_contained: yes
@@ -29,11 +29,13 @@ output:
 date: "`r doc_date()`"
 package: "`r pkg_ver('SPEAQeasyWorkshop2023')`"
 vignette: >
+  %\VignetteEncoding{UTF-8}  
   %\VignetteIndexEntry{SPEAQeasy: a Scalable Pipeline for Expression Analysis and Quantification for R/Bioconductor-powered RNA-seq analyses}
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}  
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
-
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -85,85 +87,102 @@ bib <- c(
     )
 )
 ```
---- 
+
+------------------------------------------------------------------------
 
 # Overview
 
-This workshop aims to present the `SPEAQeasy` `r Citep(bib[["SPEAQeasy"]])` RNA-seq processing pipeline, show how to use it and demonstrate how its outputs can be analyzed for differential expression analyses (DEA) using other Bioconductor R packages.
+This workshop aims to present the `SPEAQeasy`
+`r Citep(bib[["SPEAQeasy"]])` RNA-seq processing pipeline, show how to
+use it and demonstrate how its outputs can be analyzed for differential
+expression analyses (DEA) using other Bioconductor R packages.
 
-SPEAQeasy is a [Nextflow](https://www.nextflow.io/)-based **S**calable RNA-seq processing **P**ipeline for **E**xpression **A**nalysis and **Q**uantification that produces R objects ready for analysis with Bioconductor tools. Partipants will become familiar with execution on real data from [smokingMouse](https://github.com/LieberInstitute/smokingMouse), which contains gene expression data and sample information from an RNA-sequencing. As well as practice configuring some common settings. We will walk through a complete differential expression analysis, utilizing popular packages such as [limma](https://www.bioconductor.org/packages/limma), [edgeR](http://bioconductor.org/packages/edgeR), and [clusterProfiler](https://bioconductor.org/packages/clusterProfiler).
-
+SPEAQeasy is a [Nextflow](https://www.nextflow.io/)-based **S**calable
+RNA-seq processing **P**ipeline for **E**xpression **A**nalysis and
+**Q**uantification that produces R objects ready for analysis with
+Bioconductor tools. Partipants will become familiar with execution on
+real data from
+[smokingMouse](https://github.com/LieberInstitute/smokingMouse), which
+contains gene expression data and sample information from an
+RNA-sequencing. As well as practice configuring some common settings. We
+will walk through a complete differential expression analysis, utilizing
+popular packages such as
+[limma](https://www.bioconductor.org/packages/limma),
+[edgeR](http://bioconductor.org/packages/edgeR), and
+[clusterProfiler](https://bioconductor.org/packages/clusterProfiler).
 
 ## Instructors
 
-* [Daianna Gonzalez-Padilla](https://daianna21.github.io)
-* [Renee Garcia-Flores](https://reneegf.github.io)
-* [Nick Eagles](https://nick-eagles.github.io)
-
+-   [Daianna Gonzalez-Padilla](https://daianna21.github.io)
+-   [Renee Garcia-Flores](https://reneegf.github.io)
+-   [Nick Eagles](https://nick-eagles.github.io)
 
 ## Pre-requisites
 
-* General familiarity with bulk RNA-seq data.
-* Basic knowledge of differential expression. 
-* Basic experience handling `SummarizedExperiment` and `GenomicRanges` packages.
-* Previous review of http://research.libd.org/smokingMouse/ for data explanation. (Optional)
+-   General familiarity with bulk RNA-seq data.
+-   Basic knowledge of differential expression.
+-   Basic experience handling `SummarizedExperiment` and `GenomicRanges`
+    packages.
+-   Previous review of <http://research.libd.org/smokingMouse/> for data
+    explanation. (Optional)
 
 ## Participation
-**TODO**
-Participants are expected to follow 
 
+**TODO** Participants are expected to follow
 
-## _R_ / _Bioconductor_ packages used
-**TODO**
-List any _R_ / _Bioconductor_ packages that will be explicitly covered.
+## *R* / *Bioconductor* packages used
+
+**TODO** List any *R* / *Bioconductor* packages that will be explicitly
+covered.
 
 ## Time outline
+
 **Check this with Leo**
 
-| Activity                     | Time |
-|------------------------------|------|
-| Introduction to SPEAQeasy                 | 25m |
-| Understanding SPEAQeasy outputs           | 25m |
-| Differential Expression Analysis          | 40m |
+| Activity                         | Time |
+|----------------------------------|------|
+| Introduction to SPEAQeasy        | 25m  |
+| Understanding SPEAQeasy outputs  | 25m  |
+| Differential Expression Analysis | 40m  |
 
 Total: a 90 minute session.
 
-
 ## Workshop goals and objectives
-**TODO**
-List "big picture" student-centered workshop goals and learning
-objectives. Learning goals and objectives are related, but not the
-same thing. These goals and objectives will help some people to decide
+
+**TODO** List "big picture" student-centered workshop goals and learning
+objectives. Learning goals and objectives are related, but not the same
+thing. These goals and objectives will help some people to decide
 whether to attend the conference for training purposes, so please make
 these as precise and accurate as possible.
 
-*Learning goals* 
-are high-level descriptions of what
-participants will learn and be able to do after the workshop is
-over. 
-*Learning objectives*, on the other hand, describe in very
-specific and measurable terms specific skills or knowledge
-attained. The [Bloom's Taxonomy](#bloom) may be a useful framework
-for defining and describing your goals and objectives, although there
-are others.
+*Learning goals* are high-level descriptions of what participants will
+learn and be able to do after the workshop is over. *Learning
+objectives*, on the other hand, describe in very specific and measurable
+terms specific skills or knowledge attained. The [Bloom's
+Taxonomy](#bloom) may be a useful framework for defining and describing
+your goals and objectives, although there are others.
 
 ### Learning goals
 
 Some examples:
 
-* Understand what SPEAQeasy is and how to include in a RNA-seq processing workflow
-* Become familiar with SPEAQeasy outputs
-* Perform a differential expression anlysis with real data after analyzed with SPEAQeasy
+-   Understand what SPEAQeasy is and how to include in a RNA-seq
+    processing workflow
+-   Become familiar with SPEAQeasy outputs
+-   Perform a differential expression anlysis with real data after
+    analyzed with SPEAQeasy
 
 ### Learning objectives
 
-* analyze xyz data to produce...
-* create xyz plots
-* evaluate xyz data for artifacts
+-   analyze xyz data to produce...
+-   create xyz plots
+-   evaluate xyz data for artifacts
 
 ## Citing `SPEAQeasy`
 
-We hope that `SPEAQeasy` `r Citep(bib[["SPEAQeasy"]])` will be useful for your research. Please use the following information to cite the package and the overall approach. Thank you!
+We hope that `SPEAQeasy` `r Citep(bib[["SPEAQeasy"]])` will be useful
+for your research. Please use the following information to cite the
+package and the overall approach. Thank you!
 
 ```{r "citation"}
 ## Citation info
@@ -171,90 +190,304 @@ citation("SPEAQeasyWorkshop2020")[2]
 ```
 
 # Workshop
-**TODO**
-Divide the workshop into sections (`## A Section`). Include
-fully-evaluated _R_ code chunks. Develop exercises and solutions, and
-anticipate that your audience will walk through the code with you, or
-work on the code idependently -- do not be too ambitious in the
-material that you present.
 
-## Introduction 
+**TODO** Divide the workshop into sections (`## A Section`). Include
+fully-evaluated *R* code chunks. Develop exercises and solutions, and
+anticipate that your audience will walk through the code with you, or
+work on the code idependently -- do not be too ambitious in the material
+that you present.
+
+## Introduction
 
 ### SPEAQeasy Overview
-**TODO**
 
+We introduce [SPEAQeasy](https://github.com/LieberInstitute/SPEAQeasy),
+a **S**calable RNA-seq processing **P**ipeline for **E**xpression
+**A**nalysis and **Q**uantification, that is **easy** to install, use,
+and share with others. More detailed documentation is
+[here](http://research.libd.org/SPEAQeasy/).
 
-## Data overview and download 
+![Functional workflow. Yellow coloring denotes steps which are optional
+or not always performed.](figs/SPEAQeasy_workflow.png)
 
-The dataset that will be used for the DEA can be downloaded from the `smokingMouse` package. 
-Visit [here](http://research.libd.org/smokingMouse/) for more details of this package.
+SPEAQeasy starts with raw sequencing outputs in FASTQ format and
+ultimately produces
+[RangedSummarizedExperiment](https://bioconductor.org/packages/release/bioc/html/SummarizedExperiment.html)
+objects with raw and normalized counts for each feature type: genes,
+exons, exon-exon junctions, and transcripts.
 
+For human samples, variant calling is performed at a list of highly
+variables sites. A single [VCF
+file](https://www.internationalgenome.org/wiki/Analysis/Variant%20Call%20Format/vcf-variant-call-format-version-40/)
+is generated, containing genotype calls for all samples. This
+establishes a sufficiently unique profile for each sample which can be
+compared against pre-sequencing genotype calls to resolve potential
+identity issues.
 
-<img src="figs/Data_overview_experiments.jpg" width="750px"  />
-    <figcaption style="color: gray; line-height: 0.85; text-align: justify"><font size="-2"><b>Figure 1</b>: <b>Experimental design of the study. </b> The data was obtained from an experiment in which <b>A)</b> 6 pregnant dams and 17 non-pregnant female adult mice were administered nicotine by intraperitoneal injection (IP; n=12) or controls (n=11). A total of 42 pups were born to pregnant dams: 19 were born to mice that were administered nicotine and 23 to control mice. Samples from frontal cortices of P0 pups and adults were obtained. <b>B)</b> RNA was extracted from those samples and then RNA-seq libraries were prepared and sequenced to obtain the expression counts of the genes. At the end, a dataset of 65 samples (either from adult or pup brain) and 55,401 genes was generated. </font> 
+Optionally,
+[BigWig](https://genome.ucsc.edu/goldenPath/help/bigWig.html) coverage
+files by strand, and averaged across strands, are produced. An
+additional step utilizes the
+[derfinder](https://bioconductor.org/packages/release/bioc/html/derfinder.html)
+package to compute expressed regions, a precursor to analyses finding
+differentially expressed regions (DERs).
 
-   </figcaption>
+### Installation and Set-up
 
+First, clone the SPEAQeasy repository.
 
+```{bash, eval=FALSE}
+git clone git@github.com:LieberInstitute/SPEAQeasy.git
+```
 
-The data reside in a `RangedSummarizedExperiment` (RSE) object, containing the following assays:
+SPEAQeasy dependencies are recommended to be installed using docker or
+singularity, involving a fairly quick installation that is reproducible
+regardless of the computing environment. We'll install using
+singularity, which is more frequently available in high-performance
+computing (HPC) environments:
 
-* `counts`: original read counts of the 55,401 mouse genes across 208 samples (inlcuding the 65 nicotine samples).
-* `logcounts`: normalized and scaled counts ($log_2(CPM + 0.5)$) of the same genes across the same samples; normalization was carried out applying TMM method with `cpm(calcNormFactors())` of `r BiocStyle::Biocpkg("edgeR")`.
+```{bash, eval=FALSE}
+#  From within the SPEAQeasy repository:
+bash install_software.sh "singularity"
+```
 
+If neither docker nor singularity are available, a more experimental
+local installation of all dependencies is an option:
 
-The same RSE contains the sample information in `colData(RSE)` and the gene information in `rowData(RSE)`.
-<mark style= "background-color: #FCF3CF"> Yellow </mark> variables correspond to SPEAQeasy outputs that are going to be used in downstream analyses. 
+```{bash, eval=FALSE}
+#  From within the SPEAQeasy repository:
+bash install_software.sh "local"
+```
 
-<mark style= "background-color: #FAECF8"> Pink </mark> variables are specific of the study, such as sample metadata and some others containing additional information of the genes. 
+Please note that installation may take some time-- **installing and
+running SPEAQeasy is not required for this workshop**, but is
+demonstrated to familiarize participants with the process. The workshop
+files include outputs from SPEAQeasy, which can be used later for the
+example differential expression analysis.
 
-<mark style= "background-color: #DFF0FE"> Blue </mark> variables are Quality-Control metrics computed by `addPerCellQC()` of `r BiocStyle::Biocpkg("scuttle")`.
+Choose a "main" script as appropriate for your particular set-up. "Main"
+scripts and associated configuration files exist for SLURM-managed
+computing clusters, SGE-managed clusters, local machines, and the
+[JHPCE](https://jhpce.jhu.edu/) cluster.
 
+| Environment   | "Main" script         | Config file                                   |
+|------------------|----------------------|--------------------------------|
+| SLURM cluster | run_pipeline_slurm.sh | conf/slurm.config or conf/docker_slurm.config |
+| SGE cluster   | run_pipeline_sge.sh   | conf/sge.config or conf/docker_sge.config     |
+| Local machine | run_pipeline_local.sh | conf/local.config or conf/docker_local.config |
+| JHPCE cluster | run_pipeline_jhpce.sh | conf/jhpce.config                             |
 
-#### Gene Information 
-Among the information in `rowData(RSE)` the next variables are of interest for the analysis:
+Within the main script, you can configure arguments specific to the
+experiment, such as the reference organism, pairing of samples, and
+where to place output files, among other specifications.
 
-* <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> gencodeID</span> </mark>: GENCODE ID of each gene.
-* <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> ensemblID</span> </mark>: gene ID in Ensembl database.
-* <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> EntrezID</span> </mark>: identifier of each gene in NCBI Entrez database.
-* <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> Symbol</span> </mark>:  official gene symbol for each mouse gene.
-* <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> retained_after_feature_filtering</span> </mark>: Boolean variable that equals TRUE if the gene passed the gene filtering (with `filterByExpr()` of `r BiocStyle::Biocpkg("edgeR")`) based on its expression levels and FALSE if not.
+When running SPEAQeasy on a cluster (i.e. SLURM, SGE, or JHPCE users),
+it is recommended you submit the pipeline as a job, using the command
+appropriate for your cluster. For those running SPEAQeasy locally, the
+main script can be executed directly, ideally as a background task.
 
-#### Sample Information 
+```{bash, eval=FALSE}
+#  SLURM-managed clusters
+sbatch run_pipeline_slurm.sh
+
+#  SGE-managed clusters
+qsub run_pipeline_sge.sh
+
+#  local machines
+bash run_pipeline_local.sh
+
+#  The JHPCE cluster
+qsub run_pipeline_jhpce.sh
+```
+
+Here's an example of such a file (TODO!)
+
+```{r "example_run_file", eval = FALSE}
+## Root for our example files
+example_files <- system.file(
+    "extdata",
+    "SPEAQeasy-example",
+    package = "SPEAQeasyWorkshop2020"
+)
+
+## Read in the actual bash script used to run SPEAQeasy with the
+## data from SPEAQeasy-example
+cat(paste0(readLines(
+    file.path(example_files, "pipeline_outputs", "run_pipeline_jhpce.sh")
+), "\n"))
+```
+
+## Data overview and download
+
+The dataset that will be used for the DEA can be downloaded from the
+`smokingMouse` package. Visit
+[here](http://research.libd.org/smokingMouse/) for more details of this
+package.
+
+<img src="figs/Data_overview_experiments.jpg" width="750px"/>
+
+<figcaption style="color: gray; line-height: 0.85; text-align: justify">
+
+<font size="-2"><b>Figure 1</b>: <b>Experimental design of the study.
+</b> The data was obtained from an experiment in which <b>A)</b> 6
+pregnant dams and 17 non-pregnant female adult mice were administered
+nicotine by intraperitoneal injection (IP; n=12) or controls (n=11). A
+total of 42 pups were born to pregnant dams: 19 were born to mice that
+were administered nicotine and 23 to control mice. Samples from frontal
+cortices of P0 pups and adults were obtained. <b>B)</b> RNA was
+extracted from those samples and then RNA-seq libraries were prepared
+and sequenced to obtain the expression counts of the genes. At the end,
+a dataset of 65 samples (either from adult or pup brain) and 55,401
+genes was generated. </font>
+
+</figcaption>
+
+The data reside in a `RangedSummarizedExperiment` (RSE) object,
+containing the following assays:
+
+-   `counts`: original read counts of the 55,401 mouse genes across 208
+    samples (inlcuding the 65 nicotine samples).
+-   `logcounts`: normalized and scaled counts ($log_2(CPM + 0.5)$) of
+    the same genes across the same samples; normalization was carried
+    out applying TMM method with `cpm(calcNormFactors())` of
+    `r BiocStyle::Biocpkg("edgeR")`.
+
+The same RSE contains the sample information in `colData(RSE)` and the
+gene information in `rowData(RSE)`.
+<mark style= "background-color: #FCF3CF"> Yellow </mark> variables
+correspond to SPEAQeasy outputs that are going to be used in downstream
+analyses.
+
+<mark style= "background-color: #FAECF8"> Pink </mark> variables are
+specific of the study, such as sample metadata and some others
+containing additional information of the genes.
+
+<mark style= "background-color: #DFF0FE"> Blue </mark> variables are
+Quality-Control metrics computed by `addPerCellQC()` of
+`r BiocStyle::Biocpkg("scuttle")`.
+
+#### Gene Information
+
+Among the information in `rowData(RSE)` the next variables are of
+interest for the analysis:
+
+-   <mark style= "background-color: #FCF3CF"> [
+    gencodeID]{style="font-family: monospace"} </mark>: GENCODE ID of
+    each gene.
+-   <mark style= "background-color: #FCF3CF"> [
+    ensemblID]{style="font-family: monospace"} </mark>: gene ID in
+    Ensembl database.
+-   <mark style= "background-color: #FCF3CF"> [
+    EntrezID]{style="font-family: monospace"} </mark>: identifier of
+    each gene in NCBI Entrez database.
+-   <mark style= "background-color: #FCF3CF"> [
+    Symbol]{style="font-family: monospace"} </mark>: official gene
+    symbol for each mouse gene.
+-   <mark style= "background-color: #FAECF8"> [
+    retained_after_feature_filtering]{style="font-family: monospace"}
+    </mark>: Boolean variable that equals TRUE if the gene passed the
+    gene filtering (with `filterByExpr()` of
+    `r BiocStyle::Biocpkg("edgeR")`) based on its expression levels and
+    FALSE if not.
+
+#### Sample Information
+
 Sample information in `colData(RSE)` contains the following variables:
 
-* <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> SAMPLE_ID</span> </mark>: is the name of the sample.
-* <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> ERCCsumLogErr</span> </mark>: a summary statistic quantifying overall difference of expected and actual ERCC concentrations for one sample. 
-* <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> overallMapRate</span> </mark>: the decimal fraction of reads which successfully mapped to the reference genome (i.e. *numMapped* / *numReads*).
-* <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> mitoMapped</span> </mark>: the number of reads which successfully mapped to the mitochondrial chromosome.
-* <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> totalMapped</span> </mark>: the number of reads which successfully mapped to the canonical sequences in the reference genome (excluding mitochondrial chromosomes).
-* <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> mitoRate</span> </mark>: the decimal fraction of reads which mapped to the mitochondrial chromosome, of those which map at all (i.e. *mitoMapped* / (*totalMapped* + *mitoMapped*))
-* <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> totalAssignedGene</span> </mark>: the decimal fraction of reads assigned unambiguously to a gene, with `featureCounts` (Liao et al. 2014), of those in total.
-* <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> rRNA_rate</span> </mark>: the decimal fraction of reads assigned to a gene whose type is ‘rRNA’, of those assigned to any gene.
-* <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> Tissue</span> </mark>: tissue (mouse brain or blood) from which the sample comes.
-* <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> Age</span> </mark>: if the sample comes from an adult or a pup mouse.
-* <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> Sex</span> </mark>: if the sample comes from a female (F) or male (M)  mouse.
-* <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> Expt</span> </mark>:  the experiment (nicotine or smoking exposure) to which the sample mouse was subjected; it could be an exposed or a control mouse of that experiment.
-* <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> Group</span> </mark>: if the sample belongs to a nicotine/smoking-exposed mouse (Expt) or a nicotine/smoking control mouse (Ctrl).
-* <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> plate</span> </mark>: is the plate (1,2 or 3) in which the sample library was prepared.
-* <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> Pregnancy</span> </mark>:  if the sample comes from a pregnant (Yes) or not pregnant (No) mouse.
-* <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> medium</span> </mark>: is the medium in which the sample was treated: water for brain samples and an elution buffer (EB) for the blood ones.
-* <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> flowcell</span> </mark>: is the sequencing batch of each sample.
-* <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> sum</span> </mark>: library size (total sum of counts across all genes for each sample).
-* <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> detected</span> </mark>: number of non-zero expressed genes in each sample.
-* <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> subsets_Mito_sum</span> </mark>: total sum of read counts of mt genes in each sample
-* <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> subsets_Mito_detected</span> </mark>: total number of mt genes in each sample
-* <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> subsets_Mito_percent</span> </mark>: % of mt genes' counts of the total counts of the sample. 
-* <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> subsets_Ribo_sum</span> </mark>: total sum of read counts of ribosomal genes in each sample.
-* <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> subsets_Ribo_detected</span> </mark>: total number of ribosomal genes in each sample.
-* <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> subsets_Ribo_percent</span> </mark>: % of ribosomal genes' counts of the total counts of the sample.
+-   <mark style= "background-color: #FCF3CF"> [
+    SAMPLE_ID]{style="font-family: monospace"} </mark>: is the name of
+    the sample.
+-   <mark style= "background-color: #FCF3CF"> [
+    ERCCsumLogErr]{style="font-family: monospace"} </mark>: a summary
+    statistic quantifying overall difference of expected and actual ERCC
+    concentrations for one sample.
+-   <mark style= "background-color: #FCF3CF"> [
+    overallMapRate]{style="font-family: monospace"} </mark>: the decimal
+    fraction of reads which successfully mapped to the reference genome
+    (i.e. *numMapped* / *numReads*).
+-   <mark style= "background-color: #FCF3CF"> [
+    mitoMapped]{style="font-family: monospace"} </mark>: the number of
+    reads which successfully mapped to the mitochondrial chromosome.
+-   <mark style= "background-color: #FCF3CF"> [
+    totalMapped]{style="font-family: monospace"} </mark>: the number of
+    reads which successfully mapped to the canonical sequences in the
+    reference genome (excluding mitochondrial chromosomes).
+-   <mark style= "background-color: #FCF3CF"> [
+    mitoRate]{style="font-family: monospace"} </mark>: the decimal
+    fraction of reads which mapped to the mitochondrial chromosome, of
+    those which map at all (i.e. *mitoMapped* / (*totalMapped* +
+    *mitoMapped*))
+-   <mark style= "background-color: #FCF3CF"> [
+    totalAssignedGene]{style="font-family: monospace"} </mark>: the
+    decimal fraction of reads assigned unambiguously to a gene, with
+    `featureCounts` (Liao et al. 2014), of those in total.
+-   <mark style= "background-color: #FCF3CF"> [
+    rRNA_rate]{style="font-family: monospace"} </mark>: the decimal
+    fraction of reads assigned to a gene whose type is 'rRNA', of those
+    assigned to any gene.
+-   <mark style= "background-color: #FAECF8"> [
+    Tissue]{style="font-family: monospace"} </mark>: tissue (mouse brain
+    or blood) from which the sample comes.
+-   <mark style= "background-color: #FAECF8"> [
+    Age]{style="font-family: monospace"} </mark>: if the sample comes
+    from an adult or a pup mouse.
+-   <mark style= "background-color: #FAECF8"> [
+    Sex]{style="font-family: monospace"} </mark>: if the sample comes
+    from a female (F) or male (M) mouse.
+-   <mark style= "background-color: #FAECF8"> [
+    Expt]{style="font-family: monospace"} </mark>: the experiment
+    (nicotine or smoking exposure) to which the sample mouse was
+    subjected; it could be an exposed or a control mouse of that
+    experiment.
+-   <mark style= "background-color: #FAECF8"> [
+    Group]{style="font-family: monospace"} </mark>: if the sample
+    belongs to a nicotine/smoking-exposed mouse (Expt) or a
+    nicotine/smoking control mouse (Ctrl).
+-   <mark style= "background-color: #FAECF8"> [
+    plate]{style="font-family: monospace"} </mark>: is the plate (1,2 or
+    3) in which the sample library was prepared.
+-   <mark style= "background-color: #FAECF8"> [
+    Pregnancy]{style="font-family: monospace"} </mark>: if the sample
+    comes from a pregnant (Yes) or not pregnant (No) mouse.
+-   <mark style= "background-color: #FAECF8"> [
+    medium]{style="font-family: monospace"} </mark>: is the medium in
+    which the sample was treated: water for brain samples and an elution
+    buffer (EB) for the blood ones.
+-   <mark style= "background-color: #FAECF8"> [
+    flowcell]{style="font-family: monospace"} </mark>: is the sequencing
+    batch of each sample.
+-   <mark style= "background-color: #DFF0FE"> [
+    sum]{style="font-family: monospace"} </mark>: library size (total
+    sum of counts across all genes for each sample).
+-   <mark style= "background-color: #DFF0FE"> [
+    detected]{style="font-family: monospace"} </mark>: number of
+    non-zero expressed genes in each sample.
+-   <mark style= "background-color: #DFF0FE"> [
+    subsets_Mito_sum]{style="font-family: monospace"} </mark>: total sum
+    of read counts of mt genes in each sample
+-   <mark style= "background-color: #DFF0FE"> [
+    subsets_Mito_detected]{style="font-family: monospace"} </mark>:
+    total number of mt genes in each sample
+-   <mark style= "background-color: #DFF0FE"> [
+    subsets_Mito_percent]{style="font-family: monospace"} </mark>: % of
+    mt genes' counts of the total counts of the sample.
+-   <mark style= "background-color: #DFF0FE"> [
+    subsets_Ribo_sum]{style="font-family: monospace"} </mark>: total sum
+    of read counts of ribosomal genes in each sample.
+-   <mark style= "background-color: #DFF0FE"> [
+    subsets_Ribo_detected]{style="font-family: monospace"} </mark>:
+    total number of ribosomal genes in each sample.
+-   <mark style= "background-color: #DFF0FE"> [
+    subsets_Ribo_percent]{style="font-family: monospace"} </mark>: % of
+    ribosomal genes' counts of the total counts of the sample.
 
-Note: in our case, we'll use samples from the nicotine experiment only, so all samples come from brain and were treated in water.
-
+Note: in our case, we'll use samples from the nicotine experiment only,
+so all samples come from brain and were treated in water.
 
 ```{r "load_pkgs", message=FALSE, warning=FALSE}
 library("here")
 library("SummarizedExperiment")
+library("jaffelab")
 ```
 
 ```{r "examine_outputs"}
@@ -288,35 +521,39 @@ assays(rse_gene_nic)$logcounts[1:3,1:5]
 ##     Access sample data
 #################################
 
-## Info for the first 2 samples
-head(colData(rse_gene_nic), 2)
+#  Check out the metrics SPEAQeasy collected for each sample, including stats
+#  from FastQC, trimming, and alignment. View the corner
+colnames(colData(rse_gene_nic))
+corner(colData(rse_gene_nic))
+
+#  Examine what data is provided in the RSE object for each gene ("row")
+head(rowData(rse_gene))
 ```
-
-
 
 ## Differential Expression Analysis
 
 **TODO**
 
 <figure>
-    <img src="figs/Analyses.jpg" width="700px" align=center />
-        <figcaption style="color: gray; line-height: 0.87; text-align: justify">
-            <font size="-1.8">
-                <b>Figure 2</b>: <b> Summary of the analyses. </b> Steps in yellow will be properly performed. 
-                <b> 1. Data Preparation </b> 
-                <b> 2. Exploratory Data Analysis </b> 
-                <b> 3. Differential Expression Analysis </b> 
-                <b> 4. GO & KEGG Analyses  </b> 
-                <b> 5. DEG visualization  </b> </font> 
-            <font size="0.8"> Abbreviations: CPM: counts per million; QC: quality control; PC: principal component; 
-            DEG: differentially expressed genes; GO: Gene Ontology; KEGG: Kyoto Encyclopedia of Genes and Genomes.</font>
-        </figcaption>
+
+<img src="figs/Analyses.jpg" width="700px" align="center"/>
+
+<figcaption style="color: gray; line-height: 0.87; text-align: justify">
+
+<font size="-1.8"> <b>Figure 2</b>: <b> Summary of the analyses. </b>
+Steps in yellow will be properly performed. <b> 1. Data Preparation </b>
+<b> 2. Exploratory Data Analysis </b> <b> 3. Differential Expression
+Analysis </b> <b> 4. GO & KEGG Analyses </b> <b> 5. DEG visualization
+</b> </font> <font size="0.8"> Abbreviations: CPM: counts per million;
+QC: quality control; PC: principal component; DEG: differentially
+expressed genes; GO: Gene Ontology; KEGG: Kyoto Encyclopedia of Genes
+and Genomes.</font>
+
+</figcaption>
+
 </figure>
 
 ### 1. Data preparation
-
-
-
 
 ### 2. Exploratory Data Analysis
 
@@ -326,25 +563,12 @@ head(colData(rse_gene_nic), 2)
 
 #### 2.2 Explore gene-level effects
 
-
-
-
 ### 3. Differential Expression Analysis
 
 #### 3.1 Modeling
 
-
 #### 3.2 Comparisons
-
-
-
 
 ### 4. GO & KEGG analyses
 
-
-
-
 ### 5. DEG visualization
-
-
-

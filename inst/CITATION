@@ -8,10 +8,10 @@ c(
 
     bibentry(bibtype="manual",
         title = "Bioc2023 SPEAQeasy workshop",
-        author = personList(
+        author = c(
             as.person("Daianna Gomez-Padilla"),
-            as.person("Renee Garcia-Flores")
-            as.person("Nicholas J. Eagles"),
+            as.person("Renee Garcia-Flores"),
+            as.person("Nicholas J. Eagles")
         ),
         year = format(Sys.Date(), "%Y"),
         url = "http://www.bioconductor.org/packages/SPEAQeasyWorkshop2023",
@@ -19,8 +19,8 @@ c(
         doi = '10.18129/B9.bioc.SPEAQeasyWorkshop2023'
     ),
     bibentry(bibtype="article",
-        title = "SPEAQeasy: a Scalable Pipeline for Expression Analysis and Quantification for R/Bioconductor-powered RNA-seq analyses",
-        author = personList(
+        title = "SPEAQeasy: a scalable pipeline for expression analysis and quantification for R/bioconductor-powered RNA-seq analyses",
+        author = c(
             as.person("Nicholas J. Eagles"),
             as.person("Emily E. Burke"),
             as.person("Jacob Leonard"),
@@ -34,9 +34,10 @@ c(
             as.person("Andrew E. Jaffe"),
             as.person("Leonardo Collado-Torres")
         ),
-        year = 2020,
-        journal = "bioRxiv",
-        doi = "10.1101/2020.12.11.386789",
-        url = "https://www.biorxiv.org/content/10.1101/2020.12.11.386789v1"
+        year = 2021,
+        journal = "BMC Bioinformatics",
+        doi = "10.1186/s12859-021-04142-3",
+        publisher = "Springer Science and Business Media LLC",
+        url = "https://doi.org/10.1186/s12859-021-04142-3"
     )
 )
