@@ -1,23 +1,29 @@
 Package: SPEAQeasyWorkshop2023
-Title: What the Package Does (One Line, Title Case)
+Title: A Bioconductor-style differential expression analysis powered by SPEAQeasy
 Version: 0.0.0.9000
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Authors@R: c(person("Nick J.", "Eagles", email = "marcel.ramos@roswellpark.org",
+    role = c("aut", "cre"), comment = c(ORCID = "0000-0002-3242-0582")), 
+    person("Renee", "Garcia-Flores", email = "renee.garciaflores@gmail.com",
+    role = c("aut"), comment = c(ORCID = "0000-0002-3242-0582")), 
+    person("Daianna", "Gonzalez-Padilla", email = "marcel.ramos@roswellpark.org",
+    role = c("aut"), comment = c(ORCID = "0000-0002-3242-0582")), 
+    person("Leonardo", "Collado-Torres", email = "lcolladotor@gmail.com", 
+    role = c("ctb"), , comment = c(ORCID = "0000-0003-2140-308X")))
+Description: This package introduces SPEAQeasy, an RNA-seq processing pipeline 
+            that generates manageable R objects ready for usage in downstream
+            analyses. As an example of its usage and usefulness, a Differential 
+            Expression Analysis will be performed on a real bulk RNA-seq dataset 
+            directly generated from the pipeline.
+License: Artistic-2.0
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-<<<<<<< HEAD
 RoxygenNote: 7.2.3
-=======
-RoxygenNote: 7.1.1
 DockerImage: ghcr.io/LieberInstitute/SPEAQeasyWorkshop2023:latest
 Suggests: 
     knitr,
     rmarkdown,
-    pkgdown
+    pkgdown,
+    testthat (>= 3.0.0)
 VignetteBuilder: knitr
 Imports: 
     SummarizedExperiment,
@@ -39,4 +45,4 @@ Imports:
     backports,
     RefManageR
 Remotes: LieberInstitute/jaffelab
->>>>>>> a1c67d7ceed4b815036e743cac8e871ec69406ea
+Config/testthat/edition: 3
