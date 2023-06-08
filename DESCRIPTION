@@ -1,65 +1,12 @@
 Package: SPEAQeasyWorkshop2023
-Title: BioC2023 SPEAQeasy Workshop
-Version: 0.99.0
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
 Authors@R: 
- c(person(given = "Nicholas J.",
-           family = "Eagles",
-           role = c("aut", "cre"),
-           email = "nick.eagles@libd.org",
-           comment = c(ORCID = "0000-0002-9808-5254")),
-    person(given = "Daianna",
-           family = "Gonzalez-Padilla",
-           role = c("aut"),
-           email = "glezdaianna@gmail.com",
-           comment = c(ORCID = "0009-0005-8348-3195")), 
-    person(given = "Renee",
-           family = "Garcia-Flores",
-           role = c("aut"),
-           email = "renee.garciaflores@gmail.com",
-           comment = c(ORCID = "0000-0001-8812-120X")),
-    person(given = "Leonardo",
-           family = "Collado-Torres",
-           role = c("ctb"),
-           email = "lcolladotor@gmail.com",
-           comment = c(ORCID = "0000-0003-2140-308X"))
-  )
-Description: This package introduces SPEAQeasy, an RNA-seq processing pipeline 
-            that generates manageable R objects ready for usage in downstream
-            analyses. As an example of its usage and usefulness, a Differential 
-            Expression Analysis will be performed on a real bulk RNA-seq dataset 
-            directly generated from the pipeline. 
-License: Artistic-2.0
-URL: https://LieberInstitute.github.io/SPEAQeasyWorkshop2023/
-BugReports: https://support.bioconductor.org/t/SPEAQeasyWorkshop2023
-Depends: R (>= 4.0.0)
+    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: What the package does (one paragraph).
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
 Encoding: UTF-8
-LazyData: true
-biocViews: Workshop, DifferentialExpression, GeneExpression,
-    RNASeq, Sequencing, DataImport
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
-DockerImage: ghcr.io/LieberInstitute/SPEAQeasyWorkshop2023:latest
-Suggests: 
-    knitr,
-    rmarkdown,
-    pkgdown
-VignetteBuilder: knitr
-Imports: 
-    SummarizedExperiment,
-    recount,
-    edgeR,
-    limma,
-    RColorBrewer,
-    clusterProfiler,
-    pheatmap,
-    here,
-    BiocStyle,
-    sessioninfo,
-    org.Hs.eg.db,
-    jaffelab,
-    tidyr,
-    VariantAnnotation,
-    dplyr,
-    statmod,
-    backports
-Remotes: LieberInstitute/jaffelab
+RoxygenNote: 7.2.3
