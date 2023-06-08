@@ -1,0 +1,11 @@
+pandoc: 2.19.2
+pkgdown: 2.0.7
+pkgdown_sha: ~
+articles:
+  HOWTO_BUILD_WORKSHOP: HOWTO_BUILD_WORKSHOP.html
+  SPEAQeasyWorkshop2023: SPEAQeasyWorkshop2023.html
+last_built: 2023-06-08T23:39Z
+urls:
+  reference: http://research.libd.org/SPEAQeasyWorkshop2023/reference
+  article: http://research.libd.org/SPEAQeasyWorkshop2023/articles
+
