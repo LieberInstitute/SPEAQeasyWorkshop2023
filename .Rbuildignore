@@ -6,3 +6,6 @@ _pkgdown.yml
 ^\.Rproj\.user$
 ^SPEAQeasyWorkshop2023\.Rproj$
 ^dev$
+^README\.Rmd$
+^\.github$
+^codecov\.yml$
