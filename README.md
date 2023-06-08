@@ -5,30 +5,72 @@
 
 <!-- badges: start -->
 
+[![GitHub
+issues](https://img.shields.io/github/issues/LieberInstitute/SPEAQeasyWorkshop2023)](https://github.com/LieberInstitute/SPEAQeasyWorkshop2023/issues)
+[![GitHub
+pulls](https://img.shields.io/github/issues-pr/LieberInstitute/SPEAQeasyWorkshop2023)](https://github.com/LieberInstitute/SPEAQeasyWorkshop2023/pulls)
 [![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![R build
-status](https://github.com/LieberInstitute/SPEAQeasyWorkshop2023/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/LieberInstitute/SPEAQeasyWorkshop2023/actions)
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check-bioc](https://github.com/LieberInstitute/SPEAQeasyWorkshop2023/actions/workflows/R-CMD-check-bioc.yaml/badge.svg)](https://github.com/LieberInstitute/SPEAQeasyWorkshop2023/actions/workflows/R-CMD-check-bioc.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/LieberInstitute/SPEAQeasyWorkshop2023/branch/devel/graph/badge.svg)](https://app.codecov.io/gh/LieberInstitute/SPEAQeasyWorkshop2023?branch=devel)
 <!-- badges: end -->
 
-This workshop aims to present the `SPEAQeasy` RNA-seq processing
-pipeline, show how to use it and demonstrate how its outputs can be
-analyzed for differential expression analyses (DEA) using other
-Bioconductor R packages.
+The goal of `SPEAQeasyWorkshop2023` is to …
 
-SPEAQeasy is a [Nextflow](https://www.nextflow.io/)-based **S**calable
-RNA-seq processing **P**ipeline for **E**xpression **A**nalysis and
-**Q**uantification that produces R objects ready for analysis with
-Bioconductor tools. Partipants will become familiar with execution on
-real data from
-[smokingMouse](https://github.com/LieberInstitute/smokingMouse), which
-contains gene expression data and sample information from an
-RNA-sequencing. As well as practice configuring some common settings. We
-will walk through a complete differential expression analysis, utilizing
-popular packages such as
-[limma](https://www.bioconductor.org/packages/limma),
-[edgeR](http://bioconductor.org/packages/edgeR), and
-[clusterProfiler](https://bioconductor.org/packages/clusterProfiler).
+## Installation instructions
+
+Get the latest stable `R` release from
+[CRAN](http://cran.r-project.org/). Then install `SPEAQeasyWorkshop2023`
+from [Bioconductor](http://bioconductor.org/) using the following code:
+
+``` r
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
+    install.packages("BiocManager")
+}
+
+BiocManager::install("SPEAQeasyWorkshop2023")
+```
+
+And the development version from
+[GitHub](https://github.com/LieberInstitute/SPEAQeasyWorkshop2023) with:
+
+``` r
+BiocManager::install("LieberInstitute/SPEAQeasyWorkshop2023")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+``` r
+library("SPEAQeasyWorkshop2023")
+## basic example code
+```
+
+What is special about using `README.Rmd` instead of just `README.md`?
+You can include R chunks like so:
+
+``` r
+summary(cars)
+#>      speed           dist       
+#>  Min.   : 4.0   Min.   :  2.00  
+#>  1st Qu.:12.0   1st Qu.: 26.00  
+#>  Median :15.0   Median : 36.00  
+#>  Mean   :15.4   Mean   : 42.98  
+#>  3rd Qu.:19.0   3rd Qu.: 56.00  
+#>  Max.   :25.0   Max.   :120.00
+```
+
+You’ll still need to render `README.Rmd` regularly, to keep `README.md`
+up-to-date.
+
+You can also embed plots, for example:
+
+<img src="man/figures/README-pressure-1.png" width="100%" />
+
+In that case, don’t forget to commit and push the resulting figure
+files, so they display on GitHub!
 
 ## Citation
 
@@ -37,7 +79,7 @@ Below is the citation output from using
 check for any updates on how to cite **SPEAQeasyWorkshop2023**.
 
 ``` r
-print(citation("SPEAQeasyWorkshop2023"), bibtex = TRUE)
+print(citation('SPEAQeasyWorkshop2023'), bibtex = TRUE)
 ```
 
 Please note that the `SPEAQeasyWorkshop2023` was only made possible
@@ -49,19 +91,19 @@ package.
 
 Please note that the `SPEAQeasyWorkshop2023` project is released with a
 [Contributor Code of
-Conduct](https://bioconductor.github.io/bioc_coc_multilingual/en-US.html).
-By contributing to this project, you agree to abide by its terms.
+Conduct](http://bioconductor.org/about/code-of-conduct/). By
+contributing to this project, you agree to abide by its terms.
 
 ## Development tools
 
 - Continuous code testing is possible thanks to [GitHub
-  actions](https://www.tidyverse.org/blog/2020/12/usethis-2-0-0/)
+  actions](https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/)
   through *[usethis](https://CRAN.R-project.org/package=usethis)*,
   *[remotes](https://CRAN.R-project.org/package=remotes)*, and
   *[rcmdcheck](https://CRAN.R-project.org/package=rcmdcheck)* customized
   to use [Bioconductor’s docker
   containers](https://www.bioconductor.org/help/docker/) and
-  *[BiocCheck](https://bioconductor.org/packages/3.16/BiocCheck)*.
+  *[BiocCheck](https://bioconductor.org/packages/3.17/BiocCheck)*.
 - Code coverage assessment is possible thanks to
   [codecov](https://codecov.io/gh) and
   *[covr](https://CRAN.R-project.org/package=covr)*.
@@ -78,4 +120,4 @@ By contributing to this project, you agree to abide by its terms.
 For more details, check the `dev` directory.
 
 This package was developed using
-*[biocthis](https://bioconductor.org/packages/3.16/biocthis)*.
+*[biocthis](https://bioconductor.org/packages/3.17/biocthis)*.
