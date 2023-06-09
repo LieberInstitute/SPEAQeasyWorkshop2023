@@ -13,7 +13,8 @@ Description: This package introduces SPEAQeasy, an RNA-seq processing pipeline
             that generates manageable R objects ready for usage in downstream
             analyses. As an example of its usage and usefulness, a Differential 
             Expression Analysis will be performed on a real bulk RNA-seq dataset 
-            directly generated from the pipeline.
+            directly generated from the pipeline. We will use the data from the
+            smokingMouse R/Bioconductor ExperimentHub package as an example.
 License: Artistic-2.0
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
