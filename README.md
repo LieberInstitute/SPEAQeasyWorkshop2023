@@ -11,7 +11,7 @@ issues](https://img.shields.io/github/issues/LieberInstitute/SPEAQeasyWorkshop20
 pulls](https://img.shields.io/github/issues-pr/LieberInstitute/SPEAQeasyWorkshop2023)](https://github.com/LieberInstitute/SPEAQeasyWorkshop2023/pulls)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![R-CMD-check-bioc](https://github.com/LieberInstitute/SPEAQeasyWorkshop2023/actions/workflows/R-CMD-check-bioc.yaml/badge.svg)](https://github.com/LieberInstitute/SPEAQeasyWorkshop2023/actions/workflows/R-CMD-check-bioc.yaml)
+[![R-CMD-check-bioc](https://github.com/LieberInstitute/SPEAQeasyWorkshop2023/actions/workflows/check-bioc.yml/badge.svg)](https://github.com/LieberInstitute/SPEAQeasyWorkshop2023/actions/workflows/R-CMD-check-bioc.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/LieberInstitute/SPEAQeasyWorkshop2023/branch/devel/graph/badge.svg)](https://app.codecov.io/gh/LieberInstitute/SPEAQeasyWorkshop2023?branch=devel)
 <!-- badges: end -->
