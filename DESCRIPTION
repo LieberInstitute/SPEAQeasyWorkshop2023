@@ -1,6 +1,6 @@
 Package: SPEAQeasyWorkshop2023
 Title: A Bioconductor-style differential expression analysis powered by SPEAQeasy
-Version: 0.0.0.9000
+Version: 0.0.0
 Authors@R: c(person("Nick J.", "Eagles", email = "marcel.ramos@roswellpark.org",
     role = c("aut", "cre"), comment = c(ORCID = "0000-0002-3242-0582")), 
     person("Renee", "Garcia-Flores", email = "renee.garciaflores@gmail.com",
