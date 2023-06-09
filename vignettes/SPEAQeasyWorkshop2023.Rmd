@@ -29,8 +29,8 @@ vignette: >
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
+    collapse = TRUE,
+    comment = "#>"
 )
 ```
 
@@ -251,7 +251,6 @@ library("SummarizedExperiment")
 ```
 
 ```{r "examine_outputs"}
-
 #################################
 ##         Retrive data
 #################################
@@ -259,7 +258,7 @@ library("SummarizedExperiment")
 # load(here('provisional_data/rse_gene_mouse_RNAseq_nic-smo.Rdata'), verbose=TRUE)
 # ## Explore complete rse_gene object (including smoking-exposed samples as well)
 # rse_gene
-# 
+#
 # #################################
 # ##   Extract data of interest
 # #################################
@@ -267,20 +266,20 @@ library("SummarizedExperiment")
 # rse_gene_nic <- rse_gene[,which(rse_gene$Expt=='Nicotine')]
 # ## New dimensions
 # dim(rse_gene_nic)
-# 
+#
 # #################################
 # ##  Access gene expression data
 # #################################
-# 
+#
 # ## Raw counts for first 3 genes in the first 5 samples
 # assays(rse_gene_nic)$counts[1:3,1:5]
 # ## Log-normalized counts for first 3 genes in the first 5 samples
 # assays(rse_gene_nic)$logcounts[1:3,1:5]
-# 
+#
 # #################################
 # ##     Access sample data
 # #################################
-# 
+#
 # ## Info for the first 2 samples
 # head(colData(rse_gene_nic), 2)
 ```

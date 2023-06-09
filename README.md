@@ -80,14 +80,13 @@ check for any updates on how to cite **SPEAQeasyWorkshop2023**.
 
 ``` r
 print(citation("SPEAQeasyWorkshop2023"), bibtex = TRUE)
-#> To cite package 'SPEAQeasyWorkshop2023' in publications use:
 #> 
-#>   Gomez-Padilla D, Garcia-Flores R, Eagles NJ (2023). _Bioc2023
-#>   SPEAQeasy workshop_. doi:10.18129/B9.bioc.SPEAQeasyWorkshop2023
-#>   <https://doi.org/10.18129/B9.bioc.SPEAQeasyWorkshop2023>,
-#>   https://github.com/LieberInstitute/SPEAQeasyWorkshop2023/SPEAQeasyWorkshop2023
-#>   - R package version 0.0.0.9000,
-#>   <http://www.bioconductor.org/packages/SPEAQeasyWorkshop2023>.
+#> Gomez-Padilla D, Garcia-Flores R, Eagles NJ (2023). _Bioc2023 SPEAQeasy
+#> workshop_. doi: 10.18129/B9.bioc.SPEAQeasyWorkshop2023 (URL:
+#> https://doi.org/10.18129/B9.bioc.SPEAQeasyWorkshop2023),
+#> https://github.com/LieberInstitute/SPEAQeasyWorkshop2023/SPEAQeasyWorkshop2023
+#> - R package version 0.0.0, <URL:
+#> http://www.bioconductor.org/packages/SPEAQeasyWorkshop2023>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
@@ -96,18 +95,17 @@ print(citation("SPEAQeasyWorkshop2023"), bibtex = TRUE)
 #>     author = {Daianna Gomez-Padilla and Renee Garcia-Flores and Nicholas J. Eagles},
 #>     year = {2023},
 #>     url = {http://www.bioconductor.org/packages/SPEAQeasyWorkshop2023},
-#>     note = {https://github.com/LieberInstitute/SPEAQeasyWorkshop2023/SPEAQeasyWorkshop2023 - R package version 0.0.0.9000},
+#>     note = {https://github.com/LieberInstitute/SPEAQeasyWorkshop2023/SPEAQeasyWorkshop2023 - R package version 0.0.0},
 #>     doi = {10.18129/B9.bioc.SPEAQeasyWorkshop2023},
 #>   }
 #> 
-#>   Eagles NJ, Burke EE, Leonard J, Barry BK, Stolz JM, Huuki L, Phan BN,
-#>   Serrato VL, Gutiérrez-Millán E, Aguilar-Ordoñez I, Jaffe AE,
-#>   Collado-Torres L (2021). "SPEAQeasy: a scalable pipeline for
-#>   expression analysis and quantification for R/bioconductor-powered
-#>   RNA-seq analyses." _BMC Bioinformatics_.
-#>   doi:10.1186/s12859-021-04142-3
-#>   <https://doi.org/10.1186/s12859-021-04142-3>,
-#>   <https://doi.org/10.1186/s12859-021-04142-3>.
+#> Eagles NJ, Burke EE, Leonard J, Barry BK, Stolz JM, Huuki L, Phan BN,
+#> Serrato VL, Gutiérrez-Millán E, Aguilar-Ordoñez I, Jaffe AE,
+#> Collado-Torres L (2021). "SPEAQeasy: a scalable pipeline for expression
+#> analysis and quantification for R/bioconductor-powered RNA-seq
+#> analyses." _BMC Bioinformatics_. doi: 10.1186/s12859-021-04142-3 (URL:
+#> https://doi.org/10.1186/s12859-021-04142-3), <URL:
+#> https://doi.org/10.1186/s12859-021-04142-3>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
@@ -136,28 +134,28 @@ contributing to this project, you agree to abide by its terms.
 
 ## Development tools
 
-- Continuous code testing is possible thanks to [GitHub
-  actions](https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/)
-  through *[usethis](https://CRAN.R-project.org/package=usethis)*,
-  *[remotes](https://CRAN.R-project.org/package=remotes)*, and
-  *[rcmdcheck](https://CRAN.R-project.org/package=rcmdcheck)* customized
-  to use [Bioconductor’s docker
-  containers](https://www.bioconductor.org/help/docker/) and
-  *[BiocCheck](https://bioconductor.org/packages/3.17/BiocCheck)*.
-- Code coverage assessment is possible thanks to
-  [codecov](https://codecov.io/gh) and
-  *[covr](https://CRAN.R-project.org/package=covr)*.
-- The [documentation
-  website](http://LieberInstitute.github.io/SPEAQeasyWorkshop2023) is
-  automatically updated thanks to
-  *[pkgdown](https://CRAN.R-project.org/package=pkgdown)*.
-- The code is styled automatically thanks to
-  *[styler](https://CRAN.R-project.org/package=styler)*.
-- The documentation is formatted thanks to
-  *[devtools](https://CRAN.R-project.org/package=devtools)* and
-  *[roxygen2](https://CRAN.R-project.org/package=roxygen2)*.
+-   Continuous code testing is possible thanks to [GitHub
+    actions](https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/)
+    through *[usethis](https://CRAN.R-project.org/package=usethis)*,
+    *[remotes](https://CRAN.R-project.org/package=remotes)*, and
+    *[rcmdcheck](https://CRAN.R-project.org/package=rcmdcheck)*
+    customized to use [Bioconductor’s docker
+    containers](https://www.bioconductor.org/help/docker/) and
+    *[BiocCheck](https://bioconductor.org/packages/3.14/BiocCheck)*.
+-   Code coverage assessment is possible thanks to
+    [codecov](https://codecov.io/gh) and
+    *[covr](https://CRAN.R-project.org/package=covr)*.
+-   The [documentation
+    website](http://LieberInstitute.github.io/SPEAQeasyWorkshop2023) is
+    automatically updated thanks to
+    *[pkgdown](https://CRAN.R-project.org/package=pkgdown)*.
+-   The code is styled automatically thanks to
+    *[styler](https://CRAN.R-project.org/package=styler)*.
+-   The documentation is formatted thanks to
+    *[devtools](https://CRAN.R-project.org/package=devtools)* and
+    *[roxygen2](https://CRAN.R-project.org/package=roxygen2)*.
 
 For more details, check the `dev` directory.
 
 This package was developed using
-*[biocthis](https://bioconductor.org/packages/3.17/biocthis)*.
+*[biocthis](https://bioconductor.org/packages/3.14/biocthis)*.
