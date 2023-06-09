@@ -5,7 +5,7 @@ author:
     affiliation:
     - &libd Lieber Institute for Brain Development
     email: glezdaianna@gmail.com
-  - name: Fernanda Renee Garcia-Flores
+  - name: Renee Garcia-Flores
     affiliation:
     - &libd Lieber Institute for Brain Development
     email:  renee.garciaflores@gmail.com
@@ -97,7 +97,7 @@ experiment in mice.
 ## Instructors
 
 * [Daianna Gonzalez](https://daianna21.github.io)
-* [Fernanda Renee Garcia](https://reneegf.github.io)
+* [Renee Garcia](https://reneegf.github.io)
 * [Nick Eagles](https://nick-eagles.github.io)
 
 
