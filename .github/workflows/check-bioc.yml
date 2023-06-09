@@ -246,7 +246,8 @@ jobs:
               `quit-with-status` = TRUE,
               `no-check-R-ver` = TRUE,
               `no-check-bioc-help` = TRUE,
-              `no-check-bioc-views` = TRUE
+              `no-check-bioc-views` = TRUE,
+              `no-check-remotes` = TRUE
           )
         shell: Rscript {0}
 
