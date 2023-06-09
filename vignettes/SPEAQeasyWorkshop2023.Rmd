@@ -42,11 +42,14 @@ knitr::opts_chunk$set(
 ```
 
 ```{r vignetteSetup, echo=FALSE, message=FALSE, warning = FALSE}
+## For links
+library("BiocStyle")
+
 ## Track time spent on making the vignette
 startTime <- Sys.time()
 
 ## Bib setup
-library(RefManageR)
+library("RefManageR")
 
 ## Write bibliography information
 bib <- c(
@@ -84,7 +87,7 @@ bib <- c(
 # Overview
 
 **TODO**
-This workshop aims to present the `SPEAQeasy` `r Citep(bib[["SPEAQeasy"]])` RNA-seq processing pipeline, demonstrating how its outputs can be used in Differential Expression Analyses (DEA) and the type of results it enables to obtain using other Bioconductor R packages such as  [limma](https://www.bioconductor.org/packages/limma), [edgeR](http://bioconductor.org/packages/edgeR), and [clusterProfiler](https://bioconductor.org/packages/clusterProfiler).
+This workshop aims to present the `SPEAQeasy` `r Citep(bib[["SPEAQeasy"]])` RNA-seq processing pipeline, demonstrating how its outputs can be used in Differential Expression Analyses (DEA) and the type of results it enables to obtain using other Bioconductor R packages such as `r Biocpkg('limma')`, `r Biocpkg('edgeR')`, and `r Biocpkg('clusterProfiler')`.
 
 Briefly describe what is it , etc ... 
 
@@ -110,7 +113,7 @@ experiment in mice.
 
 * General familiarity with bulk RNA-seq data.
 * Basic knowledge of differential expression. 
-* Basic experience handling `SummarizedExperiment` and `GenomicRanges` packages.
+* Basic experience handling `r Biocpkg('SummarizedExperiment')` and `r Biocpkg('GenomicRanges')` packages.
 * Previous review of http://research.libd.org/smokingMouse/ for data explanation. (Optional)
 
 ## Participation
