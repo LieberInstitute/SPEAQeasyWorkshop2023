@@ -1,42 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://research.libd.org/SPEAQeasyWorkshop2023/404.html</loc>
+    <loc>/404.html</loc>
   </url>
   <url>
-    <loc>http://research.libd.org/SPEAQeasyWorkshop2023/CODE_OF_CONDUCT.html</loc>
+    <loc>/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>http://research.libd.org/SPEAQeasyWorkshop2023/CONTRIBUTING.html</loc>
+    <loc>/CONTRIBUTING.html</loc>
   </url>
   <url>
-    <loc>http://research.libd.org/SPEAQeasyWorkshop2023/LICENSE-text.html</loc>
+    <loc>/SUPPORT.html</loc>
   </url>
   <url>
-    <loc>http://research.libd.org/SPEAQeasyWorkshop2023/LICENSE.html</loc>
+    <loc>/articles/SPEAQeasyWorkshop2023.html</loc>
   </url>
   <url>
-    <loc>http://research.libd.org/SPEAQeasyWorkshop2023/SUPPORT.html</loc>
+    <loc>/articles/index.html</loc>
   </url>
   <url>
-    <loc>http://research.libd.org/SPEAQeasyWorkshop2023/articles/HOWTO_BUILD_WORKSHOP.html</loc>
+    <loc>/authors.html</loc>
   </url>
   <url>
-    <loc>http://research.libd.org/SPEAQeasyWorkshop2023/articles/SPEAQeasyWorkshop2023.html</loc>
+    <loc>/index.html</loc>
   </url>
   <url>
-    <loc>http://research.libd.org/SPEAQeasyWorkshop2023/articles/index.html</loc>
+    <loc>/news/index.html</loc>
   </url>
   <url>
-    <loc>http://research.libd.org/SPEAQeasyWorkshop2023/authors.html</loc>
+    <loc>/reference/hello.html</loc>
   </url>
   <url>
-    <loc>http://research.libd.org/SPEAQeasyWorkshop2023/index.html</loc>
-  </url>
-  <url>
-    <loc>http://research.libd.org/SPEAQeasyWorkshop2023/news/index.html</loc>
-  </url>
-  <url>
-    <loc>http://research.libd.org/SPEAQeasyWorkshop2023/reference/index.html</loc>
+    <loc>/reference/index.html</loc>
   </url>
 </urlset>
