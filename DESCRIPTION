@@ -1,6 +1,6 @@
 Package: SPEAQeasyWorkshop2023
 Title: A Bioconductor-style differential expression analysis powered by SPEAQeasy
-Version: 0.0.0
+Version: 0.99.0
 Authors@R: c(person("Nick J.", "Eagles", email = "marcel.ramos@roswellpark.org",
     role = c("aut", "cre"), comment = c(ORCID = "0000-0002-3242-0582")), 
     person("Renee", "Garcia-Flores", email = "renee.garciaflores@gmail.com",
@@ -13,7 +13,8 @@ Description: This package introduces SPEAQeasy, an RNA-seq processing pipeline
             that generates manageable R objects ready for usage in downstream
             analyses. As an example of its usage and usefulness, a Differential 
             Expression Analysis will be performed on a real bulk RNA-seq dataset 
-            directly generated from the pipeline.
+            directly generated from the pipeline. We will use the data from the
+            smokingMouse R/Bioconductor ExperimentHub package as an example.
 License: Artistic-2.0
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -44,5 +45,5 @@ Imports:
     statmod,
     backports,
     RefManageR
-Remotes: LieberInstitute/jaffelab
+Remotes: LieberInstitute/jaffelab, LieberInstitute/smokingMouse
 Config/testthat/edition: 3
