@@ -74,8 +74,6 @@ bib <- c(
 )
 ```
 
-28 May 2023
-
 # Overview
 
 **TODO**
@@ -85,6 +83,7 @@ Briefly describe what is it , etc ...
 
 
 ## Description
+
 **TODO**
 In this demo, participants will be able to understand what the pipeline does 
 and what it returns through a Differential Expression Analysis performed on a SPEAQeasy 
@@ -108,15 +107,18 @@ experiment in mice.
 * Previous review of http://research.libd.org/smokingMouse/ for data explanation. (Optional)
 
 ## Participation
+
 **TODO**
 Participants are expected to follow 
 
 
 ## _R_ / _Bioconductor_ packages used
+
 **TODO**
 List any _R_ / _Bioconductor_ packages that will be explicitly covered.
 
 ## Time outline
+
 **TODO**
 
 | Activity                     | Time |
@@ -129,6 +131,7 @@ Total: a 90 minute session.
 
 
 ## Workshop goals and objectives
+
 **TODO**
 List "big picture" student-centered workshop goals and learning
 objectives. Learning goals and objectives are related, but not the
@@ -162,6 +165,7 @@ Some examples:
 
 
 # Workshop
+
 **TODO**
 Divide the workshop into sections (`## A Section`). Include
 fully-evaluated _R_ code chunks. Develop exercises and solutions, and
@@ -170,9 +174,11 @@ work on the code idependently -- do not be too ambitious in the
 material that you present.
 
 ## Introduction 
+
 **TODO**
 
 ### SPEAQeasy Overview
+
 **TODO**
 
 
@@ -204,6 +210,7 @@ The same RSE contains the sample information in `colData(RSE)` and the gene info
 
 
 #### Gene Information 
+
 Among the information in `rowData(RSE)` the next variables are of interest for the analysis:
 
 * <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> gencodeID</span> </mark>: GENCODE ID of each gene.
@@ -213,6 +220,7 @@ Among the information in `rowData(RSE)` the next variables are of interest for t
 * <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> retained_after_feature_filtering</span> </mark>: Boolean variable that equals TRUE if the gene passed the gene filtering (with `filterByExpr()` of `r BiocStyle::Biocpkg("edgeR")`) based on its expression levels and FALSE if not.
 
 #### Sample Information 
+
 Sample information in `colData(RSE)` contains the following variables:
 
 * <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> SAMPLE_ID</span> </mark>: is the name of the sample.
