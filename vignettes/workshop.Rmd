@@ -51,7 +51,7 @@ bib <- c(
     sessioninfo = citation("sessioninfo")[1],
     clusterProfiler = citation("clusterProfiler"),
     edgeR = citation("edgeR"),
-    SPEAQeasy = citation("SPEAQeasyWorkshop2020")[2],
+    SPEAQeasy = citation("SPEAQeasyWorkshop2023")[2],
     smokingMouse = citation("smokingMouse")[1],
     here = citation("here"),
     jaffelab = citation("jaffelab"),
