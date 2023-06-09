@@ -2,7 +2,7 @@ Package: SPEAQeasyWorkshop2023
 Title: A Bioconductor-style differential expression analysis powered by SPEAQeasy
 Version: 0.99.0
 Authors@R: c(person("Nick J.", "Eagles", email = "nickeagles77@gmail.com",
-    role = c("aut"), comment = c(ORCID = "0000-0002-9808-5254")), 
+    role = c("aut", "cre"), comment = c(ORCID = "0000-0002-9808-5254")), 
     person("Renee", "Garcia-Flores", email = "renee.garciaflores@gmail.com",
     role = c("aut"), comment = c(ORCID = "0000-0001-8812-120X")), 
     person("Daianna", "Gonzalez-Padilla", email = "glezdaianna@gmail.com",
