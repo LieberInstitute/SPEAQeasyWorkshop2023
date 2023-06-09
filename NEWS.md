@@ -1,4 +1,4 @@
-# SPEAQeasyWorkshop2023 0.0.0.9000
+# SPEAQeasyWorkshop2023 0.99.0
 
 NEW FEATURES
 
