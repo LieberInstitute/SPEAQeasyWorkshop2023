@@ -73,7 +73,7 @@ Below is the citation output from using `citation('SPEAQeasyWorkshop2023')` in R
 run this yourself to check for any updates on how to cite __SPEAQeasyWorkshop2023__.
 
 ```{r 'citation', eval = requireNamespace('SPEAQeasyWorkshop2023')}
-print(citation('SPEAQeasyWorkshop2023'), bibtex = TRUE)
+print(citation("SPEAQeasyWorkshop2023"), bibtex = TRUE)
 ```
 
 Please note that the `SPEAQeasyWorkshop2023` was only made possible thanks to many other R and bioinformatics software authors, which are cited either in the vignettes and/or the paper(s) describing this package.

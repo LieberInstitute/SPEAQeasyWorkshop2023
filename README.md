@@ -79,7 +79,47 @@ Below is the citation output from using
 check for any updates on how to cite **SPEAQeasyWorkshop2023**.
 
 ``` r
-print(citation('SPEAQeasyWorkshop2023'), bibtex = TRUE)
+print(citation("SPEAQeasyWorkshop2023"), bibtex = TRUE)
+#> To cite package 'SPEAQeasyWorkshop2023' in publications use:
+#> 
+#>   Gomez-Padilla D, Garcia-Flores R, Eagles NJ (2023). _Bioc2023
+#>   SPEAQeasy workshop_. doi:10.18129/B9.bioc.SPEAQeasyWorkshop2023
+#>   <https://doi.org/10.18129/B9.bioc.SPEAQeasyWorkshop2023>,
+#>   https://github.com/LieberInstitute/SPEAQeasyWorkshop2023/SPEAQeasyWorkshop2023
+#>   - R package version 0.0.0.9000,
+#>   <http://www.bioconductor.org/packages/SPEAQeasyWorkshop2023>.
+#> 
+#> A BibTeX entry for LaTeX users is
+#> 
+#>   @Manual{,
+#>     title = {Bioc2023 SPEAQeasy workshop},
+#>     author = {Daianna Gomez-Padilla and Renee Garcia-Flores and Nicholas J. Eagles},
+#>     year = {2023},
+#>     url = {http://www.bioconductor.org/packages/SPEAQeasyWorkshop2023},
+#>     note = {https://github.com/LieberInstitute/SPEAQeasyWorkshop2023/SPEAQeasyWorkshop2023 - R package version 0.0.0.9000},
+#>     doi = {10.18129/B9.bioc.SPEAQeasyWorkshop2023},
+#>   }
+#> 
+#>   Eagles NJ, Burke EE, Leonard J, Barry BK, Stolz JM, Huuki L, Phan BN,
+#>   Serrato VL, Gutiérrez-Millán E, Aguilar-Ordoñez I, Jaffe AE,
+#>   Collado-Torres L (2021). "SPEAQeasy: a scalable pipeline for
+#>   expression analysis and quantification for R/bioconductor-powered
+#>   RNA-seq analyses." _BMC Bioinformatics_.
+#>   doi:10.1186/s12859-021-04142-3
+#>   <https://doi.org/10.1186/s12859-021-04142-3>,
+#>   <https://doi.org/10.1186/s12859-021-04142-3>.
+#> 
+#> A BibTeX entry for LaTeX users is
+#> 
+#>   @Article{,
+#>     title = {SPEAQeasy: a scalable pipeline for expression analysis and quantification for R/bioconductor-powered RNA-seq analyses},
+#>     author = {Nicholas J. Eagles and Emily E. Burke and Jacob Leonard and Brianna K. Barry and Joshua M. Stolz and Louise Huuki and BaDoi N. Phan and Violeta Larrios Serrato and Everardo Gutiérrez-Millán and Israel Aguilar-Ordoñez and Andrew E. Jaffe and Leonardo Collado-Torres},
+#>     year = {2021},
+#>     journal = {BMC Bioinformatics},
+#>     doi = {10.1186/s12859-021-04142-3},
+#>     publisher = {Springer Science and Business Media LLC},
+#>     url = {https://doi.org/10.1186/s12859-021-04142-3},
+#>   }
 ```
 
 Please note that the `SPEAQeasyWorkshop2023` was only made possible
