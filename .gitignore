@@ -1,7 +1,6 @@
 inst/doc
 *~
 .Rproj.user
-provisional_data/*
 *.Rproj
 .Rhistory
 .Rdata
