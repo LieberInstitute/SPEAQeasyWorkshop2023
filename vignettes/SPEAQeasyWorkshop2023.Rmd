@@ -43,13 +43,19 @@ knitr::opts_chunk$set(
 
 ```{r vignetteSetup, echo=FALSE, message=FALSE, warning = FALSE}
 ## For links
-library("BiocStyle")
+library(BiocStyle)
 
 ## Track time spent on making the vignette
 startTime <- Sys.time()
 
 ## Bib setup
-library("RefManageR")
+library(RefManageR)
+
+## Toolkit for image processing
+library(magick)
+
+## For statistical data visualization
+devtools::install_github('smin95/smplot2')
 
 ## Write bibliography information
 bib <- c(
@@ -57,20 +63,26 @@ bib <- c(
     BiocStyle = citation("BiocStyle")[1],
     dplyr = citation("dplyr")[1],
     knitr = citation("knitr")[1],
+    magick = citation("magick")[1],
     rmarkdown = citation("rmarkdown")[1],
     sessioninfo = citation("sessioninfo")[1],
-    clusterProfiler = citation("clusterProfiler"),
-    edgeR = citation("edgeR"),
+    clusterProfiler = citation("clusterProfiler")[1],
+    edgeR = citation("edgeR")[1],
     SPEAQeasy = citation("SPEAQeasyWorkshop2023")[2],
     smokingMouse = citation("smokingMouse")[1],
-    here = citation("here"),
-    jaffelab = citation("jaffelab"),
-    limma = citation("limma"),
-    org.Hs.eg.db = citation("org.Hs.eg.db"),
-    pheatmap = citation("pheatmap"),
-    rmarkdown = citation("rmarkdown"),
+    here = citation("here")[1],
+    jaffelab = citation("jaffelab")[1],
+    limma = citation("limma")[1],
+    ggplot2 = citation("ggplot2")[1],
+    Hmisc = citation("Hmisc")[1],
+    smplot2 = citation("smplot2")[1],
+    stringr = citation("stringr")[1],
+    cowplot = citation("cowplot")[1],
+    org.Hs.eg.db = citation("org.Hs.eg.db")[1],
+    pheatmap = citation("pheatmap")[1],
+    rmarkdown = citation("rmarkdown")[1],
     RefManageR = citation("RefManageR")[1],
-    SummarizedExperiment = citation("SummarizedExperiment"),
+    SummarizedExperiment = citation("SummarizedExperiment")[1],
     voom = RefManageR::BibEntry(
         "article",
         key = "voom",
@@ -532,7 +544,7 @@ multiple_QC_boxplots <- function(sample_var){
 
 ```
 
-Initially, 
+Initially, when we separate sample by Age, we can appreciate a clear segregation of adult and pup samples in <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> mitoMapped</span> </mark>
 ```{r message=FALSE, warning=FALSE}
 multiple_QC_boxplots('Age')
 ```
