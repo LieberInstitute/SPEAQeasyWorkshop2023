@@ -52,6 +52,7 @@ startTime <- Sys.time()
 library(RefManageR)
 
 ## Toolkit for image processing
+install.packages("magick")
 library(magick)
 
 ## For statistical data visualization
@@ -544,7 +545,9 @@ multiple_QC_boxplots <- function(sample_var){
 
 ```
 
-Initially, when we separate sample by Age, we can appreciate a clear segregation of adult and pup samples in <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> mitoMapped</span> </mark>
+Initially, when we separate samples by Age, we can appreciate a clear segregation of adult and pup samples in <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> mitoRate</span> </mark>, with higher mitochondrial rates for adult samples and thus, these are lower quality samples than the pup ones. We can also see that pup samples have higher <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> totalAssignedGene</span> </mark>, again, being higher quality tha adult samples. The samples are very similar in the rest of the QC metrics.
+These differences must be taken into account because they guide further sample separation by Age, which is necessary to avoid finding sample differnces driven by QC and not by gene expression changes. 
+
 ```{r message=FALSE, warning=FALSE}
 multiple_QC_boxplots('Age')
 ```
