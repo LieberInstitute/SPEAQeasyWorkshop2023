@@ -52,6 +52,7 @@ startTime <- Sys.time()
 library(RefManageR)
 
 ## For statistical data visualization
+library(devtools)
 devtools::install_github('smin95/smplot2')
 
 ## Tools for the analysis of gene expression data
