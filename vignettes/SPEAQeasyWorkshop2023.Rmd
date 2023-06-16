@@ -51,9 +51,6 @@ startTime <- Sys.time()
 ## Bib setup
 library(RefManageR)
 
-## Toolkit for image processing
-library(magick)
-
 ## For statistical data visualization
 devtools::install_github('smin95/smplot2')
 
@@ -66,7 +63,6 @@ bib <- c(
     BiocStyle = citation("BiocStyle")[1],
     dplyr = citation("dplyr")[1],
     knitr = citation("knitr")[1],
-    magick = citation("magick")[1],
     rmarkdown = citation("rmarkdown")[1],
     sessioninfo = citation("sessioninfo")[1],
     clusterProfiler = citation("clusterProfiler")[1],
@@ -216,7 +212,7 @@ The dataset that will be used for the DEA can be downloaded from the `smokingMou
 Visit [here](http://research.libd.org/smokingMouse/) for more details of this package.
 
 
-<img src="figs/Data_overview_experiments.jpg" width="750px"  />
+<img src="figs/Data_overview_experiments.png" width="750px"  />
     <figcaption style="color: gray; line-height: 0.85; text-align: justify"><font size="-2"><b>Figure 1</b>: <b>Experimental design of the study. </b> The data was obtained from an experiment in which <b>A)</b> 6 pregnant dams and 17 non-pregnant female adult mice were administered nicotine by intraperitoneal injection (IP; n=12) or controls (n=11). A total of 42 pups were born to pregnant dams: 19 were born to mice that were administered nicotine and 23 to control mice. Samples from frontal cortices of P0 pups and adults were obtained. <b>B)</b> RNA was extracted from those samples and then RNA-seq libraries were prepared and sequenced to obtain the expression counts of the genes. At the end, a dataset of 65 samples (either from adult or pup brain) and 55,401 genes was generated. </font> 
 
    </figcaption>
@@ -328,7 +324,7 @@ head(colData(rse_gene_nic), 2)
 In this workshop we'll guide you through a Differential Expression Analysis following the steps presented in **Figure 2**. The main objective is to determine which genes are affected by nicotine administration (in adults) or exposure (in pups) in mouse brain. 
 
 <figure>
-    <img src="figs/Analyses.jpg" width="700px" align=center />
+    <img src="figs/Analyses.png" width="700px" align=center />
         <figcaption style="color: gray; line-height: 0.87; text-align: justify">
             <font size="-1.8">
                 <b>Figure 2</b>: <b> Summary of the analyses. </b> Steps in yellow will be properly performed. 
