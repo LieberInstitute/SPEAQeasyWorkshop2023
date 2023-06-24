@@ -1132,7 +1132,7 @@ p <- corr_plots('pups', 'sum', 'detected', 'Group')
 p + theme(plot.margin=unit (c(2,4,2,4), 'cm'))
 ```
 
-In pups, the overall mapping rate was slightly and negatively correlated with the ribosomal rate, but again controls and experimental samples are equally distributed and the <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> rRNA_rate</span> </mark> is pretty slow for all of them. 
+In pups, the overall mapping rate was slightly and negatively correlated with the ribosomal rate, but again controls and experimental samples are equally distributed and the <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> rRNA_rate</span> </mark> is pretty small for all of them. 
 
 ```{r message=FALSE, warning=FALSE}
 ## Heatmap for pup samples
@@ -1140,7 +1140,7 @@ p <- corr_plots('pups', 'rRNA_rate', 'overallMapRate', 'Group')
 p + theme(plot.margin=unit (c(2,4,2,4), 'cm'))
 ```
 
-Overall mapping rate is also positively correlated with plate and flowcell, relationships mainly given by samples from the 1st plate with low <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> overallMapRate</span> </mark>, most of which were also in the 1st flowcell.
+Overall mapping rate is also positively correlated with plate and flowcell, relationships mainly given by samples from the 1st plate with the lowest <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> overallMapRate</span> </mark>, most of which were also in the 1st flowcell.
 
 ```{r message=FALSE, warning=FALSE}
 ## Heatmap for pup samples
@@ -1172,7 +1172,7 @@ plots + theme(plot.margin=unit (c(1,2.5,1,2.5), 'cm'))
 ***Hint***: What would happen if all experimental samples were in one plate or flowcell and controls in another?
 </div>
 
-After identifying which variables are correlated and exploring why, the next step is to determine which of these variables must be removed. How to discern which variables to keep and which to drop? As recommended in the `variancePartition` user’s guide [4], initially we can fit a linear model for each gene taking all sample variables and then define which ones explain a higher percentage of variance in many genes. But first let's review how `variancePartition` works. 
+After identifying which variables are correlated and exploring the metrics of control and experimental samples the next step is to determine which of these variables must be removed. How to discern which of the correlated variables to keep and which to drop? As recommended in the `variancePartition` user’s guide [4], initially we can fit a linear model for each gene taking all sample variables and then define which ones explain a higher percentage of variance in many genes. But first let's review how `variancePartition` works. 
 
 
 
@@ -1180,7 +1180,7 @@ After identifying which variables are correlated and exploring why, the next ste
 
 Briefly, `variancePartition` fits a linear model for each gene separately and `calcVarPart()` computes the fraction of variance in gene expression that is explained by each variable of the study design, plus the residual variation. The effect of each variable is assessed while jointly accounting for all others [3].
 
-Basically what it does is to calculate the sum of squares of each variable and the sum of squares of the total model fit, summarizing the contribution of each variable in terms of the fraction of variation explained (FVE). Since it calculates the fraction of total variation attributable to each aspect of the study design, these fractions naturally sum to 1 [3].
+Basically what it does is to calculate the data variance given by each variable and that of the total model fit, summarizing the contribution of each variable in terms of the fraction of variation explained (FVE). Since it calculates the fraction of total variation attributable to each aspect of the study design, these fractions naturally sum to 1 [3].
 
 `variancePartition` fits two types of models:
 
@@ -1201,7 +1201,7 @@ fit <- lm(expr ~ a + b + c, data=data)
 In our case, the function will be modeled a mixed model since we have both effects.
 
 <p class="comment">
-❓***What are random and fixed effects? How to determine if a variable is one or the other?*** **Categorical variables** are usually modeled as **random effects**, i.e., non-measurable traits (something like 'randomly chosen or selected from a population') such as the batch, sex, flowcell, plate, individual, variables whose specific levels are not of particular interest, only the grouping of the samples by those variables. These are control variables/factors that vary randomly across individuals or groups and we use them because we must control for these effects. Think of them as having different effects on gene expression (the dependent variable) depending on their values. 
+❓***What are random and fixed effects? How to determine if a variable is one or the other?*** **Categorical variables** are usually modeled as **random effects**, i.e., traits such as the batch, sex, flowcell, plate, individual, variables 'randomly chosen or selected from a population' and whose specific levels are not of particular interest, only the grouping of the samples by those variables. These are control variables/factors that vary randomly across individuals or groups and we use them because we must control for these effects. Think of them as having different effects on gene expression (the dependent variable) depending on their values. 
 **Continuous variables** must be modeled as **fixed effects**, they cannot be modeled as random effects. These correspond to variables that can be measured somehow and whose levels are themselves of interest (the QC metrics, for instance); these effects would be the same for all genes. 
 </p>
 
@@ -1289,7 +1289,7 @@ Note that $y=\hat y+\epsilon$ because the expression can't be completely describ
 
 
 
-Source code of `calcVarPart()`: https://rdrr.io/github/GabrielHoffman/variancePartition/src/R/calcVarPart.R#sym-getVarianceComponents
+👉🏼Source code of `calcVarPart()` [here](https://rdrr.io/github/GabrielHoffman/variancePartition/src/R/calcVarPart.R#sym-getVarianceComponents).
 
 
 Once we understood what it computes, we can use `variancePartition` to quantify the FVE of each variable. 
@@ -1322,7 +1322,7 @@ varPartAnalysis <- function(age, formula){
 ```
 
 
-```{r message=FALSE, warning=FALSE, eval = FALSE}
+```{r message=FALSE, warning=FALSE}
 
 ## Violin plots
 
@@ -1340,7 +1340,7 @@ plot + theme(plot.margin=unit (c(1,1,1,1), 'cm'),
 
 As presented above, in adults we can notice that <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> totalAssignedGene</span> </mark> has a larger mean FVE than <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> mitoRate</span> </mark> so we keep the former. Same reason to remove <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> plate</span> </mark> that is correlated with <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> flowcell</span> </mark> and with <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> overallMapRate</span> </mark>, and to drop <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> sum</span> </mark> that goes after <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> detected</span> </mark>.
 
-```{r message=FALSE, warning=FALSE, eval = FALSE}
+```{r message=FALSE, warning=FALSE}
 
 #####  Model without correlated variables  #####
 
@@ -1357,7 +1357,7 @@ Notwithstanding, in this new reduced model Group contribution doesn't increment 
 
 In pups, based on the model with all variables, again <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> sum</span> </mark> must be removed, as well as <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> rRNA_rate</span> </mark> and <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> plate</span> </mark> that are correlated with <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> overallMapRate</span> </mark>.
 
-```{r message=FALSE, warning=FALSE, eval = FALSE}
+```{r message=FALSE, warning=FALSE}
 #####  Model with all variables  #####
 
 ## Pups
@@ -1370,7 +1370,7 @@ plot + theme(plot.margin=unit (c(1,1,1,1), 'cm'),
 ```
 
 Without correlated variables, Group's contribution increases but so does the residual source.
-```{r message=FALSE, warning=FALSE, eval = FALSE}
+```{r message=FALSE, warning=FALSE}
 #####  Model without correlated variables  #####
 
 ## Pup plots without sum, rRNA_rate and plate
@@ -1486,7 +1486,7 @@ plot_gene_expr_sample <- function(age, sample_var){
 ```
 
 
-```{r message=FALSE, warning=FALSE, eval = FALSE}
+```{r message=FALSE, warning=FALSE}
 ## Adults
 
 ## Plots for top affected genes by 'totalAssignedGene'
@@ -1502,7 +1502,7 @@ plots <- plot_gene_expr_sample('adults', 'Group')
 plots + theme(plot.margin=unit (c(3,1,2,3), 'cm'))
 ```
 
-```{r message=FALSE, warning=FALSE, eval = FALSE}
+```{r message=FALSE, warning=FALSE}
 ## Pups
 
 ## Plots for top affected genes by 'overallMapRate'
@@ -1531,11 +1531,10 @@ ToDO Daianna & Renee
 
 
 
-### 4. GO & KEGG analyses {-}
 
 
-### 5. DEG visualization {-}
-ToDO  Renee (?)
+### 4. DEG visualization {-}
+ToDO  Renee 
 
 
 
