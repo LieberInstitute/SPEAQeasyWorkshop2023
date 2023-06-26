@@ -42,7 +42,8 @@ Suggests:
     statmod,
     backports,
     RefManageR,
-    variancePartition
+    variancePartition,
+    scater
 VignetteBuilder: knitr
 Remotes: LieberInstitute/jaffelab, LieberInstitute/smokingMouse
 Config/testthat/edition: 3
