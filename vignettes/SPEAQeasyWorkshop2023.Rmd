@@ -214,26 +214,6 @@ Visit [here](http://research.libd.org/smokingMouse/) for more details of this pa
 
 We will download the `rse_gene` object which contains the data at the gene level. We'll use `r Biocpkg("BiocFileCache")` to keep the data in a local cache in case we want to run this example again and don't want to re-download the data from the web.
 
-```{r download_data_biocfilecache}
-## Download and cache the file
-library("BiocFileCache")
-bfc <- BiocFileCache::BiocFileCache()
-cached_rse_gene <- BiocFileCache::bfcrpath(
-    x = bfc,
-    "https://github.com/LieberInstitute/smokingMouse_rse_gene/raw/devel/rse_gene_mouse_RNAseq_nic-smo.Rdata"
-)
-
-## Check the local path on our cache
-cached_rse_gene
-
-## Load the rse_gene object
-load(cached_rse_gene, verbose = TRUE)
-
-## General overview of the object
-rse_gene
-```
-
-
 <img src="figs/Data_overview_experiments.png" width="750px"  />
     <figcaption style="color: gray; line-height: 0.85; text-align: justify"><font size="-2"><b>Figure 1</b>: <b>Experimental design of the study. </b> The data was obtained from an experiment in which <b>A)</b> 6 pregnant dams and 17 non-pregnant female adult mice were administered nicotine by intraperitoneal injection (IP; n=12) or controls (n=11). A total of 42 pups were born to pregnant dams: 19 were born to mice that were administered nicotine and 23 to control mice. Samples from frontal cortices of P0 pups and adults were obtained. <b>B)</b> RNA was extracted from those samples and then RNA-seq libraries were prepared and sequenced to obtain the expression counts of the genes. At the end, a dataset of 65 samples (either from adult or pup brain) and 55,401 genes was generated. </font> 
 
