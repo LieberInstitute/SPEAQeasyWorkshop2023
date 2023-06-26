@@ -43,7 +43,8 @@ Suggests:
     backports,
     RefManageR,
     variancePartition,
-    scater
+    scater,
+    magick
 VignetteBuilder: knitr
 Remotes: LieberInstitute/jaffelab, LieberInstitute/smokingMouse
 Config/testthat/edition: 3
