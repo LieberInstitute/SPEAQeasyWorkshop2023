@@ -51,10 +51,6 @@ startTime <- Sys.time()
 ## Bib setup
 library(RefManageR)
 
-## For statistical data visualization
-library(devtools)
-devtools::install_github('smin95/smplot2')
-
 ## Write bibliography information
 bib <- c(
     R = citation(),
@@ -72,7 +68,6 @@ bib <- c(
     limma = citation("limma")[1],
     ggplot2 = citation("ggplot2")[1],
     Hmisc = citation("Hmisc")[1],
-    smplot2 = citation("smplot2")[1],
     stringr = citation("stringr")[1],
     cowplot = citation("cowplot")[1],
     org.Hs.eg.db = citation("org.Hs.eg.db")[1],
@@ -453,7 +448,6 @@ Fortunately, we can identify to some extent possible factors that could have inf
 
 ```{r "QC_boxplots",  message=FALSE, warning=FALSE}
 library(Hmisc)
-library(smplot2)
 library(stringr)
 library(cowplot)
 
@@ -522,7 +516,7 @@ QC_boxplots <- function(qc_metric, sample_var){
                 ## Set colors
                 scale_color_manual(values = colors) +
                 ## Hide legend
-                sm_hgrid() +
+                # sm_hgrid() +
                 ## Define axis labels
                 labs(y= y_label, x = x_label) +
                 ## Define plot margins and size of axis title and text
