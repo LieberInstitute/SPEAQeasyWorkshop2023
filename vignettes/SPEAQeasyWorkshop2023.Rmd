@@ -840,7 +840,7 @@ boxplots_after_QC_filtering <- function(rse_gene, qc_metric, sample_var){
         scale_color_manual(values = colors) +
         scale_shape_manual(values = shapes) +
         labs(x="", y = y_label, color='Retention after QC filtering', shape=sample_var) +
-        sm_hgrid() +
+        # sm_hgrid() +
         theme_classic() +
         ## Median line
         geom_hline(yintercept = median, size=0.5) +
