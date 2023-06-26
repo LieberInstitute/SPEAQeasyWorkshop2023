@@ -515,15 +515,17 @@ QC_boxplots <- function(qc_metric, sample_var){
                 geom_boxplot(alpha = 0, size = 0.4, width=0.1, color='black') +
                 ## Set colors
                 scale_color_manual(values = colors) +
-                ## Hide legend
-                # sm_hgrid() +
                 ## Define axis labels
                 labs(y= y_label, x = x_label) +
-                ## Define plot margins and size of axis title and text
-                theme(plot.margin = unit(c(0.5,0.4,0.5,0.4), "cm"),
+                ## Get rid of the background
+                theme_bw() +
+                ## Hide legend and define plot margins and size of axis title and text
+                theme(legend.position = "none",
+                      plot.margin = unit(c(0.5,0.4,0.5,0.4), "cm"),
                       axis.title = element_text(size = 7),
                       axis.text = element_text(size = x_axis_size),
-                      axis.text.x = element_text(angle = x_axis_angle, hjust = x_axis_hjust, vjust = x_axis_vjust))
+                      axis.text.x = element_text(angle = x_axis_angle, hjust = x_axis_hjust, vjust = x_axis_vjust)) 
+        
 
     return(plot)
 }
@@ -840,7 +842,6 @@ boxplots_after_QC_filtering <- function(rse_gene, qc_metric, sample_var){
         scale_color_manual(values = colors) +
         scale_shape_manual(values = shapes) +
         labs(x="", y = y_label, color='Retention after QC filtering', shape=sample_var) +
-        # sm_hgrid() +
         theme_classic() +
         ## Median line
         geom_hline(yintercept = median, size=0.5) +
@@ -1314,7 +1315,7 @@ varPartAnalysis <- function(age, formula){
 ```
 
 
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, eval=FALSE}
 
 ## Violin plots
 
@@ -1332,7 +1333,7 @@ plot + theme(plot.margin=unit (c(1,1,1,1), 'cm'),
 
 As presented above, in adults we can notice that <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> totalAssignedGene</span> </mark> has a larger mean FVE than <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> mitoRate</span> </mark> so we keep the former. Same reason to remove <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> plate</span> </mark> that is correlated with <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> flowcell</span> </mark> and with <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> overallMapRate</span> </mark>, and to drop <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> sum</span> </mark> that goes after <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> detected</span> </mark>.
 
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, eval=FALSE}
 
 #####  Model without correlated variables  #####
 
@@ -1349,7 +1350,7 @@ Notwithstanding, in this new reduced model Group contribution doesn't increment 
 
 In pups, based on the model with all variables, again <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> sum</span> </mark> must be removed, as well as <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> rRNA_rate</span> </mark> and <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> plate</span> </mark> that are correlated with <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> overallMapRate</span> </mark>.
 
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, eval=FALSE}
 #####  Model with all variables  #####
 
 ## Pups
@@ -1362,7 +1363,7 @@ plot + theme(plot.margin=unit (c(1,1,1,1), 'cm'),
 ```
 
 Without correlated variables, Group's contribution increases but so does the residual source.
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, eval=FALSE}
 #####  Model without correlated variables  #####
 
 ## Pup plots without sum, rRNA_rate and plate
@@ -1478,7 +1479,7 @@ plot_gene_expr_sample <- function(age, sample_var){
 ```
 
 
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, eval=FALSE}
 ## Adults
 
 ## Plots for top affected genes by 'totalAssignedGene'
@@ -1494,7 +1495,7 @@ plots <- plot_gene_expr_sample('adults', 'Group')
 plots + theme(plot.margin=unit (c(3,1,2,3), 'cm'))
 ```
 
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, eval=FALSE}
 ## Pups
 
 ## Plots for top affected genes by 'overallMapRate'
