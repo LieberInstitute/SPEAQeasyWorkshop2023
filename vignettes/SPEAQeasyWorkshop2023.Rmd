@@ -265,7 +265,7 @@ example_main_script <- system.file(
     package = "SPEAQeasyWorkshop2023"
 )
 
-cat(paste(readLines(example_main_script), sep = "\n"))
+cat(paste0(readLines(example_main_script), "\n"))
 ```
 
 
