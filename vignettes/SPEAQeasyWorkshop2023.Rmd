@@ -257,21 +257,15 @@ bash run_pipeline_local.sh
 qsub run_pipeline_jhpce.sh
 ```
 
-Here's an example of such a file (TODO!)
+Here's an example of such a file:
 
 ```{r "example_run_file"}
-## Root for our example files
-example_files <- system.file(
-    "extdata",
-    "SPEAQeasy-example",
-    package = "SPEAQeasyWorkshop2020"
+example_main_script <- system.file(
+    "extdata", "SPEAQeasy-example", "run_pipeline_jhpce.sh",
+    package = "SPEAQeasyWorkshop2023"
 )
 
-## Read in the actual bash script used to run SPEAQeasy with the
-## data from SPEAQeasy-example
-cat(paste0(readLines(
-    file.path(example_files, "pipeline_outputs", "run_pipeline_jhpce.sh")
-), "\n"))
+cat(paste(readLines(example_main_script), sep = "\n"))
 ```
 
 
