@@ -187,7 +187,7 @@ Some examples:
 Divide the workshop into sections (`## A Section`). Include
 fully-evaluated _R_ code chunks. Develop exercises and solutions, and
 anticipate that your audience will walk through the code with you, or
-work on the code idependently -- do not be too ambitious in the
+work on the code independently -- do not be too ambitious in the
 material that you present.
 
 ## Introduction 
@@ -291,7 +291,7 @@ We will download the `rse_gene` object which contains the data at the gene level
 
 The data reside in a `RangedSummarizedExperiment` (RSE) object, containing the following assays:
 
-* `counts`: original read counts of the 55,401 mouse genes across 208 samples (inlcuding the 65 nicotine samples).
+* `counts`: original read counts of the 55,401 mouse genes across 208 samples (including the 65 nicotine samples).
 * `logcounts`: normalized and scaled counts ($log_2(CPM + 0.5)$) of the same genes across the same samples; normalization was carried out applying TMM method with `cpm(calcNormFactors())` of `r BiocStyle::Biocpkg("edgeR")`.
 
 
@@ -356,7 +356,7 @@ library(smokingMouse)
 
 
 ################################
-#         Retrive data
+#         Retrieve data
 ################################
 # Provisional data source until smokingMouse pkg is accepted
 load(here('provisional_data/rse_gene_mouse_RNAseq_nic-smo.Rdata'), verbose=TRUE)
@@ -509,7 +509,7 @@ font-family: sans-serif;
 
 
 <p class="comment">
-❓***But why do we care about mitochodrial and ribosomal counts as QC metrics?*** In the process of mRNA extraction, either by mRNA enrichment (capturing polyadenilated mRNAs) or rRNA-depletion (removing rRNA), we’d expect to have a low number of ribosomal counts, i.e., counts that map to rDNA, and if we don’t, something must have gone wrong with the procedures. In the case of mitochondrial counts something similar occurs: higher mitochondrial rates will be obtained if the cytoplasmic mRNA capture was deficient or if the transcripts were lost by some technical issue, increasing the proportion of mitochondrial mRNAs. As a result, high <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> mitoRate</span> </mark> and <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> rRNA_rate</span> </mark> imply poor quality in the samples.
+❓***But why do we care about mitochondrial and ribosomal counts as QC metrics?*** In the process of mRNA extraction, either by mRNA enrichment (capturing polyadenylated mRNAs) or rRNA-depletion (removing rRNA), we’d expect to have a low number of ribosomal counts, i.e., counts that map to rDNA, and if we don’t, something must have gone wrong with the procedures. In the case of mitochondrial counts something similar occurs: higher mitochondrial rates will be obtained if the cytoplasmic mRNA capture was deficient or if the transcripts were lost by some technical issue, increasing the proportion of mitochondrial mRNAs. As a result, high <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> mitoRate</span> </mark> and <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> rRNA_rate</span> </mark> imply poor quality in the samples.
 </p>
 
 
@@ -777,7 +777,7 @@ Noticeably, a positive correlation is present for <mark style= "background-color
 multiple_QC_scatterplots('sum', 'totalAssignedGene')
 ```
 
-Contrary to expectations, <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> sum</span> </mark> is not correlated to <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> totalAssignedGene</span> </mark> and it is unexpected because higher proportions of genes' reads could initially increase library size. However, since <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> totalAssignedGene</span> </mark> is a fraction of the total reads, it could be that a high fraction of reads mapping to genes reflects a small number of total reads and do not necessarily implies more expressed genes (and therefore bigger libraries). In other words, even when <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> totalAssignedGene</span> </mark> equals 1, if the total number of reads is small, the genes won't be widely covered by them and the libraries won't be sizeable. Observe the separarion of samples by Age. 
+Contrary to expectations, <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> sum</span> </mark> is not correlated to <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> totalAssignedGene</span> </mark> and it is unexpected because higher proportions of genes' reads could initially increase library size. However, since <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> totalAssignedGene</span> </mark> is a fraction of the total reads, it could be that a high fraction of reads mapping to genes reflects a small number of total reads and do not necessarily implies more expressed genes (and therefore bigger libraries). In other words, even when <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> totalAssignedGene</span> </mark> equals 1, if the total number of reads is small, the genes won't be widely covered by them and the libraries won't be sizable. Observe the separation of samples by Age. 
 
 
 ```{r message=FALSE, warning=FALSE}
@@ -787,7 +787,7 @@ multiple_QC_scatterplots('detected', 'totalAssignedGene')
 Lastly, there's a slight positive correlation between <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> totalAssignedGene</span> </mark> and <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> detected</span> </mark>, which makes sense because reads assigned to genes rise the number of non-zero expressed genes but as mentioned, those genes are not necessarily highly expressed and thus, library sizes are not perforce so much bigger. Also note that the correlation wouldn't be conserved within pup samples. 
 
 
-Remarkably, samples were not differentiated by any other variable (including Group!) but the differences between adult and pup metrics suggest that they must be splitted into two different groups for the following analyses.
+Remarkably, samples were not differentiated by any other variable (including Group!) but the differences between adult and pup metrics suggest that they must be split into two different groups for the following analyses.
 
 
 *2.1.3 QC sample filtering*
@@ -1152,7 +1152,7 @@ corr_plots <- function(age, sample_var1, sample_var2, sample_color){
                                                 color=!! rlang::sym(sample_color))) +
             geom_point(size=2) +
             stat_smooth (geom="line", alpha=0.4, size=0.4, span=0.25, method = lm, color='orangered3') +
-            ## Color by sample_color variale
+            ## Color by sample_color variable
             scale_color_manual(name=sample_color, values = colors[[sample_color]]) +
             theme_bw() +
             labs(subtitle = paste0("Corr: ", signif(CCA[sample_var1, sample_var2], digits=3)), y= gsub('_', ' ', sample_var2), x = gsub('_', ' ', sample_var1)) +
@@ -1175,7 +1175,7 @@ As shown above and as previously demonstrated, the mitochondrial rate and the fr
 p <- corr_plots('adults', 'mitoRate', 'totalAssignedGene', 'Group')
 p + theme(plot.margin=unit (c(2,4,2,4), 'cm'))
 ```
-Altought not expected, the flowcell and the plate of the adult samples were correlated, but that is due to the fact that all samples from the first flowcell (HKCG7DSXX) were in the 1st plate, and almost all samples from the second flowcell were in the 3rd plate.  
+Although not expected, the flowcell and the plate of the adult samples were correlated, but that is due to the fact that all samples from the first flowcell (HKCG7DSXX) were in the 1st plate, and almost all samples from the second flowcell were in the 3rd plate.  
 
 ```{r message=FALSE, warning=FALSE}
 ## Heatmap for pup samples
