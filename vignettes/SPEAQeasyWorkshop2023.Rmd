@@ -1378,11 +1378,11 @@ plot + theme(plot.margin=unit (c(1,1,1,1), 'cm'),
 
 But what does it mean that a variable explains a high percentage of the expression variation of a gene? Look at the following plots and try the function with other variables to observe the relationships that exists between the gene expression values in the samples and samples' variables. 
 
+*2.3.3 Examine expression of most affected genes by each sample variable*
+
 In the following plots you can appreciate the expression values in the samples of the most affected genes by a certain variable (i.e., the genes for which the variable explains the highest percentages of variance) vs. the values of the samples for the same variable. In simple words, each dot is a sample, in the y-axis the expression of the gene in each sample and in the x-axis the samples' values for the variable. The idea is to observe the strong relationships that exists for the sample variables and the gene expression of such affected genes, which ends up causing the variables to explain high percentages of gene expression variation and which obligate us to adjust for them the models of DEA so that we don´t get DEGs driven by sample quality differences.  
 
 ```{r message=FALSE, warning=FALSE}
-
-## 2.1 Examine expression of most affected genes by each sample variable
 
 ## Plot of gene expression lognorm counts vs. sample variable
 plot_gene_expr <- function(age, sample_var, gene_id){
