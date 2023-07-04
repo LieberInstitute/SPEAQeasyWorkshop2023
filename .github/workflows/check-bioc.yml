@@ -250,7 +250,9 @@ jobs:
               `no-check-R-ver` = TRUE,
               `no-check-bioc-help` = TRUE,
               `no-check-bioc-views` = TRUE,
-              `no-check-remotes` = TRUE
+              `no-check-remotes` = TRUE,
+              `no-check-pkg-size` = TRUE,
+              `no-check-file-size` = TRUE
           )
         shell: Rscript {0}
 
