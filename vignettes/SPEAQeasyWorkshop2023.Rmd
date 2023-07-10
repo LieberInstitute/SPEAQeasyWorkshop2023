@@ -966,19 +966,16 @@ p + theme(plot.margin=unit (c (2,4,2,4), 'cm'))
 **2.2 Explore sample-level effects**
 
 ```{r}
-library("jaffelab")
 
-## Obtain PCAs
-pca_all <- prcomp(t(assays(rse_gene_filt)$logcounts))
- 
-## % of the variance explained by each PC
-pca_vars <- getPcaVars(pca_all)
-pca_vars_labs <- paste0(
-    "PC", seq(along = pca_vars), ": ",
-    pca_vars, "% Var Expl")
+calc_PCA <- function(rse){
+    ## Obtain PCAs
+    pca_all <- prcomp(t(assays(rse)$logcounts))
 
 ## Join PCs and samples' info 
-pca_data <- cbind(pca_all$x, colData(rse_gene_filt))
+pca_data <- cbind(pca_all$x, colData(rse))
+
+return(pca_data)
+}
 
 sample_variables <- c('Group', 'Age', 'Sex', 'Pregnancy', 'plate', 'flowcell')
 ```
