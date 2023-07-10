@@ -1424,6 +1424,13 @@ For adults, only 3 controls are dropped, 3 of them by their
 variables!</p>
 </div>
 <p><strong>2.2 Explore sample-level effects</strong></p>
+<p>Once data is normalized and properly filtered (features and samples),
+the next step is to explore the variation in gene expression of the
+samples to identify if a covariate explains a high proportion of the
+variance in the expression (if samples are separated in a PC when
+colored by that covariate). In few words, if a variable represents big
+differences in the expression values of the samples.</p>
+<p>We are gonna create some functions to do it.</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">calc_PCA</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">rse</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="co">## Obtain PCAs</span></span>
@@ -2303,9 +2310,9 @@ Web site: <a href="https://bookdown.org/pingapang9/linear_models_bookdown/" clas
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://yihui.org/knitr/" class="external-link">"knitr"</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit.html" class="external-link">knit</a></span><span class="op">(</span><span class="st">"SPEAQeasyWorkshop2023.Rmd"</span>, tangle <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>Date the vignette was generated.</p>
-<pre><code><span><span class="co">#&gt; [1] "2023-07-10 21:29:41 UTC"</span></span></code></pre>
+<pre><code><span><span class="co">#&gt; [1] "2023-07-10 21:34:34 UTC"</span></span></code></pre>
 <p>Wallclock time spent generating the vignette.</p>
-<pre><code><span><span class="co">#&gt; Time difference of 1.256 mins</span></span></code></pre>
+<pre><code><span><span class="co">#&gt; Time difference of 1.3 mins</span></span></code></pre>
 <p><code>R</code> session information.</p>
 <pre><code><span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">setting </span> <span style="color: #555555; font-style: italic;">value</span></span></span>
