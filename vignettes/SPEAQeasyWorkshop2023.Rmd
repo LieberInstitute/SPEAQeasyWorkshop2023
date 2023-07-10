@@ -966,6 +966,8 @@ p + theme(plot.margin=unit (c (2,4,2,4), 'cm'))
 **2.2 Explore sample-level effects**
 
 ```{r}
+library("jaffelab")
+
 ## Obtain PCAs
 pca_all <- prcomp(t(assays(rse_gene_filt)$logcounts))
  
@@ -983,7 +985,7 @@ sample_variables <- c('Group', 'Age', 'Sex', 'Pregnancy', 'plate', 'flowcell')
 
 
 ```{r}
-library(ggpubr)
+library("ggpubr")
 
 plot_PCAs <- function(sample_var) {
     
