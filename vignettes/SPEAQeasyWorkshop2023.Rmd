@@ -1033,7 +1033,7 @@ pca_plots
 ```{r, message=FALSE, results='hide', warning=FALSE,  fig.align = "center", fig.height=2}
 pca_data <- calc_PCA(rse_gene_pups_qc)
 
-pca_plots <- lapply(sample_variables[-2], plot_PCAs, pca_data = pca_data)
+pca_plots <- lapply(sample_variables[-c(2,4)], plot_PCAs, pca_data = pca_data)
 pca_plots
 ```
 
@@ -1041,7 +1041,7 @@ pca_plots
 ```{r, message=FALSE, results='hide', warning=FALSE,  fig.align = "center", fig.height=2}
 pca_data <- calc_PCA(rse_gene_adults_qc)
 
-pca_plots <- lapply(sample_variables[-2], plot_PCAs, pca_data = pca_data)
+pca_plots <- lapply(sample_variables[-c(2,3)], plot_PCAs, pca_data = pca_data)
 pca_plots
 ```
 
