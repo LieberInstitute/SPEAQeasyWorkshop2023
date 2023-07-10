@@ -1025,9 +1025,19 @@ plot_PCAs <- function(sample_var, pca_data) {
     
     return(wplot)
 }
+```
 
+
+```{r, message=FALSE, results='hide', warning=FALSE,  fig.align = "center", fig.height=2}
 pca_plots <- lapply(sample_variables, plot_PCAs, pca_data = pca_data)
-ggarrange(plotlist = pca_plots, nrow = length(pca_plots))
+pca_plots
+```
+
+
+
+```{r, message=FALSE, results='hide', warning=FALSE,  fig.align = "center", fig.height=2}
+pca_plots <- lapply(sample_variables, plot_PCAs, pca_data = pca_data)
+pca_plots
 ```
 
 
