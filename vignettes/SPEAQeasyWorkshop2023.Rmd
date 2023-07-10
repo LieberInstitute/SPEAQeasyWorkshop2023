@@ -959,6 +959,10 @@ p + theme(plot.margin = unit(c(2, 4, 2, 4), "cm"))
 
 **2.2 Explore sample-level effects**
 
+Once data is normalized and properly filtered (features and samples), the next step is to explore the variation in gene expression of the samples to identify if a covariate explains a high proportion of the variance in the expression (if samples are separated in a PC when colored by that covariate). In few words, if a variable represents big differences in the expression values of the samples.
+
+We are gonna create some functions to do it.
+
 ```{r}
 calc_PCA <- function(rse) {
     ## Obtain PCAs
@@ -1016,6 +1020,7 @@ plot_PCAs <- function(sample_var, pca_data) {
     return(wplot)
 }
 ```
+
 
 
 ```{r, message=FALSE, results='hide', warning=FALSE,  fig.align = "center", fig.height=2}
