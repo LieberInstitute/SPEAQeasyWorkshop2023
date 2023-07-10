@@ -964,10 +964,72 @@ p + theme(plot.margin=unit (c (2,4,2,4), 'cm'))
 
 
 **2.2 Explore sample-level effects**
-ToDO Renee
-Use same colors for sample variables and QC metrics to make plots consistent
+
+```{r}
+## Obtain PCAs
+pca_all <- prcomp(t(assays(rse_gene_filt)$logcounts))
+ 
+## % of the variance explained by each PC
+pca_vars <- getPcaVars(pca_all)
+pca_vars_labs <- paste0(
+    "PC", seq(along = pca_vars), ": ",
+    pca_vars, "% Var Expl")
+
+## Join PCs and samples' info 
+pca_data <- cbind(pca_all$x, colData(rse_gene_filt))
+
+sample_variables <- c('Group', 'Age', 'Sex', 'Pregnancy', 'plate', 'flowcell')
+```
 
 
+```{r}
+library(ggpubr)
+
+plot_PCAs <- function(sample_var) {
+    
+    ## Define sample colors depending on the sample variable
+    if (sample_var == "Group") {
+        colors <- c("Control" = "brown2", "Experimental" = "deepskyblue3")
+    } else if (sample_var == "Age") {
+        colors <- c("Adult" = "slateblue3", "Pup" = "yellow3")
+    } else if (sample_var == "Sex") {
+        colors <- c("F" = "hotpink1", "M" = "dodgerblue")
+    } else if (sample_var == "Pregnancy") {
+        colors <- c("Yes" = "darkorchid3", "No" = "darkolivegreen4")
+    } else if (sample_var == "plate") {
+        colors <- c("Plate1" = "darkorange", "Plate2" = "lightskyblue", "Plate3" = "deeppink1")
+    } else if (sample_var == "flowcell") {
+        colors <- c(
+            "HKCG7DSXX" = "chartreuse2", "HKCMHDSXX" = "magenta", "HKCNKDSXX" = "turquoise3",
+            "HKCTMDSXX" = "tomato"
+        )
+    }
+
+
+    plot1 <- ggplot(as.data.frame(pca_data), aes(PC1, PC2, color = !! rlang::sym(sample_var))) +
+        geom_point() +
+        theme_bw() +
+        scale_color_manual(values = colors)
+    
+    plot2 <- ggplot(as.data.frame(pca_data), aes(PC2, PC3, color = !! rlang::sym(sample_var))) +
+        geom_point() +
+        theme_bw() +
+        scale_color_manual(values = colors)
+    
+    plot3 <- ggplot(as.data.frame(pca_data), aes(PC3, PC4, color = !! rlang::sym(sample_var))) +
+        geom_point() +
+        theme_bw() +
+        scale_color_manual(values = colors)
+
+
+    wplot <- ggarrange(plot1, plot2, plot3, ncol = 3, common.legend = TRUE, legend = "right")
+    
+    return(wplot)
+}
+
+pca_plots <- lapply(sample_variables, plot_PCAs)
+ggarrange(plotlist = pca_plots, nrow = length(pca_plots))
+```
 
 
 
