@@ -987,7 +987,7 @@ sample_variables <- c('Group', 'Age', 'Sex', 'Pregnancy', 'plate', 'flowcell')
 ```{r}
 library("ggpubr")
 
-plot_PCAs <- function(sample_var) {
+plot_PCAs <- function(sample_var, pca_data) {
     
     ## Define sample colors depending on the sample variable
     if (sample_var == "Group") {
@@ -1029,7 +1029,7 @@ plot_PCAs <- function(sample_var) {
     return(wplot)
 }
 
-pca_plots <- lapply(sample_variables, plot_PCAs)
+pca_plots <- lapply(sample_variables, plot_PCAs, pca_data = pca_data)
 ggarrange(plotlist = pca_plots, nrow = length(pca_plots))
 ```
 
