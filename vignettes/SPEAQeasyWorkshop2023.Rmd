@@ -981,7 +981,7 @@ sample_variables <- c('Group', 'Age', 'Sex', 'Pregnancy', 'plate', 'flowcell')
 ```
 
 
-```{r}
+```{r, message=FALSE, results='hide', warning=FALSE,  fig.align = "center", fig.height=2}
 library("ggpubr")
 
 plot_PCAs <- function(sample_var, pca_data) {
