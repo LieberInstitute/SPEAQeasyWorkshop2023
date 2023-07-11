@@ -167,15 +167,15 @@ are others.
 
 Some examples:
 
-* describe how to...
-* identify methods for...
-* understand the difference between...
+* understand the purpose of [SPEAQeasy](https://github.com/LieberInstitute/SPEAQeasy) and the type of data it produces
+* understand techniques used to filter and normalize gene-expression data
+* understand how to identify suitable covariates for differential expression analyses
 
 ### Learning objectives
 
-* analyze xyz data to produce...
-* create xyz plots
-* evaluate xyz data for artifacts
+* use `r Biocpkg('ggplot2')` to understand bulk RNA-seq quality metrics for the `r Biocpkg('smokingMouse')` dataset stored in `r Biocpkg('SummarizedExperiment')` objects output by the [SPEAQeasy](https://github.com/LieberInstitute/SPEAQeasy) pipeline 
+* use `r Biocpkg('variancePartition')` to perform a Canonical Correlation Analysis (CCA) on gene-expression data with associated quality metrics
+* TODO: something about DEA
 
 
 # Workshop
