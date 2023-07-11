@@ -55,6 +55,7 @@ library(RefManageR)
 bib <- c(
     BiocStyle = citation("BiocStyle")[1],
     clusterProfiler = citation("clusterProfiler")[1],
+    ComplexHeatmap = citation("ComplexHeatmap")[1],
     cowplot = citation("cowplot")[1],
     dplyr = citation("dplyr")[1],
     edgeR = citation("edgeR")[1],
@@ -93,14 +94,11 @@ bib <- c(
 
 # Overview
 
-**TODO**
 This workshop aims to present the `SPEAQeasy` `r Citep(bib[["SPEAQeasy"]])` RNA-seq processing pipeline, demonstrating how its outputs can be used in Differential Expression Analyses (DEA) and the type of results it enables to obtain using other Bioconductor R packages such as `r Biocpkg('limma')`, `r Biocpkg('edgeR')`, and `r Biocpkg('clusterProfiler')`.
 
 
 ## Description
-
-**TODO**
-In this demo, participants will be able to understand what the SPEAQeasy pipeline does and what it returns through a differential expression analysis performed on a dataset from the `smokingMouse` `r Citep(bib[["smokingMouse"]])` Bioconductor package, which contains gene expression data and sample information from an RNA-sequencing experiment in mice. 
+In this demo, participants will be able to understand what the SPEAQeasy pipeline does and what it returns through a differential expression analysis performed on a dataset from the `smokingMouse` `r Citep(bib[["smokingMouse"]])` Bioconductor package, which contains gene expression data and sample information from multiple RNA-sequencing experiments in mice. 
 
 
 ## Instructors
@@ -118,10 +116,8 @@ In this demo, participants will be able to understand what the SPEAQeasy pipelin
 * Previous review of http://research.libd.org/smokingMouse/ for data explanation. (Optional)
 
 ## Participation
-
 **TODO**
-Participants are expected to follow 
-
+Participants are expected to follow us during the theoretical explanations and while presenting R code to create plots and perform analyses so that they can run code in their own computers.  (NOT SURE ABOUT THAT)
 
 ## _R_ / _Bioconductor_ packages used
 
@@ -130,59 +126,41 @@ Participants are expected to follow
 - `r Biocpkg('edgeR')`
 - `r Biocpkg('scater')`
 - `r Biocpkg('variancePartition')`
+- `r Biocpkg('ComplexHeatmap')`
 
 ## Time outline
-
-**TODO**
 
 | Activity                     | Time |
 |------------------------------|------|
 | Introduction to SPEAQeasy               | 15m |
-| Data overview                           | 20m |
-| Differential Expression Analysis        | 55m |
+| Data overview                           | 15m |
+| Differential Expression Analysis        | 60m |
 
 Total: a 90 minute session.
 
 
 ## Workshop goals and objectives
 
-**TODO**
-List "big picture" student-centered workshop goals and learning
-objectives. Learning goals and objectives are related, but not the
-same thing. These goals and objectives will help some people to decide
-whether to attend the conference for training purposes, so please make
-these as precise and accurate as possible.
-
-*Learning goals* 
-are high-level descriptions of what
-participants will learn and be able to do after the workshop is
-over. 
-*Learning objectives*, on the other hand, describe in very
-specific and measurable terms specific skills or knowledge
-attained. The [Bloom's Taxonomy](#bloom) may be a useful framework
-for defining and describing your goals and objectives, although there
-are others.
-
 ### Learning goals
 
-Some examples:
-
-* understand the purpose of [SPEAQeasy](https://github.com/LieberInstitute/SPEAQeasy) and the type of data it produces
-* understand techniques used to filter and normalize gene-expression data
-* understand how to identify suitable covariates for differential expression analyses
+The global goals of this workshop are:
+* to understand the purpose of [SPEAQeasy](https://github.com/LieberInstitute/SPEAQeasy) and the type of data it produces;
+* to learn what type of analyses can be done with [SPEAQeasy](https://github.com/LieberInstitute/SPEAQeasy) outputs;
+* to understand techniques used to filter and normalize gene-expression data;
+* to learn of quality control analyses and other type of exploratory data analyses;
+* to understand how to identify suitable covariates for differential expression analyses;
+* to learn how to perform a differential expression analysis and how to visualize expression of DEGs.
 
 ### Learning objectives
 
-* use `r Biocpkg('ggplot2')` to understand bulk RNA-seq quality metrics for the `r Biocpkg('smokingMouse')` dataset stored in `r Biocpkg('SummarizedExperiment')` objects output by the [SPEAQeasy](https://github.com/LieberInstitute/SPEAQeasy) pipeline 
-* use `r Biocpkg('variancePartition')` to perform a Canonical Correlation Analysis (CCA) on gene-expression data with associated quality metrics
-* TODO: something about DEA
+As specific objectives we have:
+* to use `r Biocpkg('ggplot2')` to assess bulk RNA-seq quality metrics for the `r Biocpkg('smokingMouse')` dataset stored in `r Biocpkg('SummarizedExperiment')` objects output by the [SPEAQeasy](https://github.com/LieberInstitute/SPEAQeasy) pipeline;
+* use `r Biocpkg('variancePartition')` to perform a Canonical Correlation Analysis (CCA) on gene-expression data with associated quality metrics;
+* to use `r Biocpkg('limma')` functions such as `voom()`, `lmFit()`, `eBayes()` and `topTable()` to find DEGs. 
+* to use `r Biocpkg('ComplexHeatmap')` to create heatmaps of expression levels of DEGs, identifying clusters of up and down regulated genes. 
 
 
 # Workshop
-
-## Introduction 
-
-**TODO**
 
 ### SPEAQeasy overview
 
@@ -380,10 +358,8 @@ In this workshop we'll guide you through a differential expression analysis foll
         <figcaption style="color: gray; line-height: 0.9; text-align: justify">
             <font size="-1.8">
                 <b>Figure 2</b>: <b> Summary of the analyses. </b> Steps in yellow will be properly performed. 
-                 1. Data Preparation
-                 2. Exploratory Data Analysis
-                 3. Differential Expression Analysis  
-                 4. DEG visualization  </font> 
+                 1. Data Preparation 2. Exploratory Data Analysis 3. Differential Expression Analysis  4. DEG visualization. 
+            </font> 
             <font size="0.8"> Abbreviations: CPM: counts per million; QC: quality control; PC: principal component; 
             DEG: differentially expressed genes.</font>
         </figcaption>
