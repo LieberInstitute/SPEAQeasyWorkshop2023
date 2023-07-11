@@ -96,8 +96,6 @@ bib <- c(
 **TODO**
 This workshop aims to present the `SPEAQeasy` `r Citep(bib[["SPEAQeasy"]])` RNA-seq processing pipeline, demonstrating how its outputs can be used in Differential Expression Analyses (DEA) and the type of results it enables to obtain using other Bioconductor R packages such as `r Biocpkg('limma')`, `r Biocpkg('edgeR')`, and `r Biocpkg('clusterProfiler')`.
 
-Briefly describe what is it , etc ... 
-
 
 ## Description
 
@@ -127,8 +125,11 @@ Participants are expected to follow
 
 ## _R_ / _Bioconductor_ packages used
 
-**TODO**
-List any _R_ / _Bioconductor_ packages that will be explicitly covered.
+- `r Biocpkg('SummarizedExperiment')`
+- `r Biocpkg('smokingMouse')`
+- `r Biocpkg('edgeR')`
+- `r Biocpkg('scater')`
+- `r Biocpkg('variancePartition')`
 
 ## Time outline
 
