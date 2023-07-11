@@ -104,24 +104,23 @@ University<br><a class="author_email" href="mailto:#"></a><a href="mailto:lcolla
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p><strong>TODO</strong> This workshop aims to present the
-<code>SPEAQeasy</code> (Eagles, Burke, Leonard, Barry, Stolz, Huuki,
-Phan, Serrato, Gutiérrez-Millán, Aguilar-Ordoñez, Jaffe, and
-Collado-Torres, 2021) RNA-seq processing pipeline, demonstrating how its
-outputs can be used in Differential Expression Analyses (DEA) and the
-type of results it enables to obtain using other Bioconductor R packages
-such as <em><a href="https://bioconductor.org/packages/3.17/limma" class="external-link">limma</a></em>,
+<p>This workshop aims to present the <code>SPEAQeasy</code> (Eagles,
+Burke, Leonard, Barry, Stolz, Huuki, Phan, Serrato, Gutiérrez-Millán,
+Aguilar-Ordoñez, Jaffe, and Collado-Torres, 2021) RNA-seq processing
+pipeline, demonstrating how its outputs can be used in Differential
+Expression Analyses (DEA) and the type of results it enables to obtain
+using other Bioconductor R packages such as <em><a href="https://bioconductor.org/packages/3.17/limma" class="external-link">limma</a></em>,
 <em><a href="https://bioconductor.org/packages/3.17/edgeR" class="external-link">edgeR</a></em>, and
 <em><a href="https://bioconductor.org/packages/3.17/clusterProfiler" class="external-link">clusterProfiler</a></em>.</p>
 <div class="section level3">
 <h3 id="description">Description<a class="anchor" aria-label="anchor" href="#description"></a>
 </h3>
-<p><strong>TODO</strong> In this demo, participants will be able to
-understand what the SPEAQeasy pipeline does and what it returns through
-a differential expression analysis performed on a dataset from the
+<p>In this demo, participants will be able to understand what the
+SPEAQeasy pipeline does and what it returns through a differential
+expression analysis performed on a dataset from the
 <code>smokingMouse</code> (Gonzalez-Padilla and Collado-Torres, 2023)
 Bioconductor package, which contains gene expression data and sample
-information from an RNA-sequencing experiment in mice.</p>
+information from multiple RNA-sequencing experiments in mice.</p>
 </div>
 <div class="section level3">
 <h3 id="instructors">Instructors<a class="anchor" aria-label="anchor" href="#instructors"></a>
@@ -148,7 +147,10 @@ explanation. (Optional)</li>
 <div class="section level3">
 <h3 id="participation">Participation<a class="anchor" aria-label="anchor" href="#participation"></a>
 </h3>
-<p><strong>TODO</strong> Participants are expected to follow</p>
+<p><strong>TODO</strong> Participants are expected to follow us during
+the theoretical explanations and while presenting R code to create plots
+and perform analyses so that they can run code in their own computers.
+(NOT SURE ABOUT THAT)</p>
 </div>
 <div class="section level3">
 <h3 id="r-bioconductor-packages-used">
@@ -160,12 +162,12 @@ explanation. (Optional)</li>
 <li><em><a href="https://bioconductor.org/packages/3.17/edgeR" class="external-link">edgeR</a></em></li>
 <li><em><a href="https://bioconductor.org/packages/3.17/scater" class="external-link">scater</a></em></li>
 <li><em><a href="https://bioconductor.org/packages/3.17/variancePartition" class="external-link">variancePartition</a></em></li>
+<li><em><a href="https://bioconductor.org/packages/3.17/ComplexHeatmap" class="external-link">ComplexHeatmap</a></em></li>
 </ul>
 </div>
 <div class="section level3">
 <h3 id="time-outline">Time outline<a class="anchor" aria-label="anchor" href="#time-outline"></a>
 </h3>
-<p><strong>TODO</strong></p>
 <table class="table">
 <thead><tr class="header">
 <th>Activity</th>
@@ -178,11 +180,11 @@ explanation. (Optional)</li>
 </tr>
 <tr class="even">
 <td>Data overview</td>
-<td>20m</td>
+<td>15m</td>
 </tr>
 <tr class="odd">
 <td>Differential Expression Analysis</td>
-<td>55m</td>
+<td>60m</td>
 </tr>
 </tbody>
 </table>
@@ -191,55 +193,41 @@ explanation. (Optional)</li>
 <div class="section level3">
 <h3 id="workshop-goals-and-objectives">Workshop goals and objectives<a class="anchor" aria-label="anchor" href="#workshop-goals-and-objectives"></a>
 </h3>
-<p><strong>TODO</strong> List “big picture” student-centered workshop
-goals and learning objectives. Learning goals and objectives are
-related, but not the same thing. These goals and objectives will help
-some people to decide whether to attend the conference for training
-purposes, so please make these as precise and accurate as possible.</p>
-<p><em>Learning goals</em> are high-level descriptions of what
-participants will learn and be able to do after the workshop is over.
-<em>Learning objectives</em>, on the other hand, describe in very
-specific and measurable terms specific skills or knowledge attained. The
-<a href="#bloom">Bloom’s Taxonomy</a> may be a useful framework for
-defining and describing your goals and objectives, although there are
-others.</p>
 <div class="section level4">
 <h4 id="learning-goals">Learning goals<a class="anchor" aria-label="anchor" href="#learning-goals"></a>
 </h4>
-<p>Some examples:</p>
-<ul>
-<li>understand the purpose of <a href="https://github.com/LieberInstitute/SPEAQeasy" class="external-link">SPEAQeasy</a> and
-the type of data it produces</li>
-<li>understand techniques used to filter and normalize gene-expression
-data</li>
-<li>understand how to identify suitable covariates for differential
-expression analyses</li>
-</ul>
+<p>The global goals of this workshop are: * to understand the purpose of
+<a href="https://github.com/LieberInstitute/SPEAQeasy" class="external-link">SPEAQeasy</a> and
+the type of data it produces; * to learn what type of analyses can be
+done with <a href="https://github.com/LieberInstitute/SPEAQeasy" class="external-link">SPEAQeasy</a>
+outputs; * to understand techniques used to filter and normalize
+gene-expression data; * to learn of quality control analyses and other
+type of exploratory data analyses; * to understand how to identify
+suitable covariates for differential expression analyses; * to learn how
+to perform a differential expression analysis and how to visualize
+expression of DEGs.</p>
 </div>
 <div class="section level4">
 <h4 id="learning-objectives">Learning objectives<a class="anchor" aria-label="anchor" href="#learning-objectives"></a>
 </h4>
-<ul>
-<li>use <em><a href="https://bioconductor.org/packages/3.17/ggplot2" class="external-link">ggplot2</a></em>
-to understand bulk RNA-seq quality metrics for the <em><a href="https://bioconductor.org/packages/3.17/smokingMouse" class="external-link">smokingMouse</a></em>
+<p>As specific objectives we have: * to use <em><a href="https://bioconductor.org/packages/3.17/ggplot2" class="external-link">ggplot2</a></em>
+to assess bulk RNA-seq quality metrics for the <em><a href="https://bioconductor.org/packages/3.17/smokingMouse" class="external-link">smokingMouse</a></em>
 dataset stored in <em><a href="https://bioconductor.org/packages/3.17/SummarizedExperiment" class="external-link">SummarizedExperiment</a></em>
 objects output by the <a href="https://github.com/LieberInstitute/SPEAQeasy" class="external-link">SPEAQeasy</a>
-pipeline</li>
-<li>use <em><a href="https://bioconductor.org/packages/3.17/variancePartition" class="external-link">variancePartition</a></em>
+pipeline; * use <em><a href="https://bioconductor.org/packages/3.17/variancePartition" class="external-link">variancePartition</a></em>
 to perform a Canonical Correlation Analysis (CCA) on gene-expression
-data with associated quality metrics</li>
-<li>TODO: something about DEA</li>
-</ul>
+data with associated quality metrics; * to use <em><a href="https://bioconductor.org/packages/3.17/limma" class="external-link">limma</a></em>
+functions such as <code><a href="https://rdrr.io/pkg/limma/man/voom.html" class="external-link">voom()</a></code>, <code><a href="https://rdrr.io/pkg/limma/man/lmFit.html" class="external-link">lmFit()</a></code>,
+<code><a href="https://rdrr.io/pkg/limma/man/ebayes.html" class="external-link">eBayes()</a></code> and <code>topTable()</code> to find DEGs. * to use
+<em><a href="https://bioconductor.org/packages/3.17/ComplexHeatmap" class="external-link">ComplexHeatmap</a></em>
+to create heatmaps of expression levels of DEGs, identifying clusters of
+up and down regulated genes.</p>
 </div>
 </div>
 </div>
 <div class="section level2">
 <h2 id="workshop">Workshop<a class="anchor" aria-label="anchor" href="#workshop"></a>
 </h2>
-<div class="section level3">
-<h3 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
-</h3>
-<p><strong>TODO</strong></p>
 <div class="section level4">
 <h4 id="speaqeasy-overview">SPEAQeasy overview<a class="anchor" aria-label="anchor" href="#speaqeasy-overview"></a>
 </h4>
@@ -375,7 +363,6 @@ background task.</p>
 <span><span class="co">#&gt;      --input "${base_dir}/processed-data/01_SPEAQeasy" \</span></span>
 <span><span class="co">#&gt;      --output "${base_dir}/processed-data/01_SPEAQeasy/pipeline_output" \</span></span>
 <span><span class="co">#&gt;      -profile jhpce</span></span></code></pre></div>
-</div>
 </div>
 <div class="section level3">
 <h3 id="data-overview-and-download">Data overview and download<a class="anchor" aria-label="anchor" href="#data-overview-and-download"></a>
@@ -739,9 +726,9 @@ main objective is to determine which genes are affected by nicotine
 administration (in adults) or exposure (in pups) in the mouse brain.</p>
 <figure><img src="figs/Analyses.png" width="800px" align="center"><figcaption style="color: gray; line-height: 0.9; text-align: justify"><font size="-1.8"> <b>Figure 2</b>: <b> Summary of the analyses. </b>
 Steps in yellow will be properly performed. 1. Data Preparation 2.
-Exploratory Data Analysis 3. Differential Expression Analysis<br>
-4. DEG visualization </font> <font size="0.8"> Abbreviations: CPM:
-counts per million; QC: quality control; PC: principal component; DEG:
+Exploratory Data Analysis 3. Differential Expression Analysis 4. DEG
+visualization. </font> <font size="0.8"> Abbreviations: CPM: counts per
+million; QC: quality control; PC: principal component; DEG:
 differentially expressed genes.</font>
 </figcaption></figure><div class="section level4">
 <h4 class="unnumbered" id="data-preparation">1. Data preparation<a class="anchor" aria-label="anchor" href="#data-preparation"></a>
@@ -1343,7 +1330,7 @@ differences in the expression values of the samples.</p>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">colors</span><span class="op">)</span></span>
 <span></span>
-<span>    <span class="va">wplot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ggpubr/man/ggarrange.html" class="external-link">ggarrange</a></span><span class="op">(</span><span class="va">plot1</span>, <span class="va">plot2</span>, <span class="va">plot3</span>, ncol <span class="op">=</span> <span class="fl">3</span>, common.legend <span class="op">=</span> <span class="cn">TRUE</span>, legend <span class="op">=</span> <span class="st">"right"</span><span class="op">)</span></span>
+<span>    <span class="va">wplot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rpkgs.datanovia.com/ggpubr/reference/ggarrange.html" class="external-link">ggarrange</a></span><span class="op">(</span><span class="va">plot1</span>, <span class="va">plot2</span>, <span class="va">plot3</span>, ncol <span class="op">=</span> <span class="fl">3</span>, common.legend <span class="op">=</span> <span class="cn">TRUE</span>, legend <span class="op">=</span> <span class="st">"right"</span><span class="op">)</span></span>
 <span></span>
 <span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">wplot</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
@@ -2348,9 +2335,9 @@ Web site: <a href="https://bookdown.org/pingapang9/linear_models_bookdown/" clas
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://yihui.org/knitr/" class="external-link">"knitr"</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit.html" class="external-link">knit</a></span><span class="op">(</span><span class="st">"SPEAQeasyWorkshop2023.Rmd"</span>, tangle <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>Date the vignette was generated.</p>
-<pre><code><span><span class="co">#&gt; [1] "2023-07-11 20:15:36 UTC"</span></span></code></pre>
+<pre><code><span><span class="co">#&gt; [1] "2023-07-11 21:16:01 UTC"</span></span></code></pre>
 <p>Wallclock time spent generating the vignette.</p>
-<pre><code><span><span class="co">#&gt; Time difference of 1.395 mins</span></span></code></pre>
+<pre><code><span><span class="co">#&gt; Time difference of 1.473 mins</span></span></code></pre>
 <p><code>R</code> session information.</p>
 <pre><code><span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">setting </span> <span style="color: #555555; font-style: italic;">value</span></span></span>
