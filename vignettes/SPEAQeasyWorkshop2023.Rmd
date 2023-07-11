@@ -1475,6 +1475,7 @@ At this point we have extracted normalized counts and filtered genes, we have ta
 ### 3. Differential Expression Analysis {-}
 
 **3.1 Modeling**
+
 So once we have decided which variables to include in the models for DEA, we can start using `limma` to fit a linear model for each gene and estimate the logFC's for the contrast of interest: Group.
 
 ```{r message=FALSE, warning=FALSE}
@@ -1487,17 +1488,20 @@ DEA_expt_vs_ctl<- function(age, formula){
   
   ## Model matrix
   model=model.matrix(formula, data=colData(RSE))
-  ## Comparison of interest
+  ## Comparison of interest: Group
   coef = "GroupExperimental"
   
+  ## voom():
   ## Transform counts to log2(CPM) 
   ## Estimate mean-variance relationship for each gene
   ## Compute weights for limma
   vGene = voom(assay(RSE), design=model, plot=TRUE)
   
+  ## lmFit():
   ## Fit linear model for each gene to estimate logFCs
   fitGene = lmFit(vGene)
   
+  ## eBayes():
   ## Compute empirical Bayes statistics
   eBGene = eBayes(fitGene)
 
@@ -1507,6 +1511,7 @@ DEA_expt_vs_ctl<- function(age, formula){
   ## Plot -log(p-value) vs log2FC
   volcanoplot(eBGene, coef = coef)
   
+  ## topTable():
   ## Rank genes by logFC for Group (nicotine vs ctrl)
   top_genes = topTable(eBGene, coef=coef, p.value = 1, number=nrow(RSE), sort.by="none")
   
@@ -1521,8 +1526,7 @@ DEA_expt_vs_ctl<- function(age, formula){
 
 ```
 
-
-
+So for the adults we can see in the histogram that there are not DEGs (genes with FDR<0.05).
 ```{r message=FALSE, warning=FALSE}
 
 ## DEA for adults
@@ -1535,6 +1539,7 @@ eBGene_adults <- results_adults[[3]]
 ## Number of DEGs (FDR<0.05)
 length(which(top_genes_adults$adj.P.Val<0.05))
 ```
+But for pups there are 1667 DEGs for control vs nicotine administration. 
 ```{r message=FALSE, warning=FALSE}
 ## DEA for pups
 formula<- ~ Group + Sex + flowcell + mitoRate + overallMapRate + totalAssignedGene + detected + ERCCsumLogErr
@@ -1546,7 +1551,7 @@ eBGene_pups <- results_pups[[3]]
 ## Number of DEGs (FDR<0.05)
 length(which(top_genes_pups$adj.P.Val<0.05))
 ```
-
+In the following plots we can easily identify which genes in pups were DE based on their logFC's and FDR's. 
 ```{r message=FALSE, warning=FALSE}
 library(jaffelab)
 
@@ -1574,8 +1579,8 @@ plots_DE<-function(top_genes, vGene) {
   top_genes$DE<- DE
   
   ## Gene symbols for top up and down DEGs
-  up_DEGs <- top_genes[which(top_genes$logFC>0),]
-  down_DEGs <- top_genes[which(top_genes$logFC<0),]
+  up_DEGs <- top_genes[which(top_genes$logFC>0 & top_genes$adj.P.Val<0.05),]
+  down_DEGs <- top_genes[which(top_genes$logFC<0 & top_genes$adj.P.Val<0.05),]
   
   ## Top most significant up and down DEGs
   top_up_DEGs <- rownames(up_DEGs[order(up_DEGs$adj.P.Val)[1],])
@@ -1608,7 +1613,8 @@ plots_DE<-function(top_genes, vGene) {
     scale_fill_manual(values = cols) + 
     scale_size_manual(values = sizes) + 
     scale_alpha_manual(values = alphas) +
-    labs(x="Mean of normalized counts")
+    labs(x="Mean of normalized counts", y='log2FC') + 
+    theme(plot.margin = unit(c(2,0.2,2,0.2 ), 'cm'))
   
   
   ## Volcano plot for DE genes
@@ -1624,10 +1630,11 @@ plots_DE<-function(top_genes, vGene) {
     geom_label_repel(fill="white", size=2, max.overlaps = Inf,  
                      box.padding = 0.2, 
                      show.legend=FALSE) +
-    labs(y="-log10(FDR)")+
+    labs(y="-log10(FDR)", x='log2FC')+
     scale_fill_manual(values = cols) + 
     scale_size_manual(values = sizes) + 
-    scale_alpha_manual(values = alphas) 
+    scale_alpha_manual(values = alphas) +
+    theme(plot.margin = unit(c(2,0.2,2,0.2 ), 'cm'))
   
   plot_grid(p1, p2, ncol=2)
 }
@@ -1667,9 +1674,10 @@ DE_one_boxplot <- function (age, DEgene){
           geom_boxplot(outlier.color = "#FFFFFFFF") +
           ## Samples colored by Group + noise
           geom_jitter(aes(colour=Group),shape=16, 
-                     position=position_jitter(0.2)) +
+                     position=position_jitter(0.2), size=2) +
           theme_classic() +
-          labs(x = "Group", y = "norm counts",
+          scale_color_manual(values = c("Control" = "brown2", "Experimental" = "deepskyblue3")) + 
+          labs(x = "Group", y = "norm counts - covariates",
               title = DEgene, 
               subtitle = paste(" FDR:", q_value, "\n", 'logFC:', logFC)) +
           theme(plot.margin=unit (c(1.5,2.5,1.5,2.5), 'cm'), legend.position = "none",
@@ -1685,10 +1693,10 @@ DE_one_boxplot <- function (age, DEgene){
 plots_DE(top_genes_adults, vGene_adults)
 plots_DE(top_genes_pups, vGene_pups)
 ```
-
+We can also plot the expression counts (without batch effects) of particular DEGs in control and experimental samples, such as the genes labeled in the above volcano plot. We can see that for the gene ENSMUSG00000026812.16 which was downregulated, its expression levels go down in experimental samples compared to controls, and the opposite for ENSMUSG00000033713.12 that was upregulated. 
 
 ```{r message=FALSE, warning=FALSE}
-## Boxplots for DEGs
+## Boxplots for DEGs in pups
 p1 <- DE_one_boxplot('pups', 'ENSMUSG00000026812.16') + theme(plot.margin = unit(c(1.3,1.4,1.3,1.4), 'cm'))
 p2 <- DE_one_boxplot('pups', 'ENSMUSG00000033713.12') + theme(plot.margin = unit(c(1.3,1.4,1.3,1.4), 'cm'))
 
@@ -1696,10 +1704,74 @@ plot_grid(p1, p2)
 ```
 
 **3.2 Comparisons**
-ToDO Daianna & Renee
+
+Now that we have computed statistics for DE we can compare the t-stats of the genes in pups and adults to examine the signals for DE in both ages. 
+
+```{r message=FALSE, warning=FALSE}
+
+## 1. t-stats plots
+
+## Function to add DE info of genes in both groups
+add_DE_info <-function(top_genes1, top_genes2, name_1, name_2) {
+  DE<-vector()
+  for (i in 1:dim(top_genes1)[1]) {
+    ## DE genes in both groups
+    if (top_genes1$adj.P.Val[i]<0.05 && top_genes2$adj.P.Val[i]<0.05) {
+      DE<-append(DE, "sig Both")
+    }
+    ## DE genes in only one of the groups
+    else if (top_genes1$adj.P.Val[i]<0.05 && !top_genes2$adj.P.Val[i]<0.05) {
+      DE<-append(DE, paste("sig", name_1))
+    }
+    
+    else if (top_genes2$adj.P.Val[i]<0.05 && !top_genes1$adj.P.Val[i]<0.05) {
+      DE<-append(DE, paste("sig", name_2))
+    }
+    ## ns genes in both groups
+    else {
+      DE<-append(DE, "n.s.")
+    }
+  }
+  return(DE)
+}
 
 
+## Compare t-stats of genes from different groups of samples
+t_stat_plot <- function(top_genes1, top_genes2, name_1, name_2){
+  
+  ## Correlation coeff
+  rho <- cor(top_genes1$t, top_genes2$t, method = "spearman")
+  rho_anno = paste0("rho = ", format(round(rho, 2), nsmall = 2))
+  
+  ## Merge data
+  t_stats<-data.frame(t1=top_genes1$t, t2=top_genes2$t)
+  ## Add DE info for both groups
+  t_stats$DEG<-add_DE_info(top_genes1, top_genes2, name_1, name_2)
+  
+  cols <- c("red", "#ffad73","#26b3ff", "dark grey") 
+  names(cols)<-c("sig Both", paste0("sig ", name_1), paste0("sig ", name_2), "n.s.")
+  alphas <- c( 1, 1, 1,0.5)  
+  names(alphas)<-c("sig Both", paste0("sig ", name_1), paste0("sig ", name_2), "n.s.")
+   
+  plot <- ggplot(t_stats, aes(x = t1, y = t2, color=DEG, alpha=DEG)) +
+     geom_point(size = 1) +
+     labs(x = paste("t-stats", name_1), 
+          y = paste("t-stats", name_2),
+          title = 'Pups vs Adults', 
+          subtitle = rho_anno, 
+          parse = T) +
+     theme_bw() +
+     scale_color_manual(values = cols) + 
+     scale_alpha_manual(values = alphas) 
+ return(plot)
+}
 
+## Compare t-stats of genes in Pups vs Adults
+
+t_stat_plot(top_genes_pups, top_genes_adults, "Nicotine pups", "Nicotine adults") + theme(plot.margin = unit(c(1.5, 3.5, 1.5, 3.5), 'cm'))
+
+```
+As shown above, there's no correlation between the t-stats of the genes in pups and adults, which could be interpreted as the genes having different signals for differential expression in both ages. 
 
 
 ### 4. DEG visualization {-}
