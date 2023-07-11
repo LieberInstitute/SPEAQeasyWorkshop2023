@@ -102,11 +102,7 @@ Briefly describe what is it , etc ...
 ## Description
 
 **TODO**
-In this demo, participants will be able to understand what the SPEAQeasy pipeline does 
-and what it returns through a differential expression analysis performed on a 
-dataset from the `smokingMouse` `r Citep(bib[["smokingMouse"]])` Bioconductor package, 
-which contains gene expression data and sample information from an RNA-sequencing 
-experiment in mice. 
+In this demo, participants will be able to understand what the SPEAQeasy pipeline does and what it returns through a differential expression analysis performed on a dataset from the `smokingMouse` `r Citep(bib[["smokingMouse"]])` Bioconductor package, which contains gene expression data and sample information from an RNA-sequencing experiment in mice. 
 
 
 ## Instructors
@@ -182,13 +178,6 @@ Some examples:
 
 
 # Workshop
-
-**TODO**
-Divide the workshop into sections (`## A Section`). Include
-fully-evaluated _R_ code chunks. Develop exercises and solutions, and
-anticipate that your audience will walk through the code with you, or
-work on the code independently -- do not be too ambitious in the
-material that you present.
 
 ## Introduction 
 
