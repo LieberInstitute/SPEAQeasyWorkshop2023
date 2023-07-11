@@ -23,6 +23,7 @@ Suggests:
     backports,
     BiocStyle,
     clusterProfiler,
+    ComplexHeatmap,
     dplyr,
     edgeR,
     ggpubr,
