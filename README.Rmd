@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 [![R-CMD-check-bioc](https://github.com/LieberInstitute/SPEAQeasyWorkshop2023/actions/workflows/check-bioc.yml/badge.svg)](https://github.com/LieberInstitute/SPEAQeasyWorkshop2023/actions/workflows/R-CMD-check-bioc.yaml)
 <!-- badges: end -->
 
-The goal of `SPEAQeasyWorkshop2023` is to ...
+The goal of `SPEAQeasyWorkshop2023` is to describe how outputs from the [SPEAQeasy](https://github.com/LieberInstitute/SPEAQeasy) pipeline enable differential-expression analyses powered by Bioconductor packages like [limma](https://bioconductor.org/packages/3.17/bioc/html/limma.html), [edgeR](https://bioconductor.org/packages/3.17/bioc/html/edgeR.html), and [clusterProfiler](https://bioconductor.org/packages/3.17/bioc/html/clusterProfiler.html).
 
 ## Installation instructions
 
