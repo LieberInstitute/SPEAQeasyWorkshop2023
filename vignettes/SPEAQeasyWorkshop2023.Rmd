@@ -394,7 +394,7 @@ plot <- ggplot(counts_data, aes(x = counts)) +
     geom_histogram(colour = "black", fill = "lightgray") +
     labs(x = "read counts", y = "Frecuency") +
     theme_classic() +
-    theme(plot.margin = unit(c(0.5, 1, 0.2, 1), "cm"))
+    theme(plot.margin = unit(c(2.5, 5, 2.5, 5), "cm"))
 plot
 
 ## Normalized counts
@@ -404,7 +404,7 @@ plot <- ggplot(logcounts_data, aes(x = logcounts)) +
     theme_classic() +
     geom_density(fill = "#69b3a2", alpha = 0.3) +
     labs(x = "log(CPM+0.5)", y = "Frecuency") +
-    theme(plot.margin = unit(c(1.5, 3, 1.5, 3), "cm"))
+    theme(plot.margin = unit(c(2.5, 5, 2.5, 5), "cm"))
 plot
 ```
 
@@ -428,7 +428,7 @@ plot <- ggplot(filt_logcounts_data, aes(x = logcounts)) +
     theme_classic() +
     geom_density(fill = "#69b3a2", alpha = 0.3) +
     labs(x = "log(CPM+0.5)", y = "Frecuency") +
-    theme(plot.margin = unit(c(1.5, 3, 1.5, 3), "cm"))
+    theme(plot.margin = unit(c(2.5, 5, 2.5, 5), "cm"))
 plot
 ```
 
