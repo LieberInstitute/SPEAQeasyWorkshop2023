@@ -144,6 +144,7 @@ Total: a 90 minute session.
 ### Learning goals
 
 The global goals of this workshop are:
+
 * to understand the purpose of [SPEAQeasy](https://github.com/LieberInstitute/SPEAQeasy) and the type of data it produces;
 * to learn what type of analyses can be done with [SPEAQeasy](https://github.com/LieberInstitute/SPEAQeasy) outputs;
 * to understand techniques used to filter and normalize gene-expression data;
@@ -154,6 +155,7 @@ The global goals of this workshop are:
 ### Learning objectives
 
 As specific objectives we have:
+
 * to use `r Biocpkg('ggplot2')` to assess bulk RNA-seq quality metrics for the `r Biocpkg('smokingMouse')` dataset stored in `r Biocpkg('SummarizedExperiment')` objects output by the [SPEAQeasy](https://github.com/LieberInstitute/SPEAQeasy) pipeline;
 * use `r Biocpkg('variancePartition')` to perform a Canonical Correlation Analysis (CCA) on gene-expression data with associated quality metrics;
 * to use `r Biocpkg('limma')` functions such as `voom()`, `lmFit()`, `eBayes()` and `topTable()` to find DEGs. 
@@ -402,7 +404,7 @@ plot <- ggplot(logcounts_data, aes(x = logcounts)) +
     theme_classic() +
     geom_density(fill = "#69b3a2", alpha = 0.3) +
     labs(x = "log(CPM+0.5)", y = "Frecuency") +
-    theme(plot.margin = unit(c(0.5, 1, 0.2, 1), "cm"))
+    theme(plot.margin = unit(c(1.5, 3, 1.5, 3), "cm"))
 plot
 ```
 
@@ -426,7 +428,7 @@ plot <- ggplot(filt_logcounts_data, aes(x = logcounts)) +
     theme_classic() +
     geom_density(fill = "#69b3a2", alpha = 0.3) +
     labs(x = "log(CPM+0.5)", y = "Frecuency") +
-    theme(plot.margin = unit(c(0.5, 1, 0.2, 1), "cm"))
+    theme(plot.margin = unit(c(1.5, 3, 1.5, 3), "cm"))
 plot
 ```
 
