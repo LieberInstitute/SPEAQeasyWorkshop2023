@@ -72,7 +72,7 @@
 </h1></div>
 <!-- badges: start -->
 
-<p>The goal of <code>SPEAQeasyWorkshop2023</code> is to …</p>
+<p>The goal of <code>SPEAQeasyWorkshop2023</code> is to describe how outputs from the <a href="https://github.com/LieberInstitute/SPEAQeasy" class="external-link">SPEAQeasy</a> pipeline enable differential-expression analyses powered by Bioconductor packages like <a href="https://bioconductor.org/packages/3.17/bioc/html/limma.html" class="external-link">limma</a>, <a href="https://bioconductor.org/packages/3.17/bioc/html/edgeR.html" class="external-link">edgeR</a>, and <a href="https://bioconductor.org/packages/3.17/bioc/html/clusterProfiler.html" class="external-link">clusterProfiler</a>.</p>
 <div class="section level2">
 <h2 id="installation-instructions">Installation instructions<a class="anchor" aria-label="anchor" href="#installation-instructions"></a>
 </h2>
@@ -88,39 +88,17 @@
 <code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"LieberInstitute/SPEAQeasyWorkshop2023"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
-</h2>
-<p>This is a basic example which shows you how to solve a common problem:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st">"SPEAQeasyWorkshop2023"</span><span class="op">)</span></span>
-<span><span class="co">## basic example code</span></span></code></pre></div>
-<p>What is special about using <code>README.Rmd</code> instead of just <code>README.md</code>? You can include R chunks like so:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
-<span><span class="co">#&gt;      speed           dist       </span></span>
-<span><span class="co">#&gt;  Min.   : 4.0   Min.   :  2.00  </span></span>
-<span><span class="co">#&gt;  1st Qu.:12.0   1st Qu.: 26.00  </span></span>
-<span><span class="co">#&gt;  Median :15.0   Median : 36.00  </span></span>
-<span><span class="co">#&gt;  Mean   :15.4   Mean   : 42.98  </span></span>
-<span><span class="co">#&gt;  3rd Qu.:19.0   3rd Qu.: 56.00  </span></span>
-<span><span class="co">#&gt;  Max.   :25.0   Max.   :120.00</span></span></code></pre></div>
-<p>You’ll still need to render <code>README.Rmd</code> regularly, to keep <code>README.md</code> up-to-date.</p>
-<p>You can also embed plots, for example:</p>
-<p><img src="reference/figures/README-pressure-1.png" width="100%"></p>
-<p>In that case, don’t forget to commit and push the resulting figure files, so they display on GitHub!</p>
-</div>
-<div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>Below is the citation output from using <code>citation('SPEAQeasyWorkshop2023')</code> in R. Please run this yourself to check for any updates on how to cite <strong>SPEAQeasyWorkshop2023</strong>.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"SPEAQeasyWorkshop2023"</span><span class="op">)</span>, bibtex <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Gomez-Padilla D, Garcia-Flores R, Eagles NJ (2023). _Bioc2023 SPEAQeasy</span></span>
 <span><span class="co">#&gt; workshop_. doi: 10.18129/B9.bioc.SPEAQeasyWorkshop2023 (URL:</span></span>
 <span><span class="co">#&gt; https://doi.org/10.18129/B9.bioc.SPEAQeasyWorkshop2023),</span></span>
 <span><span class="co">#&gt; https://github.com/LieberInstitute/SPEAQeasyWorkshop2023/SPEAQeasyWorkshop2023</span></span>
-<span><span class="co">#&gt; - R package version 0.0.0, &lt;URL:</span></span>
+<span><span class="co">#&gt; - R package version 0.99.0, &lt;URL:</span></span>
 <span><span class="co">#&gt; http://www.bioconductor.org/packages/SPEAQeasyWorkshop2023&gt;.</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
@@ -130,7 +108,7 @@
 <span><span class="co">#&gt;     author = {Daianna Gomez-Padilla and Renee Garcia-Flores and Nicholas J. Eagles},</span></span>
 <span><span class="co">#&gt;     year = {2023},</span></span>
 <span><span class="co">#&gt;     url = {http://www.bioconductor.org/packages/SPEAQeasyWorkshop2023},</span></span>
-<span><span class="co">#&gt;     note = {https://github.com/LieberInstitute/SPEAQeasyWorkshop2023/SPEAQeasyWorkshop2023 - R package version 0.0.0},</span></span>
+<span><span class="co">#&gt;     note = {https://github.com/LieberInstitute/SPEAQeasyWorkshop2023/SPEAQeasyWorkshop2023 - R package version 0.99.0},</span></span>
 <span><span class="co">#&gt;     doi = {10.18129/B9.bioc.SPEAQeasyWorkshop2023},</span></span>
 <span><span class="co">#&gt;   }</span></span>
 <span><span class="co">#&gt; </span></span>
