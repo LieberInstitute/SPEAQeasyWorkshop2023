@@ -14,7 +14,14 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![R-CMD-check-bioc](https://github.com/LieberInstitute/SPEAQeasyWorkshop2023/actions/workflows/check-bioc.yml/badge.svg)](https://github.com/LieberInstitute/SPEAQeasyWorkshop2023/actions/workflows/R-CMD-check-bioc.yaml)
 <!-- badges: end -->
 
-The goal of `SPEAQeasyWorkshop2023` is to …
+The goal of `SPEAQeasyWorkshop2023` is to describe how outputs from the
+[SPEAQeasy](https://github.com/LieberInstitute/SPEAQeasy) pipeline
+enable differential-expression analyses powered by Bioconductor packages
+like
+[limma](https://bioconductor.org/packages/3.17/bioc/html/limma.html),
+[edgeR](https://bioconductor.org/packages/3.17/bioc/html/edgeR.html),
+and
+[clusterProfiler](https://bioconductor.org/packages/3.17/bioc/html/clusterProfiler.html).
 
 ## Installation instructions
 
@@ -37,39 +44,6 @@ And the development version from
 BiocManager::install("LieberInstitute/SPEAQeasyWorkshop2023")
 ```
 
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-``` r
-library("SPEAQeasyWorkshop2023")
-## basic example code
-```
-
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
-
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
-
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date.
-
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub!
-
 ## Citation
 
 Below is the citation output from using
@@ -83,7 +57,7 @@ print(citation("SPEAQeasyWorkshop2023"), bibtex = TRUE)
 #> workshop_. doi: 10.18129/B9.bioc.SPEAQeasyWorkshop2023 (URL:
 #> https://doi.org/10.18129/B9.bioc.SPEAQeasyWorkshop2023),
 #> https://github.com/LieberInstitute/SPEAQeasyWorkshop2023/SPEAQeasyWorkshop2023
-#> - R package version 0.0.0, <URL:
+#> - R package version 0.99.0, <URL:
 #> http://www.bioconductor.org/packages/SPEAQeasyWorkshop2023>.
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -93,7 +67,7 @@ print(citation("SPEAQeasyWorkshop2023"), bibtex = TRUE)
 #>     author = {Daianna Gomez-Padilla and Renee Garcia-Flores and Nicholas J. Eagles},
 #>     year = {2023},
 #>     url = {http://www.bioconductor.org/packages/SPEAQeasyWorkshop2023},
-#>     note = {https://github.com/LieberInstitute/SPEAQeasyWorkshop2023/SPEAQeasyWorkshop2023 - R package version 0.0.0},
+#>     note = {https://github.com/LieberInstitute/SPEAQeasyWorkshop2023/SPEAQeasyWorkshop2023 - R package version 0.99.0},
 #>     doi = {10.18129/B9.bioc.SPEAQeasyWorkshop2023},
 #>   }
 #> 
