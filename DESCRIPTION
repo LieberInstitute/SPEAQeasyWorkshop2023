@@ -22,7 +22,6 @@ RoxygenNote: 7.2.3
 Suggests: 
     backports,
     BiocStyle,
-    clusterProfiler,
     ComplexHeatmap,
     dplyr,
     edgeR,
