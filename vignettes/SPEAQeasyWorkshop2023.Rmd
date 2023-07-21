@@ -54,7 +54,6 @@ library(RefManageR)
 ## Write bibliography information
 bib <- c(
     BiocStyle = citation("BiocStyle")[1],
-    clusterProfiler = citation("clusterProfiler")[1],
     ComplexHeatmap = citation("ComplexHeatmap")[1],
     cowplot = citation("cowplot")[1],
     dplyr = citation("dplyr")[1],
@@ -67,7 +66,6 @@ bib <- c(
     jaffelab = citation("jaffelab")[1],
     knitr = citation("knitr")[1],
     limma = citation("limma")[1],
-    org.Hs.eg.db = citation("org.Hs.eg.db")[1],
     pheatmap = citation("pheatmap")[1],
     RefManageR = citation("RefManageR")[1],
     rlang = citation("rlang")[1],
@@ -79,6 +77,7 @@ bib <- c(
     SPEAQeasy = citation("SPEAQeasyWorkshop2023")[2],
     stringr = citation("stringr")[1],
     SummarizedExperiment = citation("SummarizedExperiment")[1],
+    variancePartition = citation("variancePartition")[1],
     voom = RefManageR::BibEntry(
         "article",
         key = "voom",
@@ -94,7 +93,7 @@ bib <- c(
 
 # Overview
 
-This workshop aims to present the `SPEAQeasy` `r Citep(bib[["SPEAQeasy"]])` RNA-seq processing pipeline, demonstrating how its outputs can be used in Differential Expression Analyses (DEA) and the type of results it enables to obtain using other Bioconductor R packages such as `r Biocpkg('limma')`, `r Biocpkg('edgeR')`, and `r Biocpkg('clusterProfiler')`.
+This workshop aims to present the `SPEAQeasy` `r Citep(bib[["SPEAQeasy"]])` RNA-seq processing pipeline, demonstrating how its outputs can be used in Differential Expression Analyses (DEA) and the type of results it enables to obtain using other Bioconductor R packages such as `r Biocpkg('limma')` and `r Biocpkg('edgeR')`.
 
 
 ## Description
@@ -116,13 +115,13 @@ In this demo, participants will be able to understand what the SPEAQeasy pipelin
 * Previous review of http://research.libd.org/smokingMouse/ for data explanation. (Optional)
 
 ## Participation
-**TODO**
-Participants are expected to follow us during the theoretical explanations and while presenting R code to create plots and perform analyses so that they can run code in their own computers.  (NOT SURE ABOUT THAT)
+Participants are expected to follow us during the theoretical explanations and while presenting R code to create plots and perform analyses so that they can run code in their own computers and extract their own results. 
 
 ## _R_ / _Bioconductor_ packages used
 
 - `r Biocpkg('SummarizedExperiment')`
 - `r Biocpkg('smokingMouse')`
+- `r Biocpkg('limma')`
 - `r Biocpkg('edgeR')`
 - `r Biocpkg('scater')`
 - `r Biocpkg('variancePartition')`
@@ -133,8 +132,8 @@ Participants are expected to follow us during the theoretical explanations and w
 | Activity                     | Time |
 |------------------------------|------|
 | Introduction to SPEAQeasy               | 15m |
-| Data overview                           | 15m |
-| Differential Expression Analysis        | 60m |
+| Data overview                           | 10m |
+| Differential Expression Analysis        | 65m |
 
 Total: a 90 minute session.
 
@@ -241,10 +240,8 @@ cat(paste0(readLines(example_main_script), "\n"))
 
 ## Data overview and download 
 
-The dataset that will be used for the DEA can be downloaded from the `smokingMouse` package. 
-Visit [here](http://research.libd.org/smokingMouse/) for more details of this package.
+The dataset that will be used for the DEA can be downloaded from the `smokingMouse` package. We will download the `rse_gene` object which contains the data at the gene level. Visit [here](http://research.libd.org/smokingMouse/) for more details of this package.
 
-We will download the `rse_gene` object which contains the data at the gene level. We'll use `r Biocpkg("BiocFileCache")` to keep the data in a local cache in case we want to run this example again and don't want to re-download the data from the web.
 
 <img src="figs/Data_overview_experiments.png" width="750px"  />
     <figcaption style="color: gray; line-height: 0.85; text-align: justify"><font size="-2"><b>Figure 1</b>: <b>Experimental design of the study. </b> The data was obtained from an experiment in which <b>A)</b> 6 pregnant dams and 17 non-pregnant female adult mice were administered nicotine by intraperitoneal injection (IP; n=12) or controls (n=11). A total of 42 pups were born to pregnant dams: 19 were born to mice that were administered nicotine and 23 to control mice. Samples from frontal cortices of P0 pups and adults were obtained. <b>B)</b> RNA was extracted from those samples and then RNA-seq libraries were prepared and sequenced to obtain the expression counts of the genes. At the end, a dataset of 65 samples (either from adult or pup brain) and 55,401 genes was generated. </font> 
@@ -1236,7 +1233,7 @@ varPartAnalysis <- function(age, formula) {
 ```
 
 
-```{r message=FALSE, warning=FALSE, eval=FALSE}
+```{r message=FALSE, warning=FALSE}
 ## Violin plots
 
 #####  Model with all variables  #####
@@ -1255,7 +1252,7 @@ plot + theme(
 
 As presented above, in adults we can notice that <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> totalAssignedGene</span> </mark> has a larger mean FVE than <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> mitoRate</span> </mark> so we keep the former. Same reason to remove <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> plate</span> </mark> that is correlated with <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> flowcell</span> </mark> and with <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> overallMapRate</span> </mark>, and to drop <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> sum</span> </mark> that goes after <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> detected</span> </mark>.
 
-```{r message=FALSE, warning=FALSE, eval=FALSE}
+```{r message=FALSE, warning=FALSE}
 #####  Model without correlated variables  #####
 
 ## Adult plots without mitoRate, plate and sum
@@ -1273,7 +1270,7 @@ Notwithstanding, in this new reduced model Group contribution doesn't increment 
 
 In pups, based on the model with all variables, again <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> sum</span> </mark> must be removed, as well as <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> rRNA_rate</span> </mark> and <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> plate</span> </mark> that are correlated with <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> overallMapRate</span> </mark>.
 
-```{r message=FALSE, warning=FALSE, eval=FALSE}
+```{r message=FALSE, warning=FALSE}
 #####  Model with all variables  #####
 
 ## Pups
@@ -1288,7 +1285,7 @@ plot + theme(
 ```
 
 Without correlated variables, Group's contribution increases but so does the residual source.
-```{r message=FALSE, warning=FALSE, eval=FALSE}
+```{r message=FALSE, warning=FALSE}
 #####  Model without correlated variables  #####
 
 ## Pup plots without sum, rRNA_rate and plate
@@ -1415,7 +1412,7 @@ plot_gene_expr_sample <- function(age, sample_var) {
 ```
 
 
-```{r message=FALSE, warning=FALSE, eval=FALSE}
+```{r message=FALSE, warning=FALSE}
 ## Adults
 
 ## Plots for top affected genes by 'totalAssignedGene'
@@ -1431,7 +1428,7 @@ plots <- plot_gene_expr_sample("adults", "Group")
 plots + theme(plot.margin = unit(c(3, 1, 2, 3), "cm"))
 ```
 
-```{r message=FALSE, warning=FALSE, eval=FALSE}
+```{r message=FALSE, warning=FALSE}
 ## Pups
 
 ## Plots for top affected genes by 'overallMapRate'
