@@ -92,7 +92,7 @@ Biology, Johns Hopkins
 University<br><a class="author_email" href="mailto:#"></a><a href="mailto:lcolladotor@gmail.com" class="email">lcolladotor@gmail.com</a>
       </address>
                   
-            <h4 data-toc-skip class="date">12 July 2023</h4>
+            <h4 data-toc-skip class="date">21 July 2023</h4>
       
       
       <div class="hidden name"><code>SPEAQeasyWorkshop2023.Rmd</code></div>
@@ -109,9 +109,8 @@ Burke, Leonard, Barry, Stolz, Huuki, Phan, Serrato, Gutiérrez-Millán,
 Aguilar-Ordoñez, Jaffe, and Collado-Torres, 2021) RNA-seq processing
 pipeline, demonstrating how its outputs can be used in Differential
 Expression Analyses (DEA) and the type of results it enables to obtain
-using other Bioconductor R packages such as <em><a href="https://bioconductor.org/packages/3.17/limma" class="external-link">limma</a></em>,
-<em><a href="https://bioconductor.org/packages/3.17/edgeR" class="external-link">edgeR</a></em>, and
-<em><a href="https://bioconductor.org/packages/3.17/clusterProfiler" class="external-link">clusterProfiler</a></em>.</p>
+using other Bioconductor R packages such as <em><a href="https://bioconductor.org/packages/3.17/limma" class="external-link">limma</a></em> and
+<em><a href="https://bioconductor.org/packages/3.17/edgeR" class="external-link">edgeR</a></em>.</p>
 <div class="section level3">
 <h3 id="description">Description<a class="anchor" aria-label="anchor" href="#description"></a>
 </h3>
@@ -147,10 +146,10 @@ explanation. (Optional)</li>
 <div class="section level3">
 <h3 id="participation">Participation<a class="anchor" aria-label="anchor" href="#participation"></a>
 </h3>
-<p><strong>TODO</strong> Participants are expected to follow us during
-the theoretical explanations and while presenting R code to create plots
-and perform analyses so that they can run code in their own computers.
-(NOT SURE ABOUT THAT)</p>
+<p>Participants are expected to follow us during the theoretical
+explanations and while presenting R code to create plots and perform
+analyses so that they can run code in their own computers and extract
+their own results.</p>
 </div>
 <div class="section level3">
 <h3 id="r-bioconductor-packages-used">
@@ -159,6 +158,7 @@ and perform analyses so that they can run code in their own computers.
 <ul>
 <li><em><a href="https://bioconductor.org/packages/3.17/SummarizedExperiment" class="external-link">SummarizedExperiment</a></em></li>
 <li><em><a href="https://bioconductor.org/packages/3.17/smokingMouse" class="external-link">smokingMouse</a></em></li>
+<li><em><a href="https://bioconductor.org/packages/3.17/limma" class="external-link">limma</a></em></li>
 <li><em><a href="https://bioconductor.org/packages/3.17/edgeR" class="external-link">edgeR</a></em></li>
 <li><em><a href="https://bioconductor.org/packages/3.17/scater" class="external-link">scater</a></em></li>
 <li><em><a href="https://bioconductor.org/packages/3.17/variancePartition" class="external-link">variancePartition</a></em></li>
@@ -180,11 +180,11 @@ and perform analyses so that they can run code in their own computers.
 </tr>
 <tr class="even">
 <td>Data overview</td>
-<td>15m</td>
+<td>10m</td>
 </tr>
 <tr class="odd">
 <td>Differential Expression Analysis</td>
-<td>60m</td>
+<td>65m</td>
 </tr>
 </tbody>
 </table>
@@ -378,12 +378,10 @@ background task.</p>
 <h3 id="data-overview-and-download">Data overview and download<a class="anchor" aria-label="anchor" href="#data-overview-and-download"></a>
 </h3>
 <p>The dataset that will be used for the DEA can be downloaded from the
-<code>smokingMouse</code> package. Visit <a href="http://research.libd.org/smokingMouse/" class="external-link">here</a> for more details
-of this package.</p>
-<p>We will download the <code>rse_gene</code> object which contains the
-data at the gene level. We’ll use <em><a href="https://bioconductor.org/packages/3.17/BiocFileCache" class="external-link">BiocFileCache</a></em>
-to keep the data in a local cache in case we want to run this example
-again and don’t want to re-download the data from the web.</p>
+<code>smokingMouse</code> package. We will download the
+<code>rse_gene</code> object which contains the data at the gene level.
+Visit <a href="http://research.libd.org/smokingMouse/" class="external-link">here</a> for more
+details of this package.</p>
 <img src="figs/Data_overview_experiments.png" width="750px"><figcaption style="color: gray; line-height: 0.85; text-align: justify"><p><font size="-2"><b>Figure 1</b>: <b>Experimental design of the study.
 </b> The data was obtained from an experiment in which <b>A)</b> 6
 pregnant dams and 17 non-pregnant female adult mice were administered
@@ -1783,6 +1781,7 @@ with an extension of GLM, with the <strong>linear mixed model
 <span>    axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="op">(</span><span class="fl">7</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>    axis.text.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="op">(</span><span class="fl">7.5</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
+<p><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-35-1.png" width="700"></p>
 <p>As presented above, in adults we can notice that
 <mark style="background-color: #FCF3CF"><span style="font-family: monospace"> totalAssignedGene</span> </mark> has a
 larger mean FVE than <mark style="background-color: #FCF3CF"><span style="font-family: monospace"> mitoRate</span> </mark> so we keep the
@@ -1804,7 +1803,8 @@ drop <mark style="background-color: #DFF0FE"><span style="font-family: monospace
 <span>    axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="op">(</span><span class="fl">7</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>    axis.text.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="op">(</span><span class="fl">7.5</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p>Notwithstanding, in this new reduced model Group contribution doesn’t
+<p><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-36-1.png" width="700">
+Notwithstanding, in this new reduced model Group contribution doesn’t
 increment much in comparison with the complete model and also note that
 the % of variance explained by the residuals, i.e., the % of gene
 expression variance that the model couldn’t explain, increments in this
@@ -1830,6 +1830,7 @@ with <mark style="background-color: #FCF3CF"><span style="font-family: monospace
 <span>    axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="op">(</span><span class="fl">7</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>    axis.text.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="op">(</span><span class="fl">7.5</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
+<p><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-37-1.png" width="700"></p>
 <p>Without correlated variables, Group’s contribution increases but so
 does the residual source.</p>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
@@ -1845,6 +1846,7 @@ does the residual source.</p>
 <span>    axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="op">(</span><span class="fl">7</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>    axis.text.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="op">(</span><span class="fl">7.5</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
+<p><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-38-1.png" width="700"></p>
 <p>But what does it mean that a variable explains a high percentage of
 the expression variation of a gene? Look at the following plots and try
 the function with other variables to observe the relationships that
@@ -1967,29 +1969,39 @@ that we don´t get DEGs driven by sample quality differences.</p>
 <span></span>
 <span><span class="co">## Plots for top affected genes by 'totalAssignedGene'</span></span>
 <span><span class="va">plots</span> <span class="op">&lt;-</span> <span class="fu">plot_gene_expr_sample</span><span class="op">(</span><span class="st">"adults"</span>, <span class="st">"totalAssignedGene"</span><span class="op">)</span></span>
-<span><span class="va">plots</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>plot.margin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
+<span><span class="va">plots</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>plot.margin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-41-1.png" width="700"></p>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
 <span><span class="co">## Plots for top affected genes by 'overallMapRate'</span></span>
 <span><span class="va">plots</span> <span class="op">&lt;-</span> <span class="fu">plot_gene_expr_sample</span><span class="op">(</span><span class="st">"adults"</span>, <span class="st">"overallMapRate"</span><span class="op">)</span></span>
-<span><span class="va">plots</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>plot.margin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
+<span><span class="va">plots</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>plot.margin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-41-2.png" width="700"></p>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
 <span><span class="co">## Plots for top affected genes by 'Group'</span></span>
 <span><span class="va">plots</span> <span class="op">&lt;-</span> <span class="fu">plot_gene_expr_sample</span><span class="op">(</span><span class="st">"adults"</span>, <span class="st">"Group"</span><span class="op">)</span></span>
 <span><span class="va">plots</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>plot.margin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<p><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-41-3.png" width="700"></p>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Pups</span></span>
 <span></span>
 <span><span class="co">## Plots for top affected genes by 'overallMapRate'</span></span>
 <span><span class="va">plots</span> <span class="op">&lt;-</span> <span class="fu">plot_gene_expr_sample</span><span class="op">(</span><span class="st">"pups"</span>, <span class="st">"overallMapRate"</span><span class="op">)</span></span>
-<span><span class="va">plots</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>plot.margin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
+<span><span class="va">plots</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>plot.margin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-42-1.png" width="700"></p>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
 <span><span class="co">## Plots for top affected genes by 'totalAssignedGene'</span></span>
 <span><span class="va">plots</span> <span class="op">&lt;-</span> <span class="fu">plot_gene_expr_sample</span><span class="op">(</span><span class="st">"pups"</span>, <span class="st">"totalAssignedGene"</span><span class="op">)</span></span>
-<span><span class="va">plots</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>plot.margin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
+<span><span class="va">plots</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>plot.margin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-42-2.png" width="700"></p>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
 <span><span class="co">## Plots for top affected genes by 'Group'</span></span>
 <span><span class="va">plots</span> <span class="op">&lt;-</span> <span class="fu">plot_gene_expr_sample</span><span class="op">(</span><span class="st">"pups"</span>, <span class="st">"Group"</span><span class="op">)</span></span>
 <span><span class="va">plots</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>plot.margin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-42-3.png" width="700"></p>
 <p>At this point we have extracted normalized counts and filtered genes,
 we have taken out poor-quality samples and we have decided which sample
 variables to retain for future analyses. Now we are ready for the
@@ -2003,7 +2015,7 @@ DEA!</p>
 DEA, we can start using <code>limma</code> to fit a linear model for
 each gene and estimate the logFC’s for the contrast of interest:
 Group.</p>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## DEA for nicotine vs ctrls</span></span>
 <span><span class="va">DEA_expt_vs_ctl</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">age</span>, <span class="va">formula</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="va">RSE</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/eval.html" class="external-link">eval</a></span><span class="op">(</span><span class="fu"><a href="https://rlang.r-lib.org/reference/parse_expr.html" class="external-link">parse_expr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"rse_gene"</span>, <span class="va">age</span>, <span class="st">"qc"</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
@@ -2049,12 +2061,12 @@ Group.</p>
 <span><span class="op">}</span></span></code></pre></div>
 <p>So for the adults we can see in the histogram that there are not DEGs
 (genes with FDR&lt;0.05).</p>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## DEA for adults</span></span>
 <span><span class="va">formula</span> <span class="op">&lt;-</span> <span class="op">~</span> <span class="va">Group</span> <span class="op">+</span> <span class="va">Pregnancy</span> <span class="op">+</span> <span class="va">flowcell</span> <span class="op">+</span> <span class="va">overallMapRate</span> <span class="op">+</span> <span class="va">totalAssignedGene</span> <span class="op">+</span> <span class="va">rRNA_rate</span> <span class="op">+</span> <span class="va">detected</span> <span class="op">+</span> <span class="va">ERCCsumLogErr</span></span>
 <span><span class="va">results_adults</span> <span class="op">&lt;-</span> <span class="fu">DEA_expt_vs_ctl</span><span class="op">(</span><span class="st">"adults"</span>, <span class="va">formula</span><span class="op">)</span></span></code></pre></div>
 <p><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-44-1.png" width="700"></p>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">top_genes_adults</span> <span class="op">&lt;-</span> <span class="va">results_adults</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="va">vGene_adults</span> <span class="op">&lt;-</span> <span class="va">results_adults</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="va">eBGene_adults</span> <span class="op">&lt;-</span> <span class="va">results_adults</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span></span>
@@ -2064,12 +2076,12 @@ Group.</p>
 <span><span class="co">#&gt; [1] 0</span></span></code></pre></div>
 <p>But for pups there are 1667 DEGs for control vs nicotine
 administration.</p>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## DEA for pups</span></span>
 <span><span class="va">formula</span> <span class="op">&lt;-</span> <span class="op">~</span> <span class="va">Group</span> <span class="op">+</span> <span class="va">Sex</span> <span class="op">+</span> <span class="va">flowcell</span> <span class="op">+</span> <span class="va">mitoRate</span> <span class="op">+</span> <span class="va">overallMapRate</span> <span class="op">+</span> <span class="va">totalAssignedGene</span> <span class="op">+</span> <span class="va">detected</span> <span class="op">+</span> <span class="va">ERCCsumLogErr</span></span>
 <span><span class="va">results_pups</span> <span class="op">&lt;-</span> <span class="fu">DEA_expt_vs_ctl</span><span class="op">(</span><span class="st">"pups"</span>, <span class="va">formula</span><span class="op">)</span></span></code></pre></div>
 <p><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-45-1.png" width="700"></p>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">top_genes_pups</span> <span class="op">&lt;-</span> <span class="va">results_pups</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="va">vGene_pups</span> <span class="op">&lt;-</span> <span class="va">results_pups</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="va">eBGene_pups</span> <span class="op">&lt;-</span> <span class="va">results_pups</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span></span>
@@ -2079,7 +2091,7 @@ administration.</p>
 <span><span class="co">#&gt; [1] 1667</span></span></code></pre></div>
 <p>In the following plots we can easily identify which genes in pups
 were DE based on their logFC’s and FDR’s.</p>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/LieberInstitute/jaffelab" class="external-link">jaffelab</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## Plots for DE genes</span></span>
@@ -2226,10 +2238,10 @@ were DE based on their logFC’s and FDR’s.</p>
 <span>        <span class="op">)</span></span>
 <span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">plots_DE</span><span class="op">(</span><span class="va">top_genes_adults</span>, <span class="va">vGene_adults</span><span class="op">)</span></span></code></pre></div>
 <p><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-47-1.png" width="700"></p>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">plots_DE</span><span class="op">(</span><span class="va">top_genes_pups</span>, <span class="va">vGene_pups</span><span class="op">)</span></span></code></pre></div>
 <p><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-47-2.png" width="700">
 We can also plot the expression counts (without batch effects) of
@@ -2238,7 +2250,7 @@ labeled in the above volcano plot. We can see that for the gene
 ENSMUSG00000026812.16 which was downregulated, its expression levels go
 down in experimental samples compared to controls, and the opposite for
 ENSMUSG00000033713.12 that was upregulated.</p>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Boxplots for DEGs in pups</span></span>
 <span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu">DE_one_boxplot</span><span class="op">(</span><span class="st">"pups"</span>, <span class="st">"ENSMUSG00000026812.16"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>plot.margin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.3</span>, <span class="fl">1.4</span>, <span class="fl">1.3</span>, <span class="fl">1.4</span><span class="op">)</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu">DE_one_boxplot</span><span class="op">(</span><span class="st">"pups"</span>, <span class="st">"ENSMUSG00000033713.12"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>plot.margin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.3</span>, <span class="fl">1.4</span>, <span class="fl">1.3</span>, <span class="fl">1.4</span><span class="op">)</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span></span>
@@ -2249,7 +2261,7 @@ ENSMUSG00000033713.12 that was upregulated.</p>
 <p>Now that we have computed statistics for DE we can compare the
 t-stats of the genes in pups and adults to examine the signals for DE in
 both ages.</p>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## 1. t-stats plots</span></span>
 <span></span>
 <span><span class="co">## Function to add DE info of genes in both groups</span></span>
@@ -2346,7 +2358,7 @@ Web site: <a href="https://bookdown.org/pingapang9/linear_models_bookdown/" clas
 <h2 id="reproducibility">Reproducibility<a class="anchor" aria-label="anchor" href="#reproducibility"></a>
 </h2>
 <p>Code for creating the vignette</p>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Create the vignette</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/rstudio/rmarkdown" class="external-link">"rmarkdown"</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html" class="external-link">system.time</a></span><span class="op">(</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html" class="external-link">render</a></span><span class="op">(</span><span class="st">"SPEAQeasyWorkshop2023.Rmd"</span><span class="op">)</span><span class="op">)</span></span>
@@ -2355,9 +2367,9 @@ Web site: <a href="https://bookdown.org/pingapang9/linear_models_bookdown/" clas
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://yihui.org/knitr/" class="external-link">"knitr"</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit.html" class="external-link">knit</a></span><span class="op">(</span><span class="st">"SPEAQeasyWorkshop2023.Rmd"</span>, tangle <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>Date the vignette was generated.</p>
-<pre><code><span><span class="co">#&gt; [1] "2023-07-12 17:24:45 UTC"</span></span></code></pre>
+<pre><code><span><span class="co">#&gt; [1] "2023-07-21 02:58:29 UTC"</span></span></code></pre>
 <p>Wallclock time spent generating the vignette.</p>
-<pre><code><span><span class="co">#&gt; Time difference of 1.247 mins</span></span></code></pre>
+<pre><code><span><span class="co">#&gt; Time difference of 47.48 mins</span></span></code></pre>
 <p><code>R</code> session information.</p>
 <pre><code><span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">setting </span> <span style="color: #555555; font-style: italic;">value</span></span></span>
@@ -2369,7 +2381,7 @@ Web site: <a href="https://bookdown.org/pingapang9/linear_models_bookdown/" clas
 <span><span class="co">#&gt;  collate  en_US.UTF-8</span></span>
 <span><span class="co">#&gt;  ctype    en_US.UTF-8</span></span>
 <span><span class="co">#&gt;  tz       UTC</span></span>
-<span><span class="co">#&gt;  date     2023-07-12</span></span>
+<span><span class="co">#&gt;  date     2023-07-21</span></span>
 <span><span class="co">#&gt;  pandoc   2.19.2 @ /usr/local/bin/ (via rmarkdown)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────</span></span></span>
@@ -2383,7 +2395,7 @@ Web site: <a href="https://bookdown.org/pingapang9/linear_models_bookdown/" clas
 <span><span class="co">#&gt;  bibtex                 0.5.1     <span style="color: #555555;">2023-01-26</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  Biobase              * 2.60.0    <span style="color: #555555;">2023-04-25</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  BiocGenerics         * 0.46.0    <span style="color: #555555;">2023-04-25</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
-<span><span class="co">#&gt;  BiocManager            1.30.21   <span style="color: #555555;">2023-06-10</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  BiocManager            1.30.21.1 <span style="color: #555555;">2023-07-18</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  BiocNeighbors          1.18.0    <span style="color: #555555;">2023-04-25</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  BiocParallel         * 1.34.2    <span style="color: #555555;">2023-05-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  BiocSingular           1.16.0    <span style="color: #555555;">2023-04-25</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
@@ -2424,7 +2436,7 @@ Web site: <a href="https://bookdown.org/pingapang9/linear_models_bookdown/" clas
 <span><span class="co">#&gt;  gargle                 1.5.1     <span style="color: #555555;">2023-06-19</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  generics               0.1.3     <span style="color: #555555;">2022-07-05</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  GenomeInfoDb         * 1.36.1    <span style="color: #555555;">2023-06-21</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
-<span><span class="co">#&gt;  GenomeInfoDbData       1.2.10    <span style="color: #555555;">2023-05-17</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
+<span><span class="co">#&gt;  GenomeInfoDbData       1.2.10    <span style="color: #555555;">2023-07-10</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  GenomicRanges        * 1.52.0    <span style="color: #555555;">2023-04-25</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  ggbeeswarm             0.7.2     <span style="color: #555555;">2023-04-29</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  ggplot2              * 3.4.2     <span style="color: #555555;">2023-04-03</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
@@ -2448,7 +2460,7 @@ Web site: <a href="https://bookdown.org/pingapang9/linear_models_bookdown/" clas
 <span><span class="co">#&gt;  IRanges              * 2.34.1    <span style="color: #555555;">2023-06-22</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  irlba                  2.3.5.1   <span style="color: #555555;">2022-10-03</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  iterators              1.0.14    <span style="color: #555555;">2022-02-05</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  jaffelab             * 0.99.32   <span style="color: #555555;">2023-06-09</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Github (LieberInstitute/jaffelab@21e6574)</span></span></span>
+<span><span class="co">#&gt;  jaffelab             * 0.99.32   <span style="color: #555555;">2023-07-21</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Github (LieberInstitute/jaffelab@21e6574)</span></span></span>
 <span><span class="co">#&gt;  jquerylib              0.1.4     <span style="color: #555555;">2021-04-26</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  jsonlite               1.8.7     <span style="color: #555555;">2023-06-29</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  KernSmooth             2.23-22   <span style="color: #555555;">2023-07-10</span> <span style="color: #555555;">[3]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
@@ -2461,7 +2473,7 @@ Web site: <a href="https://bookdown.org/pingapang9/linear_models_bookdown/" clas
 <span><span class="co">#&gt;  lubridate              1.9.2     <span style="color: #555555;">2023-02-10</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  magrittr               2.0.3     <span style="color: #555555;">2022-03-30</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  MASS                   7.3-60    <span style="color: #555555;">2023-05-04</span> <span style="color: #555555;">[3]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
-<span><span class="co">#&gt;  Matrix                 1.6-0     <span style="color: #555555;">2023-07-08</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  Matrix                 1.6-0     <span style="color: #555555;">2023-07-08</span> <span style="color: #555555;">[3]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  MatrixGenerics       * 1.12.2    <span style="color: #555555;">2023-06-09</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  matrixStats          * 1.0.0     <span style="color: #555555;">2023-06-02</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  memoise                2.0.1     <span style="color: #555555;">2021-11-26</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
@@ -2502,7 +2514,7 @@ Web site: <a href="https://bookdown.org/pingapang9/linear_models_bookdown/" clas
 <span><span class="co">#&gt;  rsvd                   1.0.5     <span style="color: #555555;">2021-04-16</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  S4Arrays               1.0.4     <span style="color: #555555;">2023-05-14</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  S4Vectors            * 0.38.1    <span style="color: #555555;">2023-05-02</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
-<span><span class="co">#&gt;  sass                   0.4.6     <span style="color: #555555;">2023-05-03</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
+<span><span class="co">#&gt;  sass                   0.4.7     <span style="color: #555555;">2023-07-15</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  ScaledMatrix           1.8.1     <span style="color: #555555;">2023-05-03</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  scales                 1.2.1     <span style="color: #555555;">2022-08-20</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  scater               * 1.28.0    <span style="color: #555555;">2023-04-25</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
@@ -2510,7 +2522,7 @@ Web site: <a href="https://bookdown.org/pingapang9/linear_models_bookdown/" clas
 <span><span class="co">#&gt;  segmented              1.6-4     <span style="color: #555555;">2023-04-13</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  sessioninfo          * 1.2.2     <span style="color: #555555;">2021-12-06</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  SingleCellExperiment * 1.22.0    <span style="color: #555555;">2023-04-25</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
-<span><span class="co">#&gt;  smokingMouse         * 0.99.5    <span style="color: #555555;">2023-07-12</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Github (LieberInstitute/smokingMouse@ad20a07)</span></span></span>
+<span><span class="co">#&gt;  smokingMouse         * 0.99.6    <span style="color: #555555;">2023-07-21</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Github (LieberInstitute/smokingMouse@d69cec6)</span></span></span>
 <span><span class="co">#&gt;  sparseMatrixStats      1.12.2    <span style="color: #555555;">2023-07-02</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">Bioconductor</span></span></span>
 <span><span class="co">#&gt;  stringi                1.7.12    <span style="color: #555555;">2023-01-11</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
 <span><span class="co">#&gt;  stringr              * 1.5.0     <span style="color: #555555;">2022-12-02</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM (R 4.3.0)</span></span></span>
@@ -2570,7 +2582,7 @@ URL:
 <a id="bib-gonzalezpadilla2023provides"></a><a href="#cite-gonzalezpadilla2023provides">[3]</a><cite>
 D. Gonzalez-Padilla and L. Collado-Torres. <em>Provides access to
 smokingMouse project data </em>. <a href="https://github.com/LieberInstitute/smokingMouse/smokingMouse" class="external-link uri">https://github.com/LieberInstitute/smokingMouse/smokingMouse</a>
-- R package version 0.99.5. 2023. DOI:
+- R package version 0.99.6. 2023. DOI:
 <a href="https://doi.org/10.18129/B9.bioc.smokingMouse" class="external-link">10.18129/B9.bioc.smokingMouse</a>.
 URL:
 <a href="http://www.bioconductor.org/packages/smokingMouse" class="external-link">http://www.bioconductor.org/packages/smokingMouse</a>.</cite>
