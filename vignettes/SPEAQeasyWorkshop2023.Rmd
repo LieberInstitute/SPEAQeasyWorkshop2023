@@ -608,8 +608,6 @@ multiple_QC_boxplots("flowcell")
 
 For the flowcell, again no worrying distinctions are seen, with the exception of a few individual samples far from the rest. 
 
-In all the previous plots we can appreciate a group of samples placed below in <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> mitoRate</span> </mark> that correspond to pup samples. The relationship is more fuzzy in <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> totalAssignedGene</span> </mark>.
-
 
 ##### *2.1.2 QC sample filtering* {-}
 
@@ -959,7 +957,7 @@ plot_CCA <- function(age) {
 ```
 
 
-As you can see, and in agreement to what we observed in the previous correlation plots, for adults there's a strong correlation between  <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> mitoRate</span> </mark>  and <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> totalAssignedGene</span> </mark>; we already know it's a negative correlation. There's also a strong correlation between <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> plate</span> </mark> and <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> flowcell </span> </mark> and between <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> plate</span> </mark> and <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> overallMapRate</span> </mark>. 
+As you can see, for adults there's a strong correlation between  <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> mitoRate</span> </mark>  and <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> totalAssignedGene</span> </mark>. There's also a strong correlation between <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> plate</span> </mark> and <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> flowcell </span> </mark> and between <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> plate</span> </mark> and <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> overallMapRate</span> </mark>. 
 
 ```{r message=FALSE, warning=FALSE}
 ## Heatmap for adult samples
@@ -1091,7 +1089,7 @@ corr_plots <- function(age, sample_var1, sample_var2, sample_color) {
 }
 ```
 
-As shown above and as previously demonstrated, the mitochondrial rate and the fraction of reads that mapped to genes are negatively correlated in adults but control and experimental samples are evenly distributed. 
+As shown below, the mitochondrial rate and the fraction of reads that mapped to genes are negatively correlated in adults but control and experimental samples are evenly distributed. 
 
 ```{r message=FALSE, warning=FALSE}
 ## Correlation plots for adults
@@ -1446,8 +1444,16 @@ plots_DE <- function(top_genes, vGene) {
     plot_grid(p1, p2, ncol = 2)
 }
 
+```
 
+```{r message=FALSE, warning=FALSE}
+plots_DE(top_genes_adults, vGene_adults)
+plots_DE(top_genes_pups, vGene_pups)
+```
 
+We can also plot the expression counts (without batch effects) of particular DEGs in control and experimental samples, such as the genes labeled in the above volcano plot. We can see that for the gene ENSMUSG00000026812.16 which was downregulated, its expression levels go down in experimental samples compared to controls, and the opposite for ENSMUSG00000033713.12 that was upregulated. 
+
+```{r message=FALSE, warning=FALSE}
 ## Boxplot of a single gene
 DE_one_boxplot <- function(age, DEgene) {
     RSE <- eval(parse_expr(paste("rse_gene", age, "qc", sep = "_")))
@@ -1499,12 +1505,6 @@ DE_one_boxplot <- function(age, DEgene) {
     return(p)
 }
 ```
-
-```{r message=FALSE, warning=FALSE}
-plots_DE(top_genes_adults, vGene_adults)
-plots_DE(top_genes_pups, vGene_pups)
-```
-We can also plot the expression counts (without batch effects) of particular DEGs in control and experimental samples, such as the genes labeled in the above volcano plot. We can see that for the gene ENSMUSG00000026812.16 which was downregulated, its expression levels go down in experimental samples compared to controls, and the opposite for ENSMUSG00000033713.12 that was upregulated. 
 
 ```{r message=FALSE, warning=FALSE}
 ## Boxplots for DEGs in pups
