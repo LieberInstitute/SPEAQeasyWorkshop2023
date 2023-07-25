@@ -169,6 +169,8 @@ We introduce [SPEAQeasy](https://github.com/LieberInstitute/SPEAQeasy), a **S**c
 
 SPEAQeasy starts with raw sequencing outputs in FASTQ format and ultimately produces [RangedSummarizedExperiment](https://bioconductor.org/packages/release/bioc/html/SummarizedExperiment.html) objects with raw and normalized counts for each feature type: genes, exons, exon-exon junctions, and transcripts.
 
+![](figs/SummarizedExperiment_structure.svg)
+
 ### Optional steps
 
 For human samples, variant calling is performed at a list of highly variable sites. A single [VCF file](https://www.internationalgenome.org/wiki/Analysis/Variant%20Call%20Format/vcf-variant-call-format-version-40/) is generated, containing genotype calls for all samples. This establishes a sufficiently unique profile for each sample which can be compared against pre-sequencing genotype calls to resolve potential identity issues.
