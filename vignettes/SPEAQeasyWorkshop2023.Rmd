@@ -70,7 +70,6 @@ bib <- c(
     RefManageR = citation("RefManageR")[1],
     rlang = citation("rlang")[1],
     rmarkdown = citation("rmarkdown")[1],
-    rmarkdown = citation("rmarkdown")[1],
     scater = citation("scater")[1],
     sessioninfo = citation("sessioninfo")[1],
     smokingMouse = citation("smokingMouse")[1],
@@ -1612,6 +1611,35 @@ Check the material for the course of [Statistical Analysis of Genome Scale Data 
 
 
 # Reproducibility
+
+The `r Biocpkg("SPEAQeasyWorkshop2023")` package `r Citep(bib[["SPEAQeasyWorkshop2023"]])` was made possible thanks to:
+
+* R `r Citep(bib[["R"]])`
+* `r Biocpkg("BiocStyle")` `r Citep(bib[["BiocStyle"]])`
+* `r Biocpkg("ComplexHeatmap")` `r Citep(bib[["ComplexHeatmap"]])`
+* `r CRANpkg("cowplot")` `r Citep(bib[["cowplot"]])`
+* `r CRANpkg("dplyr")` `r Citep(bib[["dplyr"]])`
+* `r Biocpkg("edgeR")` `r Citep(bib[["edgeR"]])`
+* `r Biocpkg("ggplot2")` `r Citep(bib[["ggplot2"]])`
+* `r Biocpkg("ggrepel")` `r Citep(bib[["ggrepel"]])`
+* `r Biocpkg("ggpubr")` `r Citep(bib[["ggpubr"]])`
+* `r CRANpkg("here")` `r Citep(bib[["here"]])`
+* `r Biocpkg("Hmisc")` `r Citep(bib[["Hmisc"]])`
+* `r Githubpkg("jaffelab")` `r Citep(bib[["jaffelab"]])`
+* `r CRANpkg("knitr")` `r Citep(bib[["knitr"]])`
+* `r Biocpkg("limma")` `r Citep(bib[["limma"]])`
+* `r CRANpkg("pheatmap")` `r Citep(bib[["pheatmap"]])`
+* `r CRANpkg("RefManageR")` `r Citep(bib[["RefManageR"]])`
+* `r CRANpkg("rlang")` `r Citep(bib[["rlang"]])`
+* `r CRANpkg("rmarkdown")` `r Citep(bib[["rmarkdown"]])`
+* `r Biocpkg("scater")` `r Citep(bib[["scater"]])`
+* `r CRANpkg("sessioninfo")` `r Citep(bib[["sessioninfo"]])`
+* `r Biocpkg("smokingMouse")` `r Citep(bib[["smokingMouse"]])`
+* `r Biocpkg("SPEAQeasy")` `r Citep(bib[["SPEAQeasy"]])`
+* `r CRANpkg("stringr")` `r Citep(bib[["stringr"]])`
+* `r Biocpkg("SummarizedExperiment")` `r Citep(bib[["SummarizedExperiment"]])`
+* `r Biocpkg("variancePartition")` `r Citep(bib[["variancePartition"]])`
+* `r Biocpkg("voom")` `r Citep(bib[["voom"]])`
 
 Code for creating the vignette
 
