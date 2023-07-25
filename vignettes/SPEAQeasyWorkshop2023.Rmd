@@ -162,17 +162,21 @@ As specific objectives we have:
 
 # SPEAQeasy overview
 
+## Workflow
+
 We introduce [SPEAQeasy](https://github.com/LieberInstitute/SPEAQeasy), a **S**calable RNA-seq processing **P**ipeline for **E**xpression **A**nalysis and **Q**uantification, that is **easy** to install, use, and share with others. More detailed documentation is [here](http://research.libd.org/SPEAQeasy/).
 
 ![Functional workflow. Yellow coloring denotes steps which are optional or not always performed.](figs/SPEAQeasy_workflow.png)
 
 SPEAQeasy starts with raw sequencing outputs in FASTQ format and ultimately produces [RangedSummarizedExperiment](https://bioconductor.org/packages/release/bioc/html/SummarizedExperiment.html) objects with raw and normalized counts for each feature type: genes, exons, exon-exon junctions, and transcripts.
 
+### Optional steps
+
 For human samples, variant calling is performed at a list of highly variable sites. A single [VCF file](https://www.internationalgenome.org/wiki/Analysis/Variant%20Call%20Format/vcf-variant-call-format-version-40/) is generated, containing genotype calls for all samples. This establishes a sufficiently unique profile for each sample which can be compared against pre-sequencing genotype calls to resolve potential identity issues.
 
 Optionally, [BigWig](https://genome.ucsc.edu/goldenPath/help/bigWig.html) coverage files by strand, and averaged across strands, are produced. An additional step utilizes the [derfinder](https://bioconductor.org/packages/release/bioc/html/derfinder.html) package to compute expressed regions, a precursor to analyses finding differentially expressed regions (DERs).
 
-## Installation and set-up
+## Installation
 
 SPEAQeasy is available from GitHub, and can be cloned:
 
@@ -196,6 +200,8 @@ bash install_software.sh "local"
 
 Please note that installation may take some time-- **installing and running SPEAQeasy is not required for this workshop**, but is demonstrated to familiarize participants with the process. The workshop files include outputs from SPEAQeasy, which can be used later for the example differential expression analysis.
 
+## Preparing a run
+
 Choose a "main" script as appropriate for your particular set-up. "Main" scripts and associated configuration files exist for SLURM-managed computing clusters, SGE-managed clusters, local machines, and the [JHPCE](https://jhpce.jhu.edu/) cluster.
 
 | Environment  | "Main" script | Config file |
@@ -208,6 +214,8 @@ Choose a "main" script as appropriate for your particular set-up. "Main" scripts
 Within the main script, you can configure arguments specific to the experiment, such as the reference organism, pairing of samples, and where to place output files, among other specifications.
 
 When running SPEAQeasy on a cluster (i.e. SLURM, SGE, or JHPCE users), it is recommended you submit the pipeline as a job, using the command appropriate for your cluster. For those running SPEAQeasy locally, the main script can be executed directly, ideally as a background task.
+
+## Executing SPEAQeasy
 
 ```{bash, eval=FALSE}
 #  SLURM-managed clusters
