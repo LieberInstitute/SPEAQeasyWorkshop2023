@@ -1689,5 +1689,22 @@ Citations made with `r CRANpkg('RefManageR')` `r Citep(bib[['RefManageR']])`.
 PrintBibliography(bib, .opts = list(hyperlink = "to.doc", style = "html"))
 ```
 
+# Acknowledgements
 
-# Acknowledgements 
+- Leonardo Collado Torres: development, guidance, and help throughout the SPEAQeasy project; development and deployment of this workshop package and website
+
+## Members of the (former) Jaffe Lab
+
+- Emily Burke: much of the code for SPEAQeasy before it was re-built with Nextflow, including a great portion of the R scripts still used now
+- Brianna Barry: guidance, naming, and testing SPEAQeasy, leading to features such as per-sample logs and automatic strand inference, among others
+- BaDoi Phan: development of the pipeline before using Nextflow
+- Andrew Jaffe: principal investigator, leading and overseeing the SPEAQeasy project
+
+## Winter Genomics Team
+
+Estlabished a foundation for the Nextflow-port (now SPEAQeasy) of the RNA-seq pipeline internally used by the Jaffe Lab.
+
+- Jacob Leonard
+- Violeta Larios Serrato
+- Everardo Gutiérrez-Millán
+- Israel Aguilar-Ordoñez
