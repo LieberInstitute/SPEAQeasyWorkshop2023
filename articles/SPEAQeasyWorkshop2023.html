@@ -92,7 +92,7 @@ Biology, Johns Hopkins
 University<br><a class="author_email" href="mailto:#"></a><a href="mailto:lcolladotor@gmail.com" class="email">lcolladotor@gmail.com</a>
       </address>
                   
-            <h4 data-toc-skip class="date">24 July 2023</h4>
+            <h4 data-toc-skip class="date">25 July 2023</h4>
       
       
       <div class="hidden name"><code>SPEAQeasyWorkshop2023.Rmd</code></div>
@@ -193,14 +193,11 @@ enriching for the discussion.</p>
 </div>
 </div>
 <div class="section level2">
-<h2 id="workshop">Workshop<a class="anchor" aria-label="anchor" href="#workshop"></a>
+<h2 id="workshop-goals-and-objectives">Workshop goals and objectives<a class="anchor" aria-label="anchor" href="#workshop-goals-and-objectives"></a>
 </h2>
 <div class="section level3">
-<h3 id="workshop-goals-and-objectives">Workshop goals and objectives<a class="anchor" aria-label="anchor" href="#workshop-goals-and-objectives"></a>
+<h3 id="learning-goals">Learning goals<a class="anchor" aria-label="anchor" href="#learning-goals"></a>
 </h3>
-<div class="section level4">
-<h4 id="learning-goals">Learning goals<a class="anchor" aria-label="anchor" href="#learning-goals"></a>
-</h4>
 <p>The global goals of this workshop are:</p>
 <ul>
 <li>to understand the purpose of <a href="https://github.com/LieberInstitute/SPEAQeasy" class="external-link">SPEAQeasy</a> and
@@ -217,9 +214,9 @@ expression analyses;</li>
 to visualize expression of DEGs.</li>
 </ul>
 </div>
-<div class="section level4">
-<h4 id="learning-objectives">Learning objectives<a class="anchor" aria-label="anchor" href="#learning-objectives"></a>
-</h4>
+<div class="section level3">
+<h3 id="learning-objectives">Learning objectives<a class="anchor" aria-label="anchor" href="#learning-objectives"></a>
+</h3>
 <p>As specific objectives we have:</p>
 <ul>
 <li>to use <em><a href="https://bioconductor.org/packages/3.18/ggplot2" class="external-link">ggplot2</a></em>
@@ -239,8 +236,11 @@ up and down regulated genes.</li>
 </ul>
 </div>
 </div>
+<div class="section level2">
+<h2 id="speaqeasy-overview">SPEAQeasy overview<a class="anchor" aria-label="anchor" href="#speaqeasy-overview"></a>
+</h2>
 <div class="section level3">
-<h3 id="speaqeasy-overview">SPEAQeasy overview<a class="anchor" aria-label="anchor" href="#speaqeasy-overview"></a>
+<h3 id="workflow">Workflow<a class="anchor" aria-label="anchor" href="#workflow"></a>
 </h3>
 <p>We introduce <a href="https://github.com/LieberInstitute/SPEAQeasy" class="external-link">SPEAQeasy</a>, a
 <strong>S</strong>calable RNA-seq processing <strong>P</strong>ipeline
@@ -255,6 +255,9 @@ steps which are optional or not always performed.</div>
 ultimately produces <a href="https://bioconductor.org/packages/release/bioc/html/SummarizedExperiment.html" class="external-link">RangedSummarizedExperiment</a>
 objects with raw and normalized counts for each feature type: genes,
 exons, exon-exon junctions, and transcripts.</p>
+<div class="section level4">
+<h4 id="optional-steps">Optional steps<a class="anchor" aria-label="anchor" href="#optional-steps"></a>
+</h4>
 <p>For human samples, variant calling is performed at a list of highly
 variable sites. A single <a href="https://www.internationalgenome.org/wiki/Analysis/Variant%20Call%20Format/vcf-variant-call-format-version-40/" class="external-link">VCF
 file</a> is generated, containing genotype calls for all samples. This
@@ -266,9 +269,11 @@ coverage files by strand, and averaged across strands, are produced. An
 additional step utilizes the <a href="https://bioconductor.org/packages/release/bioc/html/derfinder.html" class="external-link">derfinder</a>
 package to compute expressed regions, a precursor to analyses finding
 differentially expressed regions (DERs).</p>
-<div class="section level4">
-<h4 id="installation-and-set-up">Installation and set-up<a class="anchor" aria-label="anchor" href="#installation-and-set-up"></a>
-</h4>
+</div>
+</div>
+<div class="section level3">
+<h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h3>
 <p>SPEAQeasy is available from GitHub, and can be cloned:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">git</span> clone git@github.com:LieberInstitute/SPEAQeasy.git</span></code></pre></div>
 <p>SPEAQeasy dependencies are recommended to be installed using Docker
@@ -287,6 +292,10 @@ and running SPEAQeasy is not required for this workshop</strong>, but is
 demonstrated to familiarize participants with the process. The workshop
 files include outputs from SPEAQeasy, which can be used later for the
 example differential expression analysis.</p>
+</div>
+<div class="section level3">
+<h3 id="preparing-a-run">Preparing a run<a class="anchor" aria-label="anchor" href="#preparing-a-run"></a>
+</h3>
 <p>Choose a “main” script as appropriate for your particular set-up.
 “Main” scripts and associated configuration files exist for
 SLURM-managed computing clusters, SGE-managed clusters, local machines,
@@ -333,6 +342,10 @@ users), it is recommended you submit the pipeline as a job, using the
 command appropriate for your cluster. For those running SPEAQeasy
 locally, the main script can be executed directly, ideally as a
 background task.</p>
+</div>
+<div class="section level3">
+<h3 id="executing-speaqeasy">Executing SPEAQeasy<a class="anchor" aria-label="anchor" href="#executing-speaqeasy"></a>
+</h3>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co">#  SLURM-managed clusters</span></span>
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="ex">sbatch</span> run_pipeline_slurm.sh</span>
 <span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a></span>
@@ -375,9 +388,9 @@ background task.</p>
 <span><span class="co">#&gt;      -profile jhpce</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level3">
-<h3 id="data-overview-and-download">Data overview and download<a class="anchor" aria-label="anchor" href="#data-overview-and-download"></a>
-</h3>
+<div class="section level2">
+<h2 id="data-overview-and-download">Data overview and download<a class="anchor" aria-label="anchor" href="#data-overview-and-download"></a>
+</h2>
 <p>The dataset that will be used for the DEA can be downloaded from the
 <code>smokingMouse</code> package. We will download the
 <code>rse_gene</code> object which contains the data at the gene level.
@@ -417,9 +430,9 @@ containing additional information about the genes.</p>
 <p><mark style="background-color: #DFF0FE"> Blue </mark> variables are
 quality-control metrics computed by <code><a href="https://rdrr.io/pkg/scuttle/man/addPerCellQCMetrics.html" class="external-link">addPerCellQC()</a></code> of
 <em><a href="https://bioconductor.org/packages/3.18/scuttle" class="external-link">scuttle</a></em>.</p>
-<div class="section level4">
-<h4 id="gene-information">Gene Information<a class="anchor" aria-label="anchor" href="#gene-information"></a>
-</h4>
+<div class="section level3">
+<h3 id="gene-information">Gene Information<a class="anchor" aria-label="anchor" href="#gene-information"></a>
+</h3>
 <p>Among the information in <code>rowData(RSE)</code> the next variables
 are of interest for the analysis:</p>
 <ul>
@@ -442,9 +455,9 @@ filtering (with <code>filterByExpr()</code> of <em><a href="https://bioconductor
 based on its expression levels and FALSE if not.</li>
 </ul>
 </div>
-<div class="section level4">
-<h4 id="sample-information">Sample Information<a class="anchor" aria-label="anchor" href="#sample-information"></a>
-</h4>
+<div class="section level3">
+<h3 id="sample-information">Sample Information<a class="anchor" aria-label="anchor" href="#sample-information"></a>
+</h3>
 <p>Sample information in <code>colData(RSE)</code> contains the
 following variables:</p>
 <ul>
@@ -604,7 +617,7 @@ treated in water.</p>
 <span><span class="co">################################</span></span>
 <span><span class="co">## Load the datasets of the package</span></span>
 <span><span class="va">myfiles</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/AnnotationHub/man/AnnotationHub-class.html" class="external-link">query</a></span><span class="op">(</span><span class="va">eh</span>, <span class="st">"smokingMouse"</span><span class="op">)</span></span>
-<span>  </span>
+<span></span>
 <span><span class="co">## Download the mouse gene data</span></span>
 <span><span class="va">rse_gene</span> <span class="op">&lt;-</span> <span class="va">myfiles</span><span class="op">[[</span><span class="st">"EH8313"</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="co">#&gt; see ?smokingMouse and browseVignettes('smokingMouse') for documentation</span></span>
@@ -624,7 +637,7 @@ treated in water.</p>
 <span><span class="co">#&gt;   retained_after_QC_sample_filtering</span></span>
 <span><span class="co">#&gt;   retained_after_manual_sample_filtering</span></span>
 <span></span>
-<span><span class="co">## Check sample info </span></span>
+<span><span class="co">## Check sample info</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">colData</a></span><span class="op">(</span><span class="va">rse_gene</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span></span>
 <span><span class="co">#&gt; DataFrame with 5 rows and 5 columns</span></span>
 <span><span class="co">#&gt;     SAMPLE_ID FQCbasicStats perBaseQual perTileQual  perSeqQual</span></span>
@@ -766,9 +779,9 @@ treated in water.</p>
 <span><span class="co">#&gt; 2                                   TRUE</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level3">
-<h3 id="differential-expression-analysis">Differential Expression Analysis<a class="anchor" aria-label="anchor" href="#differential-expression-analysis"></a>
-</h3>
+<div class="section level2">
+<h2 id="differential-expression-analysis">Differential Expression Analysis<a class="anchor" aria-label="anchor" href="#differential-expression-analysis"></a>
+</h2>
 <p>In this workshop we’ll guide you through a differential expression
 analysis following the steps presented in <strong>Figure 2</strong>. The
 main objective is to determine which genes are affected by nicotine
@@ -779,17 +792,17 @@ Exploratory Data Analysis 3. Differential Expression Analysis 4. DEG
 visualization. </font> <font size="0.8"> Abbreviations: CPM: counts per
 million; QC: quality control; PC: principal component; DEG:
 differentially expressed genes.</font>
-</figcaption></figure><div class="section level4">
-<h4 class="unnumbered" id="data-preparation">
+</figcaption></figure><div class="section level3">
+<h3 class="unnumbered" id="data-preparation">
 <strong>1. Data preparation</strong><a class="anchor" aria-label="anchor" href="#data-preparation"></a>
-</h4>
+</h3>
 <p>Before exploring a dataset, normalization and filtering steps are
 generally appropriate. In our case, SPEAQeasy outputs contain normalized
 counts, and the example data we’ll use already has non-expressed genes
 filtered out.</p>
-<div class="section level5">
-<h5 class="unnumbered" id="data-normalization">1.1 Data normalization<a class="anchor" aria-label="anchor" href="#data-normalization"></a>
-</h5>
+<div class="section level4">
+<h4 class="unnumbered" id="data-normalization">1.1 Data normalization<a class="anchor" aria-label="anchor" href="#data-normalization"></a>
+</h4>
 <p>Data normalization is a preliminary step when working with expression
 data because raw counts do not necessarily reflect real expression
 measures of the genes, since there are technical differences in the way
@@ -866,9 +879,9 @@ remain after normalization, corresponding to counts below 0 in the
 second plot. That is because we haven’t filtered the low and
 zero-expressed genes.</p>
 </div>
-<div class="section level5">
-<h5 class="unnumbered" id="gene-filtering">1.2 Gene filtering<a class="anchor" aria-label="anchor" href="#gene-filtering"></a>
-</h5>
+<div class="section level4">
+<h4 class="unnumbered" id="gene-filtering">1.2 Gene filtering<a class="anchor" aria-label="anchor" href="#gene-filtering"></a>
+</h4>
 <p>Low-expressed or non-expressed genes in many samples are not of
 biological interest in a study of differential expression because they
 don’t inform about the gene expression changes and they are, by
@@ -899,11 +912,11 @@ genes.</p>
 downstream analyses.</p>
 </div>
 </div>
-<div class="section level4">
-<h4 class="unnumbered" id="exploratory-data-analysis">
+<div class="section level3">
+<h3 class="unnumbered" id="exploratory-data-analysis">
 <strong>2. Exploratory Data
 Analysis</strong><a class="anchor" aria-label="anchor" href="#exploratory-data-analysis"></a>
-</h4>
+</h3>
 <p>The first formal step that we will be performing is the sample
 exploration. This crucial initial part of the analysis consists of an
 examination of differences and relationships between Quality-Control
@@ -914,9 +927,9 @@ samples by their gene expression variation through a dimensionality
 reduction analysis. Finally, the sample variables in the metadata also
 need to be analyzed and filtered based on the percentage of gene
 expression variance that they explain for each gene.</p>
-<div class="section level5">
-<h5 class="unnumbered" id="quality-control-analysis">2.1 Quality Control Analysis<a class="anchor" aria-label="anchor" href="#quality-control-analysis"></a>
-</h5>
+<div class="section level4">
+<h4 class="unnumbered" id="quality-control-analysis">2.1 Quality Control Analysis<a class="anchor" aria-label="anchor" href="#quality-control-analysis"></a>
+</h4>
 <p>First we have to explore and compare the quality-control metrics of
 the samples in the different groups given by covariates such as age,
 sex, pregnancy state, group, plate and flowcell. See <a href="#id_##Sample%20Information"><strong>Sample
@@ -964,11 +977,11 @@ quality in the samples.
 unprocessed datasets (neither filtered nor normalized) to preserve the
 original estimates of the samples.</p>
 </div>
-<div class="section level6">
-<h6 class="unnumbered" id="evaluate-qc-metrics-for-groups-of-samples">
+<div class="section level5">
+<h5 class="unnumbered" id="evaluate-qc-metrics-for-groups-of-samples">
 <em>2.1.1 Evaluate QC metrics for groups of
 samples</em><a class="anchor" aria-label="anchor" href="#evaluate-qc-metrics-for-groups-of-samples"></a>
-</h6>
+</h5>
 <p>Fortunately, we can identify to some extent possible factors that
 could have influenced on the quality of the samples, as well as isolated
 samples that are problematic. To do that, we will create boxplots that
@@ -1106,10 +1119,10 @@ the 1st plate have low (though not much lower)
 <p>For the flowcell, again no worrying distinctions are seen, with the
 exception of a few individual samples far from the rest.</p>
 </div>
-<div class="section level6">
-<h6 class="unnumbered" id="qc-sample-filtering">
+<div class="section level5">
+<h5 class="unnumbered" id="qc-sample-filtering">
 <em>2.1.2 QC sample filtering</em><a class="anchor" aria-label="anchor" href="#qc-sample-filtering"></a>
-</h6>
+</h5>
 <p>After assessing how different or similar are the QC values between
 samples, we can now proceed to sample filtering based precisely, on
 these metrics. For that, we will use <code><a href="https://rdrr.io/pkg/scuttle/man/isOutlier.html" class="external-link">isOutlier()</a></code> from
@@ -1303,9 +1316,9 @@ variables!</p>
 </div>
 </div>
 </div>
-<div class="section level5">
-<h5 class="unnumbered" id="explore-sample-level-effects">2.2 Explore sample-level effects<a class="anchor" aria-label="anchor" href="#explore-sample-level-effects"></a>
-</h5>
+<div class="section level4">
+<h4 class="unnumbered" id="explore-sample-level-effects">2.2 Explore sample-level effects<a class="anchor" aria-label="anchor" href="#explore-sample-level-effects"></a>
+</h4>
 <p>Once data is normalized and properly filtered (features and samples),
 the next step is to explore the variation in gene expression of the
 samples to identify if a covariate explains a high proportion of the
@@ -1386,9 +1399,9 @@ differences in the expression values of the samples.</p>
 <span><span class="va">pca_plots</span></span></code></pre></div>
 <p><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-19-1.png" width="700" style="display: block; margin: auto;"><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-19-2.png" width="700" style="display: block; margin: auto;"><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-19-3.png" width="700" style="display: block; margin: auto;"><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-19-4.png" width="700" style="display: block; margin: auto;"></p>
 </div>
-<div class="section level5">
-<h5 class="unnumbered" id="explore-gene-level-effects">2.3 Explore gene-level effects<a class="anchor" aria-label="anchor" href="#explore-gene-level-effects"></a>
-</h5>
+<div class="section level4">
+<h4 class="unnumbered" id="explore-gene-level-effects">2.3 Explore gene-level effects<a class="anchor" aria-label="anchor" href="#explore-gene-level-effects"></a>
+</h4>
 <p>Once the quality and the variability of the samples have been
 evaluated, the next step is to explore the differences in the expression
 of the genes themselves in the sample groups, or in other words, to
@@ -1402,11 +1415,11 @@ an analysis of variance partition. <code>variancePartition</code> is a
 package that decomposes for each gene the expression variation into
 fractions of variance explained (FVE) by the sample variables of the
 experimental design of high-throughput genomics studies [3].</p>
-<div class="section level6">
-<h6 class="unnumbered" id="canonical-correlation-analysis">
+<div class="section level5">
+<h5 class="unnumbered" id="canonical-correlation-analysis">
 <em>2.3.1 Canonical Correlation
 Analysis</em><a class="anchor" aria-label="anchor" href="#canonical-correlation-analysis"></a>
-</h6>
+</h5>
 <p>Before the analysis itself, we need to measure the correlation
 between the sample variables. This is an important step because highly
 correlated variables can produce unstable estimates of the variance
@@ -1682,11 +1695,11 @@ variables and then define which ones explain a higher percentage of
 variance in many genes. But first let’s review how
 <code>variancePartition</code> works.</p>
 </div>
-<div class="section level6">
-<h6 class="unnumbered" id="fit-model-and-extract-fraction-of-variance-explained">
+<div class="section level5">
+<h5 class="unnumbered" id="fit-model-and-extract-fraction-of-variance-explained">
 <em>2.3.2 Fit model and extract fraction of
 variance explained</em><a class="anchor" aria-label="anchor" href="#fit-model-and-extract-fraction-of-variance-explained"></a>
-</h6>
+</h5>
 <p>Briefly, <code>variancePartition</code> fits a linear model for each
 gene separately and <code><a href="http://DiseaseNeurogenomics.github.io/variancePartition/reference/calcVarPart-method.html" class="external-link">calcVarPart()</a></code> computes the fraction of
 variance in gene expression that is explained by each variable of the
@@ -1853,14 +1866,14 @@ DEA!</p>
 </div>
 </div>
 </div>
-<div class="section level4">
-<h4 class="unnumbered" id="differential-expression-analysis-1">
+<div class="section level3">
+<h3 class="unnumbered" id="differential-expression-analysis-1">
 <strong>3. Differential Expression
 Analysis</strong><a class="anchor" aria-label="anchor" href="#differential-expression-analysis-1"></a>
+</h3>
+<div class="section level4">
+<h4 class="unnumbered" id="modeling">3.1 Modeling<a class="anchor" aria-label="anchor" href="#modeling"></a>
 </h4>
-<div class="section level5">
-<h5 class="unnumbered" id="modeling">3.1 Modeling<a class="anchor" aria-label="anchor" href="#modeling"></a>
-</h5>
 <p>So once we have decided which variables to include in the models for
 DEA, we can start using <code>limma</code> to fit a linear model for
 each gene and estimate the logFC’s for the contrast of interest:
@@ -2106,9 +2119,9 @@ ENSMUSG00000033713.12 that was upregulated.</p>
 <span><span class="fu"><a href="https://wilkelab.org/cowplot/reference/plot_grid.html" class="external-link">plot_grid</a></span><span class="op">(</span><span class="va">p1</span>, <span class="va">p2</span><span class="op">)</span></span></code></pre></div>
 <p><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-40-1.png" width="700"></p>
 </div>
-<div class="section level5">
-<h5 class="unnumbered" id="comparisons">3.2 Comparisons<a class="anchor" aria-label="anchor" href="#comparisons"></a>
-</h5>
+<div class="section level4">
+<h4 class="unnumbered" id="comparisons">3.2 Comparisons<a class="anchor" aria-label="anchor" href="#comparisons"></a>
+</h4>
 <p>Now that we have computed statistics for DE we can compare the
 t-stats of the genes in pups and adults to examine the signals for DE in
 both ages.</p>
@@ -2178,15 +2191,15 @@ in pups and adults, which could be interpreted as the genes having
 different signals for differential expression in both ages.</p>
 </div>
 </div>
-<div class="section level4">
-<h4 class="unnumbered" id="deg-visualization">
+<div class="section level3">
+<h3 class="unnumbered" id="deg-visualization">
 <strong>4. DEG visualization</strong><a class="anchor" aria-label="anchor" href="#deg-visualization"></a>
-</h4>
+</h3>
 <p>ToDO Renee</p>
 </div>
-<div class="section level4">
-<h4 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
-</h4>
+<div class="section level3">
+<h3 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h3>
 <ol style="list-style-type: decimal">
 <li><p>Evans, C., Hardin, J., &amp; Stoebel, D. M. (2018). Selecting
 between-sample RNA-Seq normalization methods from the perspective of
@@ -2205,18 +2218,98 @@ experiments.</p></li>
 Web site: <a href="https://bookdown.org/pingapang9/linear_models_bookdown/" class="external-link uri">https://bookdown.org/pingapang9/linear_models_bookdown/</a></p></li>
 </ol>
 </div>
-<div class="section level4">
-<h4 class="unnumbered" id="additional-resources">Additional resources<a class="anchor" aria-label="anchor" href="#additional-resources"></a>
-</h4>
+<div class="section level3">
+<h3 class="unnumbered" id="additional-resources">Additional resources<a class="anchor" aria-label="anchor" href="#additional-resources"></a>
+</h3>
 <p>Check the material for the course of <a href="https://lcolladotor.github.io/cshl_rstats_genome_scale_2023" class="external-link">Statistical
 Analysis of Genome Scale Data at CSHL 2023</a> for more exercises and
 explanations of the analyses for differential expression.</p>
 </div>
 </div>
-</div>
 <div class="section level2">
 <h2 id="reproducibility">Reproducibility<a class="anchor" aria-label="anchor" href="#reproducibility"></a>
 </h2>
+<p>The <em><a href="https://bioconductor.org/packages/3.18/SPEAQeasyWorkshop2023" class="external-link">SPEAQeasyWorkshop2023</a></em>
+package was made possible thanks to:</p>
+<ul>
+<li>R</li>
+<li>
+<em><a href="https://bioconductor.org/packages/3.18/BiocStyle" class="external-link">BiocStyle</a></em>
+(Oleś, 2023)</li>
+<li>
+<em><a href="https://bioconductor.org/packages/3.18/ComplexHeatmap" class="external-link">ComplexHeatmap</a></em>
+(Gu, Eils, and Schlesner, 2016)</li>
+<li>
+<em><a href="https://CRAN.R-project.org/package=cowplot" class="external-link">cowplot</a></em>
+(Wilke, 2020)</li>
+<li>
+<em><a href="https://CRAN.R-project.org/package=dplyr" class="external-link">dplyr</a></em> (Wickham,
+François, Henry, Müller, and Vaughan, 2023)</li>
+<li>
+<em><a href="https://bioconductor.org/packages/3.18/edgeR" class="external-link">edgeR</a></em>
+(Robinson, McCarthy, and Smyth, 2010)</li>
+<li>
+<em><a href="https://bioconductor.org/packages/3.18/ggplot2" class="external-link">ggplot2</a></em>
+(Wickham, 2016)</li>
+<li>
+<em><a href="https://bioconductor.org/packages/3.18/ggrepel" class="external-link">ggrepel</a></em>
+(Slowikowski, 2023)</li>
+<li>
+<em><a href="https://bioconductor.org/packages/3.18/ggpubr" class="external-link">ggpubr</a></em>
+(Kassambara, 2023)</li>
+<li>
+<em><a href="https://CRAN.R-project.org/package=here" class="external-link">here</a></em>
+(Müller, 2020)</li>
+<li>
+<em><a href="https://bioconductor.org/packages/3.18/Hmisc" class="external-link">Hmisc</a></em>
+(Harrell Jr, 2023)</li>
+<li>
+<em><a href="https://github.com/jaffelab" class="external-link">jaffelab</a></em>
+(Collado-Torres, Jaffe, and Burke, 2021)</li>
+<li>
+<em><a href="https://CRAN.R-project.org/package=knitr" class="external-link">knitr</a></em> (Xie,
+2023)</li>
+<li>
+<em><a href="https://bioconductor.org/packages/3.18/limma" class="external-link">limma</a></em>
+(Ritchie, Phipson, Wu, Hu, Law, Shi, and Smyth, 2015)</li>
+<li>
+<em><a href="https://CRAN.R-project.org/package=pheatmap" class="external-link">pheatmap</a></em>
+(Kolde, 2019)</li>
+<li>
+<em><a href="https://CRAN.R-project.org/package=RefManageR" class="external-link">RefManageR</a></em>
+(McLean, 2017)</li>
+<li>
+<em><a href="https://CRAN.R-project.org/package=rlang" class="external-link">rlang</a></em> (Henry
+and Wickham, 2023)</li>
+<li>
+<em><a href="https://CRAN.R-project.org/package=rmarkdown" class="external-link">rmarkdown</a></em>
+(Allaire, Xie, Dervieux, McPherson, Luraschi, Ushey, Atkins, Wickham,
+Cheng, Chang, and Iannone, 2023)</li>
+<li>
+<em><a href="https://bioconductor.org/packages/3.18/scater" class="external-link">scater</a></em>
+(McCarthy, Campbell, Lun, and Willis, 2017)</li>
+<li>
+<em><a href="https://CRAN.R-project.org/package=sessioninfo" class="external-link">sessioninfo</a></em>
+(Wickham, Chang, Flight, Müller, and Hester, 2021)</li>
+<li>
+<em><a href="https://bioconductor.org/packages/3.18/smokingMouse" class="external-link">smokingMouse</a></em>
+(Gonzalez-Padilla and Collado-Torres, 2023)</li>
+<li>
+<em><a href="https://bioconductor.org/packages/3.18/SPEAQeasy" class="external-link">SPEAQeasy</a></em>
+(Eagles, Burke, Leonard et al., 2021)</li>
+<li>
+<em><a href="https://CRAN.R-project.org/package=stringr" class="external-link">stringr</a></em>
+(Wickham, 2022)</li>
+<li>
+<em><a href="https://bioconductor.org/packages/3.18/SummarizedExperiment" class="external-link">SummarizedExperiment</a></em>
+(Morgan, Obenchain, Hester, and Pagès, 2023)</li>
+<li>
+<em><a href="https://bioconductor.org/packages/3.18/variancePartition" class="external-link">variancePartition</a></em>
+(Hoffman and Schadt, 2016)</li>
+<li>
+<em><a href="https://bioconductor.org/packages/3.18/voom" class="external-link">voom</a></em> (Law,
+Chen, Shi, and Smyth, 2014)</li>
+</ul>
 <p>Code for creating the vignette</p>
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Create the vignette</span></span>
@@ -2227,9 +2320,9 @@ explanations of the analyses for differential expression.</p>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://yihui.org/knitr/" class="external-link">"knitr"</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit.html" class="external-link">knit</a></span><span class="op">(</span><span class="st">"SPEAQeasyWorkshop2023.Rmd"</span>, tangle <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>Date the vignette was generated.</p>
-<pre><code><span><span class="co">#&gt; [1] "2023-07-24 18:02:15 UTC"</span></span></code></pre>
+<pre><code><span><span class="co">#&gt; [1] "2023-07-25 15:09:38 UTC"</span></span></code></pre>
 <p>Wallclock time spent generating the vignette.</p>
-<pre><code><span><span class="co">#&gt; Time difference of 1.354 mins</span></span></code></pre>
+<pre><code><span><span class="co">#&gt; Time difference of 1.58 mins</span></span></code></pre>
 <p><code>R</code> session information.</p>
 <pre><code><span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">setting </span> <span style="color: #555555; font-style: italic;">value</span></span></span>
@@ -2241,7 +2334,7 @@ explanations of the analyses for differential expression.</p>
 <span><span class="co">#&gt;  collate  en_US.UTF-8</span></span>
 <span><span class="co">#&gt;  ctype    en_US.UTF-8</span></span>
 <span><span class="co">#&gt;  tz       UTC</span></span>
-<span><span class="co">#&gt;  date     2023-07-24</span></span>
+<span><span class="co">#&gt;  date     2023-07-25</span></span>
 <span><span class="co">#&gt;  pandoc   3.1.1 @ /usr/local/bin/ (via rmarkdown)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────</span></span></span>
@@ -2441,8 +2534,7 @@ explanations of the analyses for differential expression.</p>
 <p>This vignette was generated using <em><a href="https://bioconductor.org/packages/3.18/BiocStyle" class="external-link">BiocStyle</a></em>
 (Oleś, 2023), <em><a href="https://CRAN.R-project.org/package=knitr" class="external-link">knitr</a></em> (Xie,
 2023) and <em><a href="https://CRAN.R-project.org/package=rmarkdown" class="external-link">rmarkdown</a></em>
-(Allaire, Xie, Dervieux, McPherson, Luraschi, Ushey, Atkins, Wickham,
-Cheng, Chang, and Iannone, 2023) running behind the scenes.</p>
+(Allaire, Xie, Dervieux et al., 2023) running behind the scenes.</p>
 <p>Citations made with <em><a href="https://CRAN.R-project.org/package=RefManageR" class="external-link">RefManageR</a></em>
 (McLean, 2017).</p>
 <p>
@@ -2452,7 +2544,14 @@ for R</em>. R package version 2.23. 2023. URL:
 <a href="https://github.com/rstudio/rmarkdown" class="external-link">https://github.com/rstudio/rmarkdown</a>.</cite>
 </p>
 <p>
-<a id="bib-eagles2021speaqeasy"></a><a href="#cite-eagles2021speaqeasy">[2]</a><cite>
+<a id="bib-colladotorres2021jaffelab"></a><a href="#cite-colladotorres2021jaffelab">[2]</a><cite>
+L. Collado-Torres, A. E. Jaffe, and E. E. Burke. <em>jaffelab: Commonly
+used functions by the Jaffe lab</em>. R package version 0.99.32. 2021.
+URL:
+<a href="https://github.com/LieberInstitute/jaffelab" class="external-link">https://github.com/LieberInstitute/jaffelab</a>.</cite>
+</p>
+<p>
+<a id="bib-eagles2021speaqeasy"></a><a href="#cite-eagles2021speaqeasy">[3]</a><cite>
 N. J. Eagles, E. E. Burke, J. Leonard, et al. “SPEAQeasy: a scalable
 pipeline for expression analysis and quantification for
 R/bioconductor-powered RNA-seq analyses”. In: <em>BMC
@@ -2462,7 +2561,7 @@ URL:
 <a href="https://doi.org/10.1186/s12859-021-04142-3" class="external-link">https://doi.org/10.1186/s12859-021-04142-3</a>.</cite>
 </p>
 <p>
-<a id="bib-gonzalezpadilla2023provides"></a><a href="#cite-gonzalezpadilla2023provides">[3]</a><cite>
+<a id="bib-gonzalezpadilla2023provides"></a><a href="#cite-gonzalezpadilla2023provides">[4]</a><cite>
 D. Gonzalez-Padilla and L. Collado-Torres. <em>Provides access to
 smokingMouse project data </em>. <a href="https://github.com/LieberInstitute/smokingMouse/smokingMouse" class="external-link uri">https://github.com/LieberInstitute/smokingMouse/smokingMouse</a>
 - R package version 0.99.9. 2023. DOI:
@@ -2471,14 +2570,81 @@ URL:
 <a href="http://www.bioconductor.org/packages/smokingMouse" class="external-link">http://www.bioconductor.org/packages/smokingMouse</a>.</cite>
 </p>
 <p>
-<a id="bib-mclean2017refmanager"></a><a href="#cite-mclean2017refmanager">[4]</a><cite>
+<a id="bib-gu2016complex"></a><a href="#cite-gu2016complex">[5]</a><cite>
+Z. Gu, R. Eils, and M. Schlesner. “Complex heatmaps reveal patterns and
+correlations in multidimensional genomic data”. In:
+<em>Bioinformatics</em> (2016). DOI:
+<a href="https://doi.org/10.1093/bioinformatics/btw313" class="external-link">10.1093/bioinformatics/btw313</a>.</cite>
+</p>
+<p>
+<a id="bib-harrelljr2023hmisc"></a><a href="#cite-harrelljr2023hmisc">[6]</a><cite>
+F. Harrell Jr. <em>Hmisc: Harrell Miscellaneous</em>. R package version
+5.1-0. 2023. URL:
+<a href="https://CRAN.R-project.org/package=Hmisc" class="external-link">https://CRAN.R-project.org/package=Hmisc</a>.</cite>
+</p>
+<p>
+<a id="bib-henry2023rlang"></a><a href="#cite-henry2023rlang">[7]</a><cite>
+L. Henry and H. Wickham. <em>rlang: Functions for Base Types and Core R
+and ‘Tidyverse’ Features</em>. R package version 1.1.1. 2023. URL:
+<a href="https://CRAN.R-project.org/package=rlang" class="external-link">https://CRAN.R-project.org/package=rlang</a>.</cite>
+</p>
+<p>
+<a id="bib-hoffman2016variancepartition"></a><a href="#cite-hoffman2016variancepartition">[8]</a><cite>
+G. E. Hoffman and E. E. Schadt. “variancePartition: Interpreting drivers
+of variation in complex gene expression studies”. In: <em>BMC
+Bioinformatics</em> 17 (483 2016). DOI:
+<a href="https://doi.org/10.1186/s12859-016-1323-z" class="external-link">10.1186/s12859-016-1323-z</a>.</cite>
+</p>
+<p>
+<a id="bib-kassambara2023ggpubr"></a><a href="#cite-kassambara2023ggpubr">[9]</a><cite>
+A. Kassambara. <em>ggpubr: ‘ggplot2’ Based Publication Ready Plots</em>.
+R package version 0.6.0. 2023. URL:
+<a href="https://CRAN.R-project.org/package=ggpubr" class="external-link">https://CRAN.R-project.org/package=ggpubr</a>.</cite>
+</p>
+<p>
+<a id="bib-kolde2019pheatmap"></a><a href="#cite-kolde2019pheatmap">[10]</a><cite>
+R. Kolde. <em>pheatmap: Pretty Heatmaps</em>. R package version 1.0.12.
+2019. URL:
+<a href="https://CRAN.R-project.org/package=pheatmap" class="external-link">https://CRAN.R-project.org/package=pheatmap</a>.</cite>
+</p>
+<p>
+<a id="bib-voom"></a><a href="#cite-voom">[11]</a><cite> C. Law, Y.
+Chen, W. Shi, et al. “Voom: precision weights unlock linear model
+analysis tools for RNA-seq read counts”. In: <em>Genome Biology</em> 15
+(2014), p. R29.</cite>
+</p>
+<p>
+<a id="bib-mccarthy2017scater"></a><a href="#cite-mccarthy2017scater">[12]</a><cite>
+D. J. McCarthy, K. R. Campbell, A. T. L. Lun, et al. “Scater:
+pre-processing, quality control, normalisation and visualisation of
+single-cell RNA-seq data in R”. In: <em>Bioinformatics</em> 33 (8 2017),
+pp. 1179-1186. DOI:
+<a href="https://doi.org/10.1093/bioinformatics/btw777" class="external-link">10.1093/bioinformatics/btw777</a>.</cite>
+</p>
+<p>
+<a id="bib-mclean2017refmanager"></a><a href="#cite-mclean2017refmanager">[13]</a><cite>
 M. W. McLean. “RefManageR: Import and Manage BibTeX and BibLaTeX
 References in R”. In: <em>The Journal of Open Source Software</em>
 (2017). DOI:
 <a href="https://doi.org/10.21105/joss.00338" class="external-link">10.21105/joss.00338</a>.</cite>
 </p>
 <p>
-<a id="bib-ole2023biocstyle"></a><a href="#cite-ole2023biocstyle">[5]</a><cite>
+<a id="bib-morgan2023summarizedexperiment"></a><a href="#cite-morgan2023summarizedexperiment">[14]</a><cite>
+M. Morgan, V. Obenchain, J. Hester, et al. <em>SummarizedExperiment:
+SummarizedExperiment container</em>. R package version 1.31.1. 2023.
+DOI:
+<a href="https://doi.org/10.18129/B9.bioc.SummarizedExperiment" class="external-link">10.18129/B9.bioc.SummarizedExperiment</a>.
+URL:
+<a href="https://bioconductor.org/packages/SummarizedExperiment" class="external-link">https://bioconductor.org/packages/SummarizedExperiment</a>.</cite>
+</p>
+<p>
+<a id="bib-mller2020here"></a><a href="#cite-mller2020here">[15]</a><cite>
+K. Müller. <em>here: A Simpler Way to Find Your Files</em>. R package
+version 1.0.1. 2020. URL:
+<a href="https://CRAN.R-project.org/package=here" class="external-link">https://CRAN.R-project.org/package=here</a>.</cite>
+</p>
+<p>
+<a id="bib-ole2023biocstyle"></a><a href="#cite-ole2023biocstyle">[16]</a><cite>
 A. Oleś. <em>BiocStyle: Standard styles for vignettes and other
 Bioconductor documents</em>. R package version 2.29.1. 2023. DOI:
 <a href="https://doi.org/10.18129/B9.bioc.BiocStyle" class="external-link">10.18129/B9.bioc.BiocStyle</a>.
@@ -2486,7 +2652,57 @@ URL:
 <a href="https://bioconductor.org/packages/BiocStyle" class="external-link">https://bioconductor.org/packages/BiocStyle</a>.</cite>
 </p>
 <p>
-<a id="bib-xie2023knitr"></a><a href="#cite-xie2023knitr">[6]</a><cite>
+<a id="bib-ritchie2015limma"></a><a href="#cite-ritchie2015limma">[17]</a><cite>
+M. E. Ritchie, B. Phipson, D. Wu, et al. “limma powers differential
+expression analyses for RNA-sequencing and microarray studies”. In:
+<em>Nucleic Acids Research</em> 43.7 (2015), p. e47. DOI:
+<a href="https://doi.org/10.1093/nar/gkv007" class="external-link">10.1093/nar/gkv007</a>.</cite>
+</p>
+<p>
+<a id="bib-robinson2010edger"></a><a href="#cite-robinson2010edger">[18]</a><cite>
+M. D. Robinson, D. J. McCarthy, and G. K. Smyth. “edgeR: a Bioconductor
+package for differential expression analysis of digital gene expression
+data”. In: <em>Bioinformatics</em> 26.1 (2010), pp. 139-140. DOI:
+<a href="https://doi.org/10.1093/bioinformatics/btp616" class="external-link">10.1093/bioinformatics/btp616</a>.</cite>
+</p>
+<p>
+<a id="bib-slowikowski2023ggrepel"></a><a href="#cite-slowikowski2023ggrepel">[19]</a><cite>
+K. Slowikowski. <em>ggrepel: Automatically Position Non-Overlapping Text
+Labels with ‘ggplot2’</em>. R package version 0.9.3. 2023. URL:
+<a href="https://CRAN.R-project.org/package=ggrepel" class="external-link">https://CRAN.R-project.org/package=ggrepel</a>.</cite>
+</p>
+<p>
+<a id="bib-wickham2016ggplot2"></a><a href="#cite-wickham2016ggplot2">[20]</a><cite>
+H. Wickham. <em>ggplot2: Elegant Graphics for Data Analysis</em>.
+Springer-Verlag New York, 2016. ISBN: 978-3-319-24277-4. URL:
+<a href="https://ggplot2.tidyverse.org" class="external-link">https://ggplot2.tidyverse.org</a>.</cite>
+</p>
+<p>
+<a id="bib-wickham2022stringr"></a><a href="#cite-wickham2022stringr">[21]</a><cite>
+H. Wickham. <em>stringr: Simple, Consistent Wrappers for Common String
+Operations</em>. R package version 1.5.0. 2022. URL:
+<a href="https://CRAN.R-project.org/package=stringr" class="external-link">https://CRAN.R-project.org/package=stringr</a>.</cite>
+</p>
+<p>
+<a id="bib-wickham2021sessioninfo"></a><a href="#cite-wickham2021sessioninfo">[22]</a><cite>
+H. Wickham, W. Chang, R. Flight, et al. <em>sessioninfo: R Session
+Information</em>. R package version 1.2.2. 2021. URL:
+<a href="https://CRAN.R-project.org/package=sessioninfo" class="external-link">https://CRAN.R-project.org/package=sessioninfo</a>.</cite>
+</p>
+<p>
+<a id="bib-wickham2023dplyr"></a><a href="#cite-wickham2023dplyr">[23]</a><cite>
+H. Wickham, R. François, L. Henry, et al. <em>dplyr: A Grammar of Data
+Manipulation</em>. R package version 1.1.2. 2023. URL:
+<a href="https://CRAN.R-project.org/package=dplyr" class="external-link">https://CRAN.R-project.org/package=dplyr</a>.</cite>
+</p>
+<p>
+<a id="bib-wilke2020cowplot"></a><a href="#cite-wilke2020cowplot">[24]</a><cite>
+C. Wilke. <em>cowplot: Streamlined Plot Theme and Plot Annotations for
+‘ggplot2’</em>. R package version 1.1.1. 2020. URL:
+<a href="https://CRAN.R-project.org/package=cowplot" class="external-link">https://CRAN.R-project.org/package=cowplot</a>.</cite>
+</p>
+<p>
+<a id="bib-xie2023knitr"></a><a href="#cite-xie2023knitr">[25]</a><cite>
 Y. Xie. <em>knitr: A General-Purpose Package for Dynamic Report
 Generation in R</em>. R package version 1.43. 2023. URL:
 <a href="https://yihui.org/knitr/" class="external-link">https://yihui.org/knitr/</a>.</cite>
@@ -2495,6 +2711,38 @@ Generation in R</em>. R package version 1.43. 2023. URL:
 <div class="section level2">
 <h2 id="acknowledgements">Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"></a>
 </h2>
+<ul>
+<li>Leonardo Collado Torres: development, guidance, and help throughout
+the SPEAQeasy project; development and deployment of this workshop
+package and website</li>
+</ul>
+<div class="section level3">
+<h3 id="members-of-the-former-jaffe-lab">Members of the (former) Jaffe Lab<a class="anchor" aria-label="anchor" href="#members-of-the-former-jaffe-lab"></a>
+</h3>
+<ul>
+<li>Emily Burke: much of the code for SPEAQeasy before it was re-built
+with Nextflow, including a great portion of the R scripts still used
+now</li>
+<li>Brianna Barry: guidance, naming, and testing SPEAQeasy, leading to
+features such as per-sample logs and automatic strand inference, among
+others</li>
+<li>BaDoi Phan: development of the pipeline before using Nextflow</li>
+<li>Andrew Jaffe: principal investigator, leading and overseeing the
+SPEAQeasy project</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="winter-genomics-team">Winter Genomics Team<a class="anchor" aria-label="anchor" href="#winter-genomics-team"></a>
+</h3>
+<p>Estlabished a foundation for the Nextflow-port (now SPEAQeasy) of the
+RNA-seq pipeline internally used by the Jaffe Lab.</p>
+<ul>
+<li>Jacob Leonard</li>
+<li>Violeta Larios Serrato</li>
+<li>Everardo Gutiérrez-Millán</li>
+<li>Israel Aguilar-Ordoñez</li>
+</ul>
+</div>
 </div>
   </div>
 
