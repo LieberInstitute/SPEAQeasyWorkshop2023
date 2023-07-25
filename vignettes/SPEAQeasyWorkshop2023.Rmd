@@ -137,13 +137,9 @@ Participants are expected to follow us on the theoretical explanations and prese
 
 Total: a 90 minute session.
 
+# Workshop goals and objectives
 
-
-# Workshop
-
-## Workshop goals and objectives
-
-### Learning goals
+## Learning goals
 
 The global goals of this workshop are:
 
@@ -154,7 +150,7 @@ The global goals of this workshop are:
 * to understand how to identify suitable covariates for differential expression analyses;
 * to learn how to perform a differential expression analysis and how to visualize expression of DEGs.
 
-### Learning objectives
+## Learning objectives
 
 As specific objectives we have:
 
@@ -164,7 +160,7 @@ As specific objectives we have:
 * to use `r Biocpkg('ComplexHeatmap')` to create heatmaps of expression levels of DEGs, identifying clusters of up and down regulated genes. 
 
 
-## SPEAQeasy overview
+# SPEAQeasy overview
 
 We introduce [SPEAQeasy](https://github.com/LieberInstitute/SPEAQeasy), a **S**calable RNA-seq processing **P**ipeline for **E**xpression **A**nalysis and **Q**uantification, that is **easy** to install, use, and share with others. More detailed documentation is [here](http://research.libd.org/SPEAQeasy/).
 
@@ -176,7 +172,7 @@ For human samples, variant calling is performed at a list of highly variable sit
 
 Optionally, [BigWig](https://genome.ucsc.edu/goldenPath/help/bigWig.html) coverage files by strand, and averaged across strands, are produced. An additional step utilizes the [derfinder](https://bioconductor.org/packages/release/bioc/html/derfinder.html) package to compute expressed regions, a precursor to analyses finding differentially expressed regions (DERs).
 
-### Installation and set-up
+## Installation and set-up
 
 SPEAQeasy is available from GitHub, and can be cloned:
 
@@ -239,7 +235,7 @@ cat(paste0(readLines(example_main_script), "\n"))
 ```
 
 
-## Data overview and download 
+# Data overview and download 
 
 The dataset that will be used for the DEA can be downloaded from the `smokingMouse` package. We will download the `rse_gene` object which contains the data at the gene level. Visit [here](http://research.libd.org/smokingMouse/) for more details of this package.
 
@@ -266,7 +262,7 @@ The same RSE contains the sample information in `colData(RSE)` and the gene info
 <mark style= "background-color: #DFF0FE"> Blue </mark> variables are quality-control metrics computed by `addPerCellQC()` of `r BiocStyle::Biocpkg("scuttle")`.
 
 
-### Gene Information 
+## Gene Information 
 
 Among the information in `rowData(RSE)` the next variables are of interest for the analysis:
 
@@ -276,7 +272,7 @@ Among the information in `rowData(RSE)` the next variables are of interest for t
 * <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> Symbol</span> </mark>:  official gene symbol for each mouse gene.
 * <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> retained_after_feature_filtering</span> </mark>: Boolean variable that equals TRUE if the gene passed the gene filtering (with `filterByExpr()` of `r BiocStyle::Biocpkg("edgeR")`) based on its expression levels and FALSE if not.
 
-### Sample Information 
+## Sample Information 
 
 Sample information in `colData(RSE)` contains the following variables:
 
@@ -316,13 +312,13 @@ eh <- ExperimentHub::ExperimentHub()
 ################################
 ## Load the datasets of the package
 myfiles <- query(eh, "smokingMouse")
-  
+
 ## Download the mouse gene data
 rse_gene <- myfiles[["EH8313"]]
 ## This is a RangedSummarizedExperiment object
 rse_gene
 
-## Check sample info 
+## Check sample info
 colData(rse_gene)[1:5, 1:5]
 ## Check gene info
 rowData(rse_gene)[1:5, 1:5]
@@ -359,7 +355,7 @@ assays(rse_gene_nic)$logcounts[1:3, 1:5]
 head(colData(rse_gene_nic), 2)
 ```
 
-## Differential Expression Analysis
+# Differential Expression Analysis
 
 In this workshop we'll guide you through a differential expression analysis following the steps presented in **Figure 2**. The main objective is to determine which genes are affected by nicotine administration (in adults) or exposure (in pups) in the mouse brain. 
 
@@ -375,10 +371,10 @@ In this workshop we'll guide you through a differential expression analysis foll
         </figcaption>
 </figure>
 
-### **1. Data preparation** {-}
+## **1. Data preparation** {-}
 Before exploring a dataset, normalization and filtering steps are generally appropriate. In our case, SPEAQeasy outputs contain normalized counts, and the example data we'll use already has non-expressed genes filtered out. 
 
-#### 1.1 Data normalization {-}
+### 1.1 Data normalization {-}
 
 Data normalization is a preliminary step when working with expression data because raw counts do not necessarily reflect real expression measures of the genes, since there are technical differences in the way the libraries are prepared and sequenced, as well as intrinsic differences in the genes that are translated into more or less mapped reads. Particularly, there are *within-sample effects* that are the differences between genes in the same sample, such as their **length** (the longer the gene, the more reads it will have) and **GC content**, factors that contribute to variations in their counts. On the other hand, *between-sample effects* are differences between samples such as the **sequencing depth**, i.e., the total number of molecules sequenced, and the **library size**, i.e., the total number of reads of each sample [1].
 
@@ -419,7 +415,7 @@ plot
 As presented, after data transformation, we can now see a more widespread distribution of the counts, but note that most of them are zeros in the first plot (the one with the raw counts) and those zeros remain after normalization, corresponding to counts below 0 in the second plot. That is because we haven't filtered the low and zero-expressed genes. 
 
 
-#### 1.2 Gene filtering {-}
+### 1.2 Gene filtering {-}
 
 Low-expressed or non-expressed genes in many samples are not of biological interest in a study of differential expression because they don't inform about the gene expression changes and they are, by definition, not differentially expressed, so we have to drop them using `filterByExpr()` from `r BiocStyle::Biocpkg("edgeR")` that only keeps genes with at least *K* CPM in *n* samples and with a minimum total number of counts across all samples.
 
@@ -445,11 +441,11 @@ In this third plot we can observe a curve that is closer (though not completely)
 With the object `rse_gene_filt` we can proceed with downstream analyses. 
 
 
-### **2. Exploratory Data Analysis** {-}
+## **2. Exploratory Data Analysis** {-}
 The first formal step that we will be performing is the sample exploration. This crucial initial part of the analysis consists of an examination of differences and relationships between Quality-Control (QC) metrics of the samples from different groups in order to identify poor-quality samples that must be removed before DEA. After that, we will evaluate the similarities and grouping (not clustering) of the samples by their gene expression variation through a dimensionality reduction analysis. Finally, the sample variables in the metadata also need to be analyzed and filtered based on the percentage of gene expression variance that they explain for each gene. 
 
 
-#### 2.1 Quality Control Analysis {-}
+### 2.1 Quality Control Analysis {-}
 
 First we have to explore and compare the quality-control metrics of the samples in the different groups given by covariates such as age, sex, pregnancy state, group, plate and flowcell. See [**Sample Information**](###Sample Information) for a description of these variables.  
 
@@ -479,7 +475,7 @@ font-family: sans-serif;
 </div>
 
 
-##### *2.1.1 Evaluate QC metrics for groups of samples* {-}
+#### *2.1.1 Evaluate QC metrics for groups of samples* {-}
 
 Fortunately, we can identify to some extent possible factors that could have influenced on the quality of the samples, as well as isolated samples that are problematic. To do that, we will create boxplots that present the distribution of the samples' metrics separating them by sample variables. 
 
@@ -609,7 +605,7 @@ multiple_QC_boxplots("flowcell")
 For the flowcell, again no worrying distinctions are seen, with the exception of a few individual samples far from the rest. 
 
 
-##### *2.1.2 QC sample filtering* {-}
+#### *2.1.2 QC sample filtering* {-}
 
 After assessing how different or similar are the QC values between samples, we can now proceed to sample filtering based precisely, on these metrics. For that, we will use `isOutlier()` from `r BiocStyle::Biocpkg("scater")` to identify outlier samples only at the lower end or the higher end, depending on the QC metric.
 
@@ -797,7 +793,7 @@ p + theme(plot.margin = unit(c(2, 4, 2, 4), "cm"))
 
 
 
-#### 2.2 Explore sample-level effects {-}
+### 2.2 Explore sample-level effects {-}
 
 Once data is normalized and properly filtered (features and samples), the next step is to explore the variation in gene expression of the samples to identify if a covariate explains a high proportion of the variance in the expression (if samples are separated in a PC when colored by that covariate). In few words, if a variable represents big differences in the expression values of the samples.
 
@@ -890,14 +886,14 @@ pca_plots <- lapply(sample_variables[-c(2, 3)], plot_PCAs, pca_data = pca_data)
 pca_plots
 ```
 
-#### 2.3 Explore gene-level effects {-}
+### 2.3 Explore gene-level effects {-}
 
 Once the quality and the variability of the samples have been evaluated, the next step is to explore the differences in the expression of the genes themselves in the sample groups, or in other words, to quantify the contribution of the multiple sample variables of the study in the gene expression variation, which constitutes one of the fundamental challenges when analyzing complex RNA-seq datasets [3].
 
 To determine which variables are the major drivers of expression variability, and importantly to define if the technical variability of RNA-seq data is low enough to study nicotine effects, we can implement an analysis of variance partition. `variancePartition` is a package that decomposes for each gene the expression variation into fractions of variance explained (FVE) by the sample variables of the experimental design of high-throughput genomics studies [3].
 
 
-##### *2.3.1 Canonical Correlation Analysis* {-}
+#### *2.3.1 Canonical Correlation Analysis* {-}
 
 Before the analysis itself, we need to measure the correlation between the sample variables. This is an important step because highly correlated variables can produce unstable estimates of the variance fractions and hinder the identification of the variables that really contribute to the expression variation. There are at least two problems with that:
 
@@ -1139,7 +1135,7 @@ After identifying which variables are correlated and exploring the metrics of co
 
 
 
-##### *2.3.2 Fit model and extract fraction of variance explained* {-}
+#### *2.3.2 Fit model and extract fraction of variance explained* {-}
 
 Briefly, `variancePartition` fits a linear model for each gene separately and `calcVarPart()` computes the fraction of variance in gene expression that is explained by each variable of the study design, plus the residual variation. The effect of each variable is assessed while jointly accounting for all others [3].
 
@@ -1270,9 +1266,9 @@ plot + theme(
 At this point we have extracted normalized counts and filtered genes, we have taken out poor-quality samples and we have decided which sample variables to retain for future analyses. Now we are ready for the DEA!
 
 
-### **3. Differential Expression Analysis** {-}
+## **3. Differential Expression Analysis** {-}
 
-#### 3.1 Modeling {-}
+### 3.1 Modeling {-}
 
 So once we have decided which variables to include in the models for DEA, we can start using `limma` to fit a linear model for each gene and estimate the logFC's for the contrast of interest: Group.
 
@@ -1443,7 +1439,6 @@ plots_DE <- function(top_genes, vGene) {
 
     plot_grid(p1, p2, ncol = 2)
 }
-
 ```
 
 ```{r message=FALSE, warning=FALSE}
@@ -1514,7 +1509,7 @@ p2 <- DE_one_boxplot("pups", "ENSMUSG00000033713.12") + theme(plot.margin = unit
 plot_grid(p1, p2)
 ```
 
-#### 3.2 Comparisons {-}
+### 3.2 Comparisons {-}
 
 Now that we have computed statistics for DE we can compare the t-stats of the genes in pups and adults to examine the signals for DE in both ages. 
 
@@ -1582,7 +1577,7 @@ t_stat_plot(top_genes_pups, top_genes_adults, "Nicotine pups", "Nicotine adults"
 As shown above, there's no correlation between the t-stats of the genes in pups and adults, which could be interpreted as the genes having different signals for differential expression in both ages. 
 
 
-### **4. DEG visualization** {-}
+## **4. DEG visualization** {-}
 ToDO  Renee 
 
 
@@ -1591,7 +1586,7 @@ ToDO  Renee
 
 
 
-### References {-}
+## References {-}
 1. Evans, C., Hardin, J., & Stoebel, D. M. (2018). Selecting between-sample RNA-Seq normalization methods from the perspective of their assumptions. *Briefings in bioinformatics*, 19(5), 776-792.
 
 2. Bedre, R. (2023). Gene expression units explained: RPM, RPKM, FPKM, TPM, *DESeq*, TMM, SCnorm, GeTMM, and ComBat-Seq. Web site: https://www.reneshbedre.com/blog/expression_units.html
@@ -1602,7 +1597,7 @@ ToDO  Renee
 
 5. van den Berg, S. M. (2022). Analysing data using linear models. Web site: https://bookdown.org/pingapang9/linear_models_bookdown/
 
-### Additional resources {-}
+## Additional resources {-}
 
 Check the material for the course of [Statistical Analysis of Genome Scale Data at CSHL 2023](https://lcolladotor.github.io/cshl_rstats_genome_scale_2023) for more exercises and explanations of the analyses for differential expression. 
 
