@@ -92,11 +92,11 @@ bib <- c(
 
 # Overview
 
-This workshop aims to present the `SPEAQeasy` `r Citep(bib[["SPEAQeasy"]])` RNA-seq processing pipeline, demonstrating how its outputs can be used in Differential Expression Analyses (DEA) and the type of results it enables to obtain using other Bioconductor R packages such as `r Biocpkg('limma')` and `r Biocpkg('edgeR')`.
+This workshop aims to present the `SPEAQeasy` `r Citep(bib[["SPEAQeasy"]], .opts = list(max.names = 1))` RNA-seq processing pipeline, demonstrating how its outputs can be used in Differential Expression Analyses (DEA) and the type of results it enables to obtain using other Bioconductor R packages such as `r Biocpkg('limma')` and `r Biocpkg('edgeR')`.
 
 
 ## Description
-In this demo, participants will be able to understand what the SPEAQeasy pipeline does and what it returns through a differential expression analysis performed on a dataset from the `smokingMouse` `r Citep(bib[["smokingMouse"]])` Bioconductor package, which contains gene expression data and sample information from multiple RNA-sequencing experiments in mice. 
+In this demo, participants will be able to understand what the SPEAQeasy pipeline does and what it returns through a differential expression analysis performed on a dataset from the `smokingMouse` `r Citep(bib[["smokingMouse"]], .opts = list(max.names = 1))` Bioconductor package, which contains gene expression data and sample information from multiple RNA-sequencing experiments in mice. 
 
 
 ## Instructors
@@ -1614,7 +1614,7 @@ Check the material for the course of [Statistical Analysis of Genome Scale Data 
 
 # Reproducibility
 
-The `r Biocpkg("SPEAQeasyWorkshop2023")` package `r Citep(bib[["SPEAQeasyWorkshop2023"]])` was made possible thanks to:
+The `r Biocpkg("SPEAQeasyWorkshop2023")` package `r Citep(bib[["SPEAQeasyWorkshop2023"]], .opts = list(max.names = 1))` was made possible thanks to:
 
 * R `r Citep(bib[["R"]])`
 * `r Biocpkg("BiocStyle")` `r Citep(bib[["BiocStyle"]])`
@@ -1682,9 +1682,9 @@ session_info()
 
 # Bibliography
 
-This vignette was generated using `r Biocpkg('BiocStyle')` `r Citep(bib[['BiocStyle']])`, `r CRANpkg('knitr')` `r Citep(bib[['knitr']])` and `r CRANpkg('rmarkdown')` `r Citep(bib[['rmarkdown']])` running behind the scenes.
+This vignette was generated using `r Biocpkg('BiocStyle')` `r Citep(bib[['BiocStyle']], .opts = list(max.names = 1))`, `r CRANpkg('knitr')` `r Citep(bib[['knitr']], .opts = list(max.names = 1))` and `r CRANpkg('rmarkdown')` `r Citep(bib[['rmarkdown']], .opts = list(max.names = 1))` running behind the scenes.
 
-Citations made with `r CRANpkg('RefManageR')` `r Citep(bib[['RefManageR']])`.
+Citations made with `r CRANpkg('RefManageR')` `r Citep(bib[['RefManageR']], .opts = list(max.names = 1))`.
 
 ```{r vignetteBiblio, results = 'asis', echo = FALSE, warning = FALSE, message = FALSE}
 ## Print bibliography
