@@ -1585,17 +1585,6 @@ t_stat_plot(top_genes_pups, top_genes_adults, "Nicotine pups", "Nicotine adults"
 ```
 As shown above, there's no correlation between the t-stats of the genes in pups and adults, which could be interpreted as the genes having different signals for differential expression in both ages. 
 
-## References {-}
-1. Evans, C., Hardin, J., & Stoebel, D. M. (2018). Selecting between-sample RNA-Seq normalization methods from the perspective of their assumptions. *Briefings in bioinformatics*, 19(5), 776-792.
-
-2. Bedre, R. (2023). Gene expression units explained: RPM, RPKM, FPKM, TPM, *DESeq*, TMM, SCnorm, GeTMM, and ComBat-Seq. Web site: https://www.reneshbedre.com/blog/expression_units.html
-
-3. Hoffman, G. E., & Schadt, E. E. (2016). variancePartition: interpreting drivers of variation in complex gene expression studies. BMC bioinformatics, 17(1), 1-13.
-
-4. Hoffman, G. (2022). variancePartition: Quantifying and interpreting drivers of variation in multilevel gene expression experiments.
-
-5. van den Berg, S. M. (2022). Analysing data using linear models. Web site: https://bookdown.org/pingapang9/linear_models_bookdown/
-
 ## Additional resources {-}
 
 Check the material for the course of [Statistical Analysis of Genome Scale Data at CSHL 2023](https://lcolladotor.github.io/cshl_rstats_genome_scale_2023) for more exercises and explanations of the analyses for differential expression. 
@@ -1672,6 +1661,8 @@ session_info()
 
 # Bibliography
 
+## R and R packages
+
 This vignette was generated using `r Biocpkg('BiocStyle')` `r Citep(bib[['BiocStyle']], .opts = list(max.names = 1))`, `r CRANpkg('knitr')` `r Citep(bib[['knitr']], .opts = list(max.names = 1))` and `r CRANpkg('rmarkdown')` `r Citep(bib[['rmarkdown']], .opts = list(max.names = 1))` running behind the scenes.
 
 Citations made with `r CRANpkg('RefManageR')` `r Citep(bib[['RefManageR']], .opts = list(max.names = 1))`.
@@ -1680,6 +1671,18 @@ Citations made with `r CRANpkg('RefManageR')` `r Citep(bib[['RefManageR']], .opt
 ## Print bibliography
 PrintBibliography(bib, .opts = list(hyperlink = "to.doc", style = "html"))
 ```
+
+## Other references {-}
+
+1. Evans, C., Hardin, J., & Stoebel, D. M. (2018). Selecting between-sample RNA-Seq normalization methods from the perspective of their assumptions. *Briefings in bioinformatics*, 19(5), 776-792.
+
+2. Bedre, R. (2023). Gene expression units explained: RPM, RPKM, FPKM, TPM, *DESeq*, TMM, SCnorm, GeTMM, and ComBat-Seq. Web site: https://www.reneshbedre.com/blog/expression_units.html
+
+3. Hoffman, G. E., & Schadt, E. E. (2016). variancePartition: interpreting drivers of variation in complex gene expression studies. BMC bioinformatics, 17(1), 1-13.
+
+4. Hoffman, G. (2022). variancePartition: Quantifying and interpreting drivers of variation in multilevel gene expression experiments.
+
+5. van den Berg, S. M. (2022). Analysing data using linear models. Web site: https://bookdown.org/pingapang9/linear_models_bookdown/
 
 # Acknowledgements
 
