@@ -1585,16 +1585,6 @@ t_stat_plot(top_genes_pups, top_genes_adults, "Nicotine pups", "Nicotine adults"
 ```
 As shown above, there's no correlation between the t-stats of the genes in pups and adults, which could be interpreted as the genes having different signals for differential expression in both ages. 
 
-
-## **4. DEG visualization** {-}
-ToDO  Renee 
-
-
-
-
-
-
-
 ## References {-}
 1. Evans, C., Hardin, J., & Stoebel, D. M. (2018). Selecting between-sample RNA-Seq normalization methods from the perspective of their assumptions. *Briefings in bioinformatics*, 19(5), 776-792.
 
