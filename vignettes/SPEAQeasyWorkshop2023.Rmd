@@ -1,5 +1,5 @@
 ---
-title: "SPEAQeasy: a Scalable Pipeline for Expression Analysis and Quantification, a demonstration of its usage on real data"
+title: "A Bioconductor-style differential expression analysis powered by SPEAQeasy"
 author: 
   - name: Daianna Gonzalez-Padilla
     affiliation:
