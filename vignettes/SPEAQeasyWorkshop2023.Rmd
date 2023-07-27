@@ -130,9 +130,9 @@ Participants are expected to follow us on the theoretical explanations and prese
 
 | Activity                     | Time |
 |------------------------------|------|
-| Introduction to SPEAQeasy               | 15m |
+| Introduction to SPEAQeasy               | 25m |
 | Data overview                           | 10m |
-| Differential Expression Analysis        | 65m |
+| Differential Expression Analysis        | 55m |
 
 Total: a 90 minute session.
 
@@ -1205,7 +1205,7 @@ varPartAnalysis <- function(age, formula) {
 ```
 
 
-```{r message=FALSE, warning=FALSE, eval=FALSE}
+```{r message=FALSE, warning=FALSE}
 ## Violin plots
 
 #####  Model with all variables  #####
@@ -1224,7 +1224,7 @@ plot + theme(
 
 As presented above, in adults we can notice that <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> totalAssignedGene</span> </mark> has a larger mean FVE than <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> mitoRate</span> </mark> so we keep the former. Same reason to remove <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> plate</span> </mark> that is correlated with <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> flowcell</span> </mark> and with <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> overallMapRate</span> </mark>, and to drop <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> sum</span> </mark> that goes after <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> detected</span> </mark>.
 
-```{r message=FALSE, warning=FALSE, eval=FALSE}
+```{r message=FALSE, warning=FALSE}
 #####  Model without correlated variables  #####
 
 ## Adult plots without mitoRate, plate and sum
@@ -1242,7 +1242,7 @@ Notwithstanding, in this new reduced model Group contribution doesn't increment 
 
 In pups, based on the model with all variables, again <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> sum</span> </mark> must be removed, as well as <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> rRNA_rate</span> </mark> and <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> plate</span> </mark> that are correlated with <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> overallMapRate</span> </mark>.
 
-```{r message=FALSE, warning=FALSE, eval=FALSE}
+```{r message=FALSE, warning=FALSE}
 #####  Model with all variables  #####
 
 ## Pups
@@ -1257,7 +1257,7 @@ plot + theme(
 ```
 
 Without correlated variables, Group's contribution increases but so does the residual source.
-```{r message=FALSE, warning=FALSE, eval=FALSE}
+```{r message=FALSE, warning=FALSE}
 #####  Model without correlated variables  #####
 
 ## Pup plots without sum, rRNA_rate and plate
@@ -1339,6 +1339,7 @@ eBGene_adults <- results_adults[[3]]
 ## Number of DEGs (FDR<0.05)
 length(which(top_genes_adults$adj.P.Val < 0.05))
 ```
+
 But for pups there are 1667 DEGs for control vs nicotine administration. 
 ```{r message=FALSE, warning=FALSE}
 ## DEA for pups
@@ -1351,6 +1352,7 @@ eBGene_pups <- results_pups[[3]]
 ## Number of DEGs (FDR<0.05)
 length(which(top_genes_pups$adj.P.Val < 0.05))
 ```
+
 In the following plots we can easily identify which genes in pups were DE based on their logFC's and FDR's. 
 ```{r message=FALSE, warning=FALSE}
 library(jaffelab)
@@ -1584,6 +1586,70 @@ t_stat_plot <- function(top_genes1, top_genes2, name_1, name_2) {
 t_stat_plot(top_genes_pups, top_genes_adults, "Nicotine pups", "Nicotine adults") + theme(plot.margin = unit(c(1.5, 3.5, 1.5, 3.5), "cm"))
 ```
 As shown above, there's no correlation between the t-stats of the genes in pups and adults, which could be interpreted as the genes having different signals for differential expression in both ages. 
+
+
+
+## **4. DEG visualization** {-}
+
+Finally, we can appreciate the expression patterns of the DEGs in pup brain, note the group of upregulated and downregulated DEGs, with genes clustered by FC and samples by Group.
+
+```{r message=FALSE, warning=FALSE}
+library("ComplexHeatmap")
+library("circlize")
+
+## DEGs
+DEGs <- top_genes_pups[which(top_genes_pups$adj.P.Val<0.05),]
+
+## Subset RSE to DEGs
+rse_gene_pups_DE <- rse_gene_pups_qc[rownames(DEGs),]
+
+## Extract logcounts and add name columns
+logs_pup_nic <- assays(rse_gene_pups_DE)$logcounts
+colnames(logs_pup_nic) <- paste0("Pup_brain_", 1:dim(rse_gene_pups_qc)[2])
+
+## Remove contribution of technical variables
+formula <- ~ Group + Sex + flowcell + mitoRate + overallMapRate + totalAssignedGene + detected + ERCCsumLogErr
+model <- model.matrix(formula, data = colData(rse_gene_pups_qc))
+logs_pup_nic <- cleaningY(logs_pup_nic, model, P = 2)
+
+## Center the data to make differences more evident
+logs_pup_nic <- (logs_pup_nic - rowMeans(logs_pup_nic)) / rowSds(logs_pup_nic)
+
+## Prepare annotation for the heatmap
+top_ans <- HeatmapAnnotation(
+    df = as.data.frame(colData(rse_gene_pups_DE)[, c("Sex", "Group")]),
+    col = list(
+        "Sex" = c("F" = "hotpink1", "M" = "dodgerblue"),
+        "Group" = c("Control" = "brown2", "Experimental" = "deepskyblue3")
+    )
+)
+
+## FC's of DEGs as row annotation
+ FCs<-data.frame(signif(2**(DEGs$logFC), digits = 3))
+ rownames(FCs)<-rownames(DEGs)
+ FCs<-data.frame("FC"=apply(FCs, 1, function(x){if(x>1|x==1){paste(">=1")} else {paste("<1")}}))
+
+ left_ans <- rowAnnotation(
+    FC = FCs$FC,
+    col = list("FC" = c(">=1" = "darkgoldenrod4", "<1" = "darkgoldenrod1"))
+)
+
+
+## Plot
+Heatmap(logs_pup_nic,
+    name = "logcounts",
+    show_row_names = FALSE,
+    top_annotation = top_ans,
+    left_annotation = left_ans,
+    row_km = 2,
+    column_km = 2,
+    col = colorRamp2(c(-4, -0.0001, 00001, 4), c("darkblue", "lightblue", "lightsalmon", "darkred")),
+    row_title = NULL,
+    column_title = NULL,
+    column_names_gp = gpar(fontsize = 7)
+)
+```
+
 
 ## Additional resources {-}
 
