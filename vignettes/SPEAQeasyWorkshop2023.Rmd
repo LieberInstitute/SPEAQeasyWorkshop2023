@@ -54,6 +54,7 @@ library(RefManageR)
 ## Write bibliography information
 bib <- c(
     BiocStyle = citation("BiocStyle")[1],
+    circlize = citation("circlize")[1],
     ComplexHeatmap = citation("ComplexHeatmap")[1],
     cowplot = citation("cowplot")[1],
     dplyr = citation("dplyr")[1],
@@ -1205,15 +1206,14 @@ varPartAnalysis <- function(age, formula) {
 ```
 
 
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, eval=FALSE}
 ## Violin plots
 
 #####  Model with all variables  #####
 
 ## Adults
 ## Define variables; random effects indicated with (1| )
-formula <- ~ (1 | Group) + (1 | Pregnancy) + (1 | plate) + (1 | flowcell) + mitoRate + overallMapRate +
-    totalAssignedGene + rRNA_rate + sum + detected + ERCCsumLogErr
+formula <- ~ (1 | Group) + (1 | Pregnancy) + (1 | plate) + (1 | flowcell) + mitoRate + overallMapRate + totalAssignedGene + rRNA_rate + sum + detected + ERCCsumLogErr
 plot <- varPartAnalysis("adults", formula)[[1]]
 plot + theme(
     plot.margin = unit(c(1, 1, 1, 1), "cm"),
@@ -1224,7 +1224,7 @@ plot + theme(
 
 As presented above, in adults we can notice that <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> totalAssignedGene</span> </mark> has a larger mean FVE than <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> mitoRate</span> </mark> so we keep the former. Same reason to remove <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> plate</span> </mark> that is correlated with <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> flowcell</span> </mark> and with <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> overallMapRate</span> </mark>, and to drop <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> sum</span> </mark> that goes after <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> detected</span> </mark>.
 
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, eval=FALSE}
 #####  Model without correlated variables  #####
 
 ## Adult plots without mitoRate, plate and sum
@@ -1242,7 +1242,7 @@ Notwithstanding, in this new reduced model Group contribution doesn't increment 
 
 In pups, based on the model with all variables, again <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> sum</span> </mark> must be removed, as well as <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> rRNA_rate</span> </mark> and <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> plate</span> </mark> that are correlated with <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> overallMapRate</span> </mark>.
 
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, eval=FALSE}
 #####  Model with all variables  #####
 
 ## Pups
@@ -1257,7 +1257,7 @@ plot + theme(
 ```
 
 Without correlated variables, Group's contribution increases but so does the residual source.
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, eval=FALSE}
 #####  Model without correlated variables  #####
 
 ## Pup plots without sum, rRNA_rate and plate
