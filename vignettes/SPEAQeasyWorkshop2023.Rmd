@@ -147,7 +147,7 @@ The global goals of this workshop are:
 * to learn what type of analyses can be done with [SPEAQeasy](https://github.com/LieberInstitute/SPEAQeasy) outputs;
 * to understand techniques used to filter and normalize gene-expression data;
 * to learn of quality control analyses and other type of exploratory data analyses;
-* to understand how to identify suitable covariates for differential expression analyses;
+* to understand how to identify suitable covariates for differential expression analyses, and
 * to learn how to perform a differential expression analysis and how to visualize expression of DEGs.
 
 ## Learning objectives
@@ -155,9 +155,9 @@ The global goals of this workshop are:
 As specific objectives we have:
 
 * to use `r Biocpkg('ggplot2')` to assess bulk RNA-seq quality metrics for the `r Biocpkg('smokingMouse')` dataset stored in `r Biocpkg('SummarizedExperiment')` objects output by the [SPEAQeasy](https://github.com/LieberInstitute/SPEAQeasy) pipeline;
-* use `r Biocpkg('variancePartition')` to perform a Canonical Correlation Analysis (CCA) on gene-expression data with associated quality metrics;
-* to use `r Biocpkg('limma')` functions such as `voom()`, `lmFit()`, `eBayes()` and `topTable()` to find DEGs. 
-* to use `r Biocpkg('ComplexHeatmap')` to create heatmaps of expression levels of DEGs, identifying clusters of up and down regulated genes. 
+* use `r Biocpkg('variancePartition')` to perform a Canonical Correlation Analysis (CCA) on sample metadata with associated quality metrics and to compute the fraction of gene expression variance explained by each sample variable;
+* to use `r Biocpkg('limma')` functions such as `voom()`, `lmFit()`, `eBayes()` and `topTable()` to find DEGs, and
+* to use `r Biocpkg('ComplexHeatmap')` to create heatmaps of expression levels of DEGs, identifying clusters of up and downregulated genes. 
 
 
 # SPEAQeasy overview
@@ -166,11 +166,19 @@ As specific objectives we have:
 
 We introduce [SPEAQeasy](https://github.com/LieberInstitute/SPEAQeasy), a **S**calable RNA-seq processing **P**ipeline for **E**xpression **A**nalysis and **Q**uantification, that is **easy** to install, use, and share with others. More detailed documentation is [here](http://research.libd.org/SPEAQeasy/).
 
-![Functional workflow. Yellow coloring denotes steps which are optional or not always performed.](figs/SPEAQeasy_workflow.png)
+<img src="figs/SPEAQeasy_workflow.png" width="750px"  />
+    <figcaption style="color: gray; line-height: 0.9; text-align: justify"><font size="-1.9"><b>Figure 1: Functional workflow. </b> Yellow coloring denotes steps which are optional or not always performed. </font> 
 
+   </figcaption>
+   
 SPEAQeasy starts with raw sequencing outputs in FASTQ format and ultimately produces [RangedSummarizedExperiment](https://bioconductor.org/packages/release/bioc/html/SummarizedExperiment.html) objects with raw and normalized counts for each feature type: genes, exons, exon-exon junctions, and transcripts.
 
-![](figs/SummarizedExperiment_structure.svg)
+<img src="figs/SummarizedExperiment_structure.svg" width="750px"  />
+ <figcaption style="color: gray; line-height: 0.9; text-align: justify">
+            <font size="-1.9">
+                <b>Figure 2: SummarizedExperiment structure. </b>
+            </font> 
+   </figcaption>
 
 ### Optional steps
 
@@ -247,11 +255,11 @@ cat(paste0(readLines(example_main_script), "\n"))
 
 # Data overview and download 
 
-The dataset that will be used for the DEA can be downloaded from the `smokingMouse` package. We will download the `rse_gene` object which contains the data at the gene level. Visit [here](http://research.libd.org/smokingMouse/) for more details of this package.
+The dataset that will be used for the DEA can be downloaded from the `smokingMouse` package. We will download the `rse_gene` object which contains the expression data at the gene level and is a direct output file of the SPEAQeasy pipeline. Visit [here](http://research.libd.org/smokingMouse/) for more details of the `smokingMouse` package.
 
 
 <img src="figs/Data_overview_experiments.png" width="750px"  />
-    <figcaption style="color: gray; line-height: 0.85; text-align: justify"><font size="-2"><b>Figure 1</b>: <b>Experimental design of the study. </b> The data was obtained from an experiment in which <b>A)</b> 6 pregnant dams and 17 non-pregnant female adult mice were administered nicotine by intraperitoneal injection (IP; n=12) or controls (n=11). A total of 42 pups were born to pregnant dams: 19 were born to mice that were administered nicotine and 23 to control mice. Samples from frontal cortices of P0 pups and adults were obtained. <b>B)</b> RNA was extracted from those samples and then RNA-seq libraries were prepared and sequenced to obtain the expression counts of the genes. At the end, a dataset of 65 samples (either from adult or pup brain) and 55,401 genes was generated. </font> 
+    <figcaption style="color: gray; line-height: 0.85; text-align: justify"><font size="-1.9"><b>Figure 3</b>: <b>Experimental design of the study. </b> The data was obtained from an experiment in which <b>A)</b> 6 pregnant dams and 17 non-pregnant female adult mice were administered nicotine by intraperitoneal injection (IP; n=12) or controls (n=11). A total of 42 pups were born to pregnant dams: 19 were born to mice that were administered nicotine and 23 to control mice. Samples from frontal cortices of P0 pups and adults were obtained. <b>B)</b> RNA was extracted from those samples and then RNA-seq libraries were prepared and sequenced to obtain the expression counts of the genes. At the end, a dataset of 65 samples (either from adult or pup brain) and 55,401 genes was generated. </font> 
 
    </figcaption>
 
@@ -325,17 +333,6 @@ myfiles <- query(eh, "smokingMouse")
 
 ## Download the mouse gene data
 rse_gene <- myfiles[["EH8313"]]
-## This is a RangedSummarizedExperiment object
-rse_gene
-
-## Check sample info
-colData(rse_gene)[1:5, 1:5]
-## Check gene info
-rowData(rse_gene)[1:5, 1:5]
-## Access the original counts
-original_counts <- assays(rse_gene)$counts
-## Access the log normalized counts
-logcounts <- assays(rse_gene)$logcounts
 
 ## Explore complete rse_gene object (including smoking-exposed samples as well)
 rse_gene
@@ -367,13 +364,13 @@ head(colData(rse_gene_nic), 2)
 
 # Differential Expression Analysis
 
-In this workshop we'll guide you through a differential expression analysis following the steps presented in **Figure 2**. The main objective is to determine which genes are affected by nicotine administration (in adults) or exposure (in pups) in the mouse brain. 
+In this workshop we'll guide you through a differential expression analysis following the steps presented in **Figure 4**. The main objective is to determine which genes are affected by nicotine administration (in adults) or exposure (in pups) in the mouse brain. 
 
 <figure>
     <img src="figs/Analyses.png" width="800px" align=center />
         <figcaption style="color: gray; line-height: 0.9; text-align: justify">
             <font size="-1.8">
-                <b>Figure 2</b>: <b> Summary of the analyses. </b> Steps in yellow will be properly performed. 
+                <b>Figure 4</b>: <b> Summary of the analyses. </b> Steps in yellow will be properly performed. 
                  1. Data Preparation 2. Exploratory Data Analysis 3. Differential Expression Analysis  4. DEG visualization. 
             </font> 
             <font size="0.8"> Abbreviations: CPM: counts per million; QC: quality control; PC: principal component; 
@@ -393,7 +390,7 @@ These variables lead to significantly different mRNA amounts but of course are n
 $$CPM = \frac{read \ \ counts \ \ of \ \ gene \ \ \times \ \ 10^6 }{Total \ \ mapping \ \ reads \ \ of \ \ sample}$$ 
 
 
-As outlined in [**Data overview and download**](##Data overview and download), the scaling factors were obtained with `calcNormFactors()` applying the Trimmed Mean of M-Values (TMM) method, the `r BiocStyle::Biocpkg("edgeR")` package's default normalization method that assumes that most genes are not differentially expressed. The effective library sizes of the samples and the CPM of each observation were computed with the `r BiocStyle::Biocpkg("edgeR")` function `cpm()` setting the `log` argument to `TRUE` and `prior.count` to 0.5 to receive values in $log_2(CPM+0.5)$.
+As outlined in **Data overview and download**, the scaling factors were obtained with `calcNormFactors()` applying the Trimmed Mean of M-Values (TMM) method, the `r BiocStyle::Biocpkg("edgeR")` package's default normalization method that assumes that most genes are not differentially expressed. The effective library sizes of the samples and the CPM of each observation were computed with the `r BiocStyle::Biocpkg("edgeR")` function `cpm()` setting the `log` argument to `TRUE` and `prior.count` to 0.5 to receive values in $log_2(CPM+0.5)$.
 
 After data normalization and scaling, we’d expect the read counts to follow a normal distribution, something we can confirm by comparing the counts' distribution before and after the normalization. Note that both datasets contain the exact same genes.
 
@@ -422,12 +419,12 @@ plot <- ggplot(logcounts_data, aes(x = logcounts)) +
 plot
 ```
 
-As presented, after data transformation, we can now see a more widespread distribution of the counts, but note that most of them are zeros in the first plot (the one with the raw counts) and those zeros remain after normalization, corresponding to counts below 0 in the second plot. That is because we haven't filtered the low and zero-expressed genes. 
+As presented, after data transformation, we can now see a more widespread distribution of the counts, but note that most of them are zeros in the first plot (the one with the raw counts) and those zeros remain after normalization, corresponding to counts below 0 in the second plot. That is because we haven't filtered the lowly and zero-expressed genes. 
 
 
 ### 1.2 Gene filtering {-}
 
-Low-expressed or non-expressed genes in many samples are not of biological interest in a study of differential expression because they don't inform about the gene expression changes and they are, by definition, not differentially expressed, so we have to drop them using `filterByExpr()` from `r BiocStyle::Biocpkg("edgeR")` that only keeps genes with at least *K* CPM in *n* samples and with a minimum total number of counts across all samples.
+Lowly-expressed or non-expressed genes in many samples are not of biological interest in a study of differential expression because they don't inform about the gene expression changes and they are, by definition, not differentially expressed, so we have to drop them using `filterByExpr()` from `r BiocStyle::Biocpkg("edgeR")` that only keeps genes with at least *K* CPM in *n* samples and with a minimum total number of counts across all samples.
 
 ```{r,  message=FALSE, warning=FALSE}
 ## Retain genes that passed filtering step
@@ -457,7 +454,7 @@ The first formal step that we will be performing is the sample exploration. This
 
 ### 2.1 Quality Control Analysis {-}
 
-First we have to explore and compare the quality-control metrics of the samples in the different groups given by covariates such as age, sex, pregnancy state, group, plate and flowcell. See [**Sample Information**](###Sample Information) for a description of these variables.  
+First we have to explore and compare the quality-control metrics of the samples in the different groups given by covariates such as age, sex, pregnancy state, group, plate and flowcell. See **Sample Information** for a description of these variables.  
 
 <style>
 p.comment {
@@ -783,7 +780,7 @@ In the following plot we can confirm that taking all samples together (both adul
 p <- boxplots_after_QC_filtering(rse_gene_filt, "mitoRate", "Age")
 p + theme(plot.margin = unit(c(2, 4, 2, 4), "cm"))
 ```
-For adults, only 3 controls are dropped, 3 of them by their <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> mitoRate</span> </mark>. 
+For adults, only 3 controls are dropped by their <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> mitoRate</span> </mark>. 
 ```{r message=FALSE, warning=FALSE}
 ## Adult samples
 p <- boxplots_after_QC_filtering(rse_gene_adults, "mitoRate", "Group")
@@ -867,7 +864,7 @@ plot_PCAs <- function(sample_var, pca_data) {
 }
 ```
 
-
+Note that taking all samples, they are separated by age in PC1, another reason to analyze pup and adult samples individually. 
 
 ```{r, message=FALSE, results='hide', warning=FALSE,  fig.align = "center", fig.height=2}
 sample_variables <- c("Group", "Age", "Sex", "Pregnancy", "plate", "flowcell")
@@ -879,7 +876,7 @@ pca_plots <- lapply(sample_variables, plot_PCAs, pca_data = pca_data)
 pca_plots
 ```
 
-
+In pups, <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> Sex</span> </mark> segregates samples in PC2 which could have a biological interpretation since males and females have differences in their gene expression and that's why we must adjust for this covariate in the models for DE.
 
 ```{r, message=FALSE, results='hide', warning=FALSE,  fig.align = "center", fig.height=2}
 pca_data <- calc_PCA(rse_gene_pups_qc)
@@ -888,7 +885,7 @@ pca_plots <- lapply(sample_variables[-c(2, 4)], plot_PCAs, pca_data = pca_data)
 pca_plots
 ```
 
-
+In adults no variable clearly explained a high percentage of samples' differences in gene expression. 
 ```{r, message=FALSE, results='hide', warning=FALSE,  fig.align = "center", fig.height=2}
 pca_data <- calc_PCA(rse_gene_adults_qc)
 
@@ -1109,7 +1106,7 @@ p <- corr_plots("adults", "flowcell", "plate", NULL)
 p + theme(plot.margin = unit(c(1.5, 4.5, 1.5, 4.5), "cm"))
 ```
 
-We also appreciated that the library size and the number of detected of genes are correlated in pups and adults. Note however that in pups control samples have bigger numbers of expressed genes. 
+We also appreciated that the library size and the number of detected genes are correlated in pups and adults. Note however that in pups control samples have bigger numbers of expressed genes. 
 ```{r message=FALSE, warning=FALSE}
 p <- corr_plots("adults", "sum", "detected", "Group")
 p + theme(plot.margin = unit(c(2, 4, 2, 4), "cm"))
@@ -1119,7 +1116,7 @@ p <- corr_plots("pups", "sum", "detected", "Group")
 p + theme(plot.margin = unit(c(2, 4, 2, 4), "cm"))
 ```
 
-Plate was also slightly correlated with the overall mapping rate, but if we look closely, the trend is given by the plate 1 samples that have lower rates; the rates of samples from the 2nd and 3rd plates are similar. 
+Plate was also slightly correlated with the overall mapping rate in pups, but if we look closely, the trend is given by the plate 1 samples that have lower rates; the rates of samples from the 2nd and 3rd plates are similar. 
 
 ```{r message=FALSE, warning=FALSE}
 p <- corr_plots("pups", "plate", "overallMapRate", NULL)
@@ -1141,8 +1138,7 @@ plots + theme(plot.margin = unit(c(1, 2.5, 1, 2.5), "cm"))
 ***Hint***: What would happen if all experimental samples were in one plate or flowcell and controls in another?
 </div>
 
-After identifying which variables are correlated and exploring the metrics of control and experimental samples the next step is to determine which of these variables must be removed. How do we discern which of the correlated variables to keep and which to drop? As recommended in the `variancePartition` user’s guide [4], initially we can fit a linear model for each gene taking all sample variables and then define which ones explain a higher percentage of variance in many genes. But first let's review how `variancePartition` works. 
-
+After identifying which variables are correlated and exploring the metrics of control and experimental samples the next step is to determine which of these variables must be removed. How do we discern which of the correlated variables to keep and which to drop? As recommended in the `variancePartition` user’s guide [4], initially we can fit a linear model for each gene taking all sample variables and then define which ones explain a higher percentage of variance in many genes. 
 
 
 #### *2.3.2 Fit model and extract fraction of variance explained* {-}
@@ -1221,7 +1217,10 @@ plot + theme(
     axis.text.y = element_text(size = (7.5))
 )
 ```
-
+<center>
+![](figs/varPart_allVars_adults.png)
+</center>
+   
 As presented above, in adults we can notice that <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> totalAssignedGene</span> </mark> has a larger mean FVE than <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> mitoRate</span> </mark> so we keep the former. Same reason to remove <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> plate</span> </mark> that is correlated with <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> flowcell</span> </mark> and with <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> overallMapRate</span> </mark>, and to drop <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> sum</span> </mark> that goes after <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> detected</span> </mark>.
 
 ```{r message=FALSE, warning=FALSE, eval=FALSE}
@@ -1238,6 +1237,11 @@ plot + theme(
     axis.text.y = element_text(size = (7.5))
 )
 ```
+
+<center>
+![](figs/varPart_uncorrVars_adults.png)
+</center>
+
 Notwithstanding, in this new reduced model Group contribution doesn't increment much in comparison with the complete model and also note that the % of variance explained by the residuals, i.e., the % of gene expression variance that the model couldn't explain, increments in this model compared to the previous; by removing independent variables to a regression equation, we can explain less of the variance of the dependent variable [5]. That's the price to pay when dropping variables but it is convenient in this case since we don't have many samples for the model to determine their real unique contributions.  
 
 In pups, based on the model with all variables, again <mark style= "background-color: #DFF0FE"> <span style="font-family: monospace"> sum</span> </mark> must be removed, as well as <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> rRNA_rate</span> </mark> and <mark style= "background-color: #FAECF8"> <span style="font-family: monospace"> plate</span> </mark> that are correlated with <mark style= "background-color: #FCF3CF"> <span style="font-family: monospace"> overallMapRate</span> </mark>.
@@ -1256,6 +1260,10 @@ plot + theme(
 )
 ```
 
+<center>
+![](figs/varPart_allVars_pups.png)
+</center>
+
 Without correlated variables, Group's contribution increases but so does the residual source.
 ```{r message=FALSE, warning=FALSE, eval=FALSE}
 #####  Model without correlated variables  #####
@@ -1271,6 +1279,9 @@ plot + theme(
     axis.text.y = element_text(size = (7.5))
 )
 ```
+<center>
+![](figs/varPart_uncorrVars_pups.png)
+</center>
 
 At this point we have extracted normalized counts and filtered genes, we have taken out poor-quality samples and we have decided which sample variables to retain for future analyses. Now we are ready for the DEA!
 
