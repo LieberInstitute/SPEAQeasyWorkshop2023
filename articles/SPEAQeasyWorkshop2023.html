@@ -208,7 +208,7 @@ gene-expression data;</li>
 <li>to learn of quality control analyses and other type of exploratory
 data analyses;</li>
 <li>to understand how to identify suitable covariates for differential
-expression analyses;</li>
+expression analyses, and</li>
 <li>to learn how to perform a differential expression analysis and how
 to visualize expression of DEGs.</li>
 </ul>
@@ -224,14 +224,15 @@ dataset stored in <em><a href="https://bioconductor.org/packages/3.18/Summarized
 objects output by the <a href="https://github.com/LieberInstitute/SPEAQeasy" class="external-link">SPEAQeasy</a>
 pipeline;</li>
 <li>use <em><a href="https://bioconductor.org/packages/3.18/variancePartition" class="external-link">variancePartition</a></em>
-to perform a Canonical Correlation Analysis (CCA) on gene-expression
-data with associated quality metrics;</li>
+to perform a Canonical Correlation Analysis (CCA) on sample metadata
+with associated quality metrics and to compute the fraction of gene
+expression variance explained by each sample variable;</li>
 <li>to use <em><a href="https://bioconductor.org/packages/3.18/limma" class="external-link">limma</a></em>
 functions such as <code><a href="https://rdrr.io/pkg/limma/man/voom.html" class="external-link">voom()</a></code>, <code><a href="https://rdrr.io/pkg/limma/man/lmFit.html" class="external-link">lmFit()</a></code>,
-<code><a href="https://rdrr.io/pkg/limma/man/ebayes.html" class="external-link">eBayes()</a></code> and <code>topTable()</code> to find DEGs.</li>
+<code><a href="https://rdrr.io/pkg/limma/man/ebayes.html" class="external-link">eBayes()</a></code> and <code>topTable()</code> to find DEGs, and</li>
 <li>to use <em><a href="https://bioconductor.org/packages/3.18/ComplexHeatmap" class="external-link">ComplexHeatmap</a></em>
 to create heatmaps of expression levels of DEGs, identifying clusters of
-up and down regulated genes.</li>
+up and downregulated genes.</li>
 </ul>
 </div>
 </div>
@@ -246,16 +247,16 @@ up and down regulated genes.</li>
 for <strong>E</strong>xpression <strong>A</strong>nalysis and
 <strong>Q</strong>uantification, that is <strong>easy</strong> to
 install, use, and share with others. More detailed documentation is <a href="http://research.libd.org/SPEAQeasy/" class="external-link">here</a>.</p>
-<div class="float">
-<img src="figs/SPEAQeasy_workflow.png" alt="Functional workflow. Yellow coloring denotes steps which are optional or not always performed."><div class="figcaption">Functional workflow. Yellow coloring denotes
-steps which are optional or not always performed.</div>
-</div>
-<p>SPEAQeasy starts with raw sequencing outputs in FASTQ format and
+<img src="figs/SPEAQeasy_workflow.png" width="750px"><figcaption style="color: gray; line-height: 0.9; text-align: justify"><p><font size="-1.9"><b>Figure 1: Functional workflow. </b> Yellow
+coloring denotes steps which are optional or not always performed.
+</font></p>
+</figcaption><p>SPEAQeasy starts with raw sequencing outputs in FASTQ format and
 ultimately produces <a href="https://bioconductor.org/packages/release/bioc/html/SummarizedExperiment.html" class="external-link">RangedSummarizedExperiment</a>
 objects with raw and normalized counts for each feature type: genes,
 exons, exon-exon junctions, and transcripts.</p>
-<p><img src="figs/SummarizedExperiment_structure.svg"></p>
-<div class="section level4">
+<img src="figs/SummarizedExperiment_structure.svg" width="750px"><figcaption style="color: gray; line-height: 0.9; text-align: justify"><font size="-1.9"> <b>Figure 2: SummarizedExperiment structure. </b>
+</font>
+</figcaption><div class="section level4">
 <h4 id="optional-steps">Optional steps<a class="anchor" aria-label="anchor" href="#optional-steps"></a>
 </h4>
 <p>For human samples, variant calling is performed at a list of highly
@@ -393,12 +394,13 @@ background task.</p>
 </h2>
 <p>The dataset that will be used for the DEA can be downloaded from the
 <code>smokingMouse</code> package. We will download the
-<code>rse_gene</code> object which contains the data at the gene level.
-Visit <a href="http://research.libd.org/smokingMouse/" class="external-link">here</a> for more
-details of this package.</p>
-<img src="figs/Data_overview_experiments.png" width="750px"><figcaption style="color: gray; line-height: 0.85; text-align: justify"><p><font size="-2"><b>Figure 1</b>: <b>Experimental design of the study.
-</b> The data was obtained from an experiment in which <b>A)</b> 6
-pregnant dams and 17 non-pregnant female adult mice were administered
+<code>rse_gene</code> object which contains the expression data at the
+gene level and is a direct output file of the SPEAQeasy pipeline. Visit
+<a href="http://research.libd.org/smokingMouse/" class="external-link">here</a> for more
+details of the <code>smokingMouse</code> package.</p>
+<img src="figs/Data_overview_experiments.png" width="750px"><figcaption style="color: gray; line-height: 0.85; text-align: justify"><p><font size="-1.9"><b>Figure 3</b>: <b>Experimental design of the
+study. </b> The data was obtained from an experiment in which <b>A)</b>
+6 pregnant dams and 17 non-pregnant female adult mice were administered
 nicotine by intraperitoneal injection (IP; n=12) or controls (n=11). A
 total of 42 pups were born to pregnant dams: 19 were born to mice that
 were administered nicotine and 23 to control mice. Samples from frontal
@@ -622,52 +624,6 @@ treated in water.</p>
 <span><span class="va">rse_gene</span> <span class="op">&lt;-</span> <span class="va">myfiles</span><span class="op">[[</span><span class="st">"EH8313"</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="co">#&gt; see ?smokingMouse and browseVignettes('smokingMouse') for documentation</span></span>
 <span><span class="co">#&gt; loading from cache</span></span>
-<span><span class="co">## This is a RangedSummarizedExperiment object</span></span>
-<span><span class="va">rse_gene</span></span>
-<span><span class="co">#&gt; class: RangedSummarizedExperiment </span></span>
-<span><span class="co">#&gt; dim: 55401 208 </span></span>
-<span><span class="co">#&gt; metadata(1): Obtained_from</span></span>
-<span><span class="co">#&gt; assays(2): counts logcounts</span></span>
-<span><span class="co">#&gt; rownames(55401): ENSMUSG00000102693.1 ENSMUSG00000064842.1 ...</span></span>
-<span><span class="co">#&gt;   ENSMUSG00000064371.1 ENSMUSG00000064372.1</span></span>
-<span><span class="co">#&gt; rowData names(13): Length gencodeID ... DE_in_pup_brain_nicotine</span></span>
-<span><span class="co">#&gt;   DE_in_pup_brain_smoking</span></span>
-<span><span class="co">#&gt; colnames: NULL</span></span>
-<span><span class="co">#&gt; colData names(71): SAMPLE_ID FQCbasicStats ...</span></span>
-<span><span class="co">#&gt;   retained_after_QC_sample_filtering</span></span>
-<span><span class="co">#&gt;   retained_after_manual_sample_filtering</span></span>
-<span></span>
-<span><span class="co">## Check sample info</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">colData</a></span><span class="op">(</span><span class="va">rse_gene</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span></span>
-<span><span class="co">#&gt; DataFrame with 5 rows and 5 columns</span></span>
-<span><span class="co">#&gt;     SAMPLE_ID FQCbasicStats perBaseQual perTileQual  perSeqQual</span></span>
-<span><span class="co">#&gt;   &lt;character&gt;   &lt;character&gt; &lt;character&gt; &lt;character&gt; &lt;character&gt;</span></span>
-<span><span class="co">#&gt; 1 Sample_2914          PASS        PASS        PASS        PASS</span></span>
-<span><span class="co">#&gt; 2 Sample_4042          PASS        PASS        PASS        PASS</span></span>
-<span><span class="co">#&gt; 3 Sample_4043          PASS        PASS        PASS        PASS</span></span>
-<span><span class="co">#&gt; 4 Sample_4044          PASS        PASS        PASS        PASS</span></span>
-<span><span class="co">#&gt; 5 Sample_4045          PASS        PASS        PASS        PASS</span></span>
-<span><span class="co">## Check gene info</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">rowData</a></span><span class="op">(</span><span class="va">rse_gene</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span></span>
-<span><span class="co">#&gt; DataFrame with 5 rows and 5 columns</span></span>
-<span><span class="co">#&gt;                         Length            gencodeID          ensemblID</span></span>
-<span><span class="co">#&gt;                      &lt;integer&gt;          &lt;character&gt;        &lt;character&gt;</span></span>
-<span><span class="co">#&gt; ENSMUSG00000102693.1      1070 ENSMUSG00000102693.1 ENSMUSG00000102693</span></span>
-<span><span class="co">#&gt; ENSMUSG00000064842.1       110 ENSMUSG00000064842.1 ENSMUSG00000064842</span></span>
-<span><span class="co">#&gt; ENSMUSG00000051951.5      6094 ENSMUSG00000051951.5 ENSMUSG00000051951</span></span>
-<span><span class="co">#&gt; ENSMUSG00000102851.1       480 ENSMUSG00000102851.1 ENSMUSG00000102851</span></span>
-<span><span class="co">#&gt; ENSMUSG00000103377.1      2819 ENSMUSG00000103377.1 ENSMUSG00000103377</span></span>
-<span><span class="co">#&gt;                                 gene_type    EntrezID</span></span>
-<span><span class="co">#&gt;                               &lt;character&gt; &lt;character&gt;</span></span>
-<span><span class="co">#&gt; ENSMUSG00000102693.1                  TEC       71042</span></span>
-<span><span class="co">#&gt; ENSMUSG00000064842.1                snRNA          NA</span></span>
-<span><span class="co">#&gt; ENSMUSG00000051951.5       protein_coding      497097</span></span>
-<span><span class="co">#&gt; ENSMUSG00000102851.1 processed_pseudogene   100418032</span></span>
-<span><span class="co">#&gt; ENSMUSG00000103377.1                  TEC          NA</span></span>
-<span><span class="co">## Access the original counts</span></span>
-<span><span class="va">original_counts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">assays</a></span><span class="op">(</span><span class="va">rse_gene</span><span class="op">)</span><span class="op">$</span><span class="va">counts</span></span>
-<span><span class="co">## Access the log normalized counts</span></span>
-<span><span class="va">logcounts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">assays</a></span><span class="op">(</span><span class="va">rse_gene</span><span class="op">)</span><span class="op">$</span><span class="va">logcounts</span></span>
 <span></span>
 <span><span class="co">## Explore complete rse_gene object (including smoking-exposed samples as well)</span></span>
 <span><span class="va">rse_gene</span></span>
@@ -783,10 +739,10 @@ treated in water.</p>
 <h2 id="differential-expression-analysis">Differential Expression Analysis<a class="anchor" aria-label="anchor" href="#differential-expression-analysis"></a>
 </h2>
 <p>In this workshop we’ll guide you through a differential expression
-analysis following the steps presented in <strong>Figure 2</strong>. The
+analysis following the steps presented in <strong>Figure 4</strong>. The
 main objective is to determine which genes are affected by nicotine
 administration (in adults) or exposure (in pups) in the mouse brain.</p>
-<figure><img src="figs/Analyses.png" width="800px" align="center"><figcaption style="color: gray; line-height: 0.9; text-align: justify"><font size="-1.8"> <b>Figure 2</b>: <b> Summary of the analyses. </b>
+<figure><img src="figs/Analyses.png" width="800px" align="center"><figcaption style="color: gray; line-height: 0.9; text-align: justify"><font size="-1.8"> <b>Figure 4</b>: <b> Summary of the analyses. </b>
 Steps in yellow will be properly performed. 1. Data Preparation 2.
 Exploratory Data Analysis 3. Differential Expression Analysis 4. DEG
 visualization. </font> <font size="0.8"> Abbreviations: CPM: counts per
@@ -832,10 +788,9 @@ sample per million [2]:</p>
 <p><span class="math display">\[CPM = \frac{read \ \ counts \ \ of \ \
 gene \ \ \times \ \ 10^6 }{Total \ \ mapping \ \ reads \ \ of \ \
 sample}\]</span></p>
-<p>As outlined in <a href="#id_#Data%20overview%20and%20download"><strong>Data overview and
-download</strong></a>, the scaling factors were obtained with
-<code>calcNormFactors()</code> applying the Trimmed Mean of M-Values
-(TMM) method, the <em><a href="https://bioconductor.org/packages/3.18/edgeR" class="external-link">edgeR</a></em>
+<p>As outlined in <strong>Data overview and download</strong>, the
+scaling factors were obtained with <code>calcNormFactors()</code>
+applying the Trimmed Mean of M-Values (TMM) method, the <em><a href="https://bioconductor.org/packages/3.18/edgeR" class="external-link">edgeR</a></em>
 package’s default normalization method that assumes that most genes are
 not differentially expressed. The effective library sizes of the samples
 and the CPM of each observation were computed with the <em><a href="https://bioconductor.org/packages/3.18/edgeR" class="external-link">edgeR</a></em>
@@ -876,13 +831,13 @@ datasets contain the exact same genes.</p>
 widespread distribution of the counts, but note that most of them are
 zeros in the first plot (the one with the raw counts) and those zeros
 remain after normalization, corresponding to counts below 0 in the
-second plot. That is because we haven’t filtered the low and
+second plot. That is because we haven’t filtered the lowly and
 zero-expressed genes.</p>
 </div>
 <div class="section level4">
 <h4 class="unnumbered" id="gene-filtering">1.2 Gene filtering<a class="anchor" aria-label="anchor" href="#gene-filtering"></a>
 </h4>
-<p>Low-expressed or non-expressed genes in many samples are not of
+<p>Lowly-expressed or non-expressed genes in many samples are not of
 biological interest in a study of differential expression because they
 don’t inform about the gene expression changes and they are, by
 definition, not differentially expressed, so we have to drop them using
@@ -932,8 +887,8 @@ expression variance that they explain for each gene.</p>
 </h4>
 <p>First we have to explore and compare the quality-control metrics of
 the samples in the different groups given by covariates such as age,
-sex, pregnancy state, group, plate and flowcell. See <a href="#id_##Sample%20Information"><strong>Sample
-Information</strong></a> for a description of these variables.</p>
+sex, pregnancy state, group, plate and flowcell. See <strong>Sample
+Information</strong> for a description of these variables.</p>
 <style>
 p.comment {
 background-color: #DBDBDB;
@@ -1297,7 +1252,7 @@ analyze pup and adult samples separately.</p>
 <span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">boxplots_after_QC_filtering</span><span class="op">(</span><span class="va">rse_gene_filt</span>, <span class="st">"mitoRate"</span>, <span class="st">"Age"</span><span class="op">)</span></span>
 <span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>plot.margin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-12-1.png" width="700">
-For adults, only 3 controls are dropped, 3 of them by their
+For adults, only 3 controls are dropped by their
 <mark style="background-color: #FCF3CF"><span style="font-family: monospace"> mitoRate</span> </mark>.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Adult samples</span></span>
@@ -1377,6 +1332,8 @@ differences in the expression values of the samples.</p>
 <span></span>
 <span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">wplot</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
+<p>Note that taking all samples, they are separated by age in PC1,
+another reason to analyze pup and adult samples individually.</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sample_variables</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Group"</span>, <span class="st">"Age"</span>, <span class="st">"Sex"</span>, <span class="st">"Pregnancy"</span>, <span class="st">"plate"</span>, <span class="st">"flowcell"</span><span class="op">)</span></span>
 <span></span>
@@ -1386,12 +1343,18 @@ differences in the expression values of the samples.</p>
 <span><span class="va">pca_plots</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">sample_variables</span>, <span class="va">plot_PCAs</span>, pca_data <span class="op">=</span> <span class="va">pca_data</span><span class="op">)</span></span>
 <span><span class="va">pca_plots</span></span></code></pre></div>
 <p><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-17-1.png" width="700" style="display: block; margin: auto;"><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-17-2.png" width="700" style="display: block; margin: auto;"><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-17-3.png" width="700" style="display: block; margin: auto;"><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-17-4.png" width="700" style="display: block; margin: auto;"><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-17-5.png" width="700" style="display: block; margin: auto;"><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-17-6.png" width="700" style="display: block; margin: auto;"></p>
+<p>In pups, <mark style="background-color: #FAECF8"><span style="font-family: monospace"> Sex</span> </mark> segregates samples in
+PC2 which could have a biological interpretation since males and females
+have differences in their gene expression and that’s why we must adjust
+for this covariate in the models for DE.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pca_data</span> <span class="op">&lt;-</span> <span class="fu">calc_PCA</span><span class="op">(</span><span class="va">rse_gene_pups_qc</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">pca_plots</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">sample_variables</span><span class="op">[</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span><span class="op">]</span>, <span class="va">plot_PCAs</span>, pca_data <span class="op">=</span> <span class="va">pca_data</span><span class="op">)</span></span>
 <span><span class="va">pca_plots</span></span></code></pre></div>
 <p><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-18-1.png" width="700" style="display: block; margin: auto;"><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-18-2.png" width="700" style="display: block; margin: auto;"><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-18-3.png" width="700" style="display: block; margin: auto;"><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-18-4.png" width="700" style="display: block; margin: auto;"></p>
+<p>In adults no variable clearly explained a high percentage of samples’
+differences in gene expression.</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pca_data</span> <span class="op">&lt;-</span> <span class="fu">calc_PCA</span><span class="op">(</span><span class="va">rse_gene_adults_qc</span><span class="op">)</span></span>
 <span></span>
@@ -1649,7 +1612,7 @@ from the second flowcell were in the 3rd plate.</p>
 <span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>plot.margin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.5</span>, <span class="fl">4.5</span>, <span class="fl">1.5</span>, <span class="fl">4.5</span><span class="op">)</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-25-1.png" width="700"></p>
 <p>We also appreciated that the library size and the number of detected
-of genes are correlated in pups and adults. Note however that in pups
+genes are correlated in pups and adults. Note however that in pups
 control samples have bigger numbers of expressed genes.</p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">corr_plots</span><span class="op">(</span><span class="st">"adults"</span>, <span class="st">"sum"</span>, <span class="st">"detected"</span>, <span class="st">"Group"</span><span class="op">)</span></span>
@@ -1661,10 +1624,10 @@ control samples have bigger numbers of expressed genes.</p>
 <span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">corr_plots</span><span class="op">(</span><span class="st">"pups"</span>, <span class="st">"sum"</span>, <span class="st">"detected"</span>, <span class="st">"Group"</span><span class="op">)</span></span>
 <span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>plot.margin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="SPEAQeasyWorkshop2023_files/figure-html/unnamed-chunk-26-2.png" width="700"></p>
-<p>Plate was also slightly correlated with the overall mapping rate, but
-if we look closely, the trend is given by the plate 1 samples that have
-lower rates; the rates of samples from the 2nd and 3rd plates are
-similar.</p>
+<p>Plate was also slightly correlated with the overall mapping rate in
+pups, but if we look closely, the trend is given by the plate 1 samples
+that have lower rates; the rates of samples from the 2nd and 3rd plates
+are similar.</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">corr_plots</span><span class="op">(</span><span class="st">"pups"</span>, <span class="st">"plate"</span>, <span class="st">"overallMapRate"</span>, <span class="cn">NULL</span><span class="op">)</span></span>
 <span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>plot.margin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">5.3</span>, <span class="fl">2</span>, <span class="fl">5.3</span><span class="op">)</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -1692,8 +1655,7 @@ which of the correlated variables to keep and which to drop? As
 recommended in the <code>variancePartition</code> user’s guide [4],
 initially we can fit a linear model for each gene taking all sample
 variables and then define which ones explain a higher percentage of
-variance in many genes. But first let’s review how
-<code>variancePartition</code> works.</p>
+variance in many genes.</p>
 </div>
 <div class="section level5">
 <h5 class="unnumbered" id="fit-model-and-extract-fraction-of-variance-explained">
@@ -1796,6 +1758,9 @@ with an extension of GLM, with the <strong>linear mixed model
 <span>    axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="op">(</span><span class="fl">7</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>    axis.text.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="op">(</span><span class="fl">7.5</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
+<center>
+<img src="figs/varPart_allVars_adults.png">
+</center>
 <p>As presented above, in adults we can notice that
 <mark style="background-color: #FCF3CF"><span style="font-family: monospace"> totalAssignedGene</span> </mark> has a
 larger mean FVE than <mark style="background-color: #FCF3CF"><span style="font-family: monospace"> mitoRate</span> </mark> so we keep the
@@ -1817,6 +1782,9 @@ drop <mark style="background-color: #DFF0FE"><span style="font-family: monospace
 <span>    axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="op">(</span><span class="fl">7</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>    axis.text.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="op">(</span><span class="fl">7.5</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
+<center>
+<img src="figs/varPart_uncorrVars_adults.png">
+</center>
 <p>Notwithstanding, in this new reduced model Group contribution doesn’t
 increment much in comparison with the complete model and also note that
 the % of variance explained by the residuals, i.e., the % of gene
@@ -1843,6 +1811,9 @@ with <mark style="background-color: #FCF3CF"><span style="font-family: monospace
 <span>    axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="op">(</span><span class="fl">7</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>    axis.text.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="op">(</span><span class="fl">7.5</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
+<center>
+<img src="figs/varPart_allVars_pups.png">
+</center>
 <p>Without correlated variables, Group’s contribution increases but so
 does the residual source.</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
@@ -1858,6 +1829,9 @@ does the residual source.</p>
 <span>    axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="op">(</span><span class="fl">7</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>    axis.text.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="op">(</span><span class="fl">7.5</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
+<center>
+<img src="figs/varPart_uncorrVars_pups.png">
+</center>
 <p>At this point we have extracted normalized counts and filtered genes,
 we have taken out poor-quality samples and we have decided which sample
 variables to retain for future analyses. Now we are ready for the
@@ -2368,9 +2342,9 @@ Chen, Shi, and Smyth, 2014)</li>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://yihui.org/knitr/" class="external-link">"knitr"</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit.html" class="external-link">knit</a></span><span class="op">(</span><span class="st">"SPEAQeasyWorkshop2023.Rmd"</span>, tangle <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>Date the vignette was generated.</p>
-<pre><code><span><span class="co">#&gt; [1] "2023-07-28 00:10:59 UTC"</span></span></code></pre>
+<pre><code><span><span class="co">#&gt; [1] "2023-07-28 02:18:45 UTC"</span></span></code></pre>
 <p>Wallclock time spent generating the vignette.</p>
-<pre><code><span><span class="co">#&gt; Time difference of 1.521 mins</span></span></code></pre>
+<pre><code><span><span class="co">#&gt; Time difference of 1.468 mins</span></span></code></pre>
 <p><code>R</code> session information.</p>
 <pre><code><span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">setting </span> <span style="color: #555555; font-style: italic;">value</span></span></span>
