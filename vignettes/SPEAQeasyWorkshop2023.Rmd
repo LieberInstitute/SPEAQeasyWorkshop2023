@@ -167,20 +167,12 @@ As specific objectives we have:
 We introduce [SPEAQeasy](https://github.com/LieberInstitute/SPEAQeasy), a **S**calable RNA-seq processing **P**ipeline for **E**xpression **A**nalysis and **Q**uantification, that is **easy** to install, use, and share with others. More detailed documentation is [here](http://research.libd.org/SPEAQeasy/).
 
 <html>
-<head>
-<title>TAG index</title>
 
-<style type="text/css">
-
+<style>
 img {
-float: left;
-margin: 20px 20px;
+margin: 40px 40px;
 }
-
 </style>
-
-</head>
-<body>
 
 <img src="figs/SPEAQeasy_workflow.png"  width="700px"  />
     <figcaption style="color: gray; line-height: 0.9; text-align: justify">
@@ -189,7 +181,6 @@ margin: 20px 20px;
         </font> 
    </figcaption>
    
-</body>
 </html>
 
 
@@ -198,7 +189,7 @@ margin: 20px 20px;
 SPEAQeasy starts with raw sequencing outputs in FASTQ format and ultimately produces [RangedSummarizedExperiment](https://bioconductor.org/packages/release/bioc/html/SummarizedExperiment.html) objects with raw and normalized counts for each feature type: genes, exons, exon-exon junctions, and transcripts.
 
 
-<img src="figs/SummarizedExperiment_structure.svg" width="600px"  />
+<img src="figs/SummarizedExperiment_structure.svg" width="500px"  />
  <figcaption style="color: gray; line-height: 0.9; text-align: justify">
             <font size="-1.9">
                 <b>Figure 2: SummarizedExperiment structure. </b>
@@ -284,7 +275,7 @@ The dataset that will be used for the DEA can be downloaded from the `smokingMou
 
 
 <img src="figs/Data_overview_experiments.png" width="750px"  />
-    <figcaption style="color: gray; line-height: 0.9; text-align: justify"><font size="-1.9"><b>Figure 3</b>: <b>Experimental design of the study. </b> The data was obtained from an experiment in which <b>A)</b> 6 pregnant dams and 17 non-pregnant female adult mice were administered nicotine by intraperitoneal injection (IP; n=12) or controls (n=11). A total of 42 pups were born to pregnant dams: 19 were born to mice that were administered nicotine and 23 to control mice. Samples from frontal cortices of P0 pups and adults were obtained. <b>B)</b> RNA was extracted from those samples and then RNA-seq libraries were prepared and sequenced to obtain the expression counts of the genes. At the end, a dataset of 65 samples (either from adult or pup brain) and 55,401 genes was generated. </font> 
+    <figcaption style="color: gray; line-height: 0.95; text-align: justify"><font size="-1.9"><b>Figure 3</b>: <b>Experimental design of the study. </b> The data was obtained from an experiment in which <b>A)</b> 6 pregnant dams and 17 non-pregnant female adult mice were administered nicotine by intraperitoneal injection (IP; n=12) or controls (n=11). A total of 42 pups were born to pregnant dams: 19 were born to mice that were administered nicotine and 23 to control mice. Samples from frontal cortices of P0 pups and adults were obtained. <b>B)</b> RNA was extracted from those samples and then RNA-seq libraries were prepared and sequenced to obtain the expression counts of the genes. At the end, a dataset of 65 samples (either from adult or pup brain) and 55,401 genes was generated. </font> 
 
    </figcaption>
 
@@ -393,7 +384,7 @@ In this workshop we'll guide you through a differential expression analysis foll
 
 <figure>
     <img src="figs/Analyses.png" width="800px" align=center />
-        <figcaption style="color: gray; line-height: 0.9; text-align: justify">
+        <figcaption style="color: gray; line-height: 0.95; text-align: justify">
             <font size="-1.8">
                 <b>Figure 4</b>: <b> Summary of the analyses. </b> Steps in yellow will be properly performed. 
                  1. Data Preparation 2. Exploratory Data Analysis 3. Differential Expression Analysis  4. DEG visualization. 
