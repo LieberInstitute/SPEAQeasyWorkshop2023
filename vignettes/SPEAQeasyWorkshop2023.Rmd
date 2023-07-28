@@ -174,21 +174,32 @@ margin: 40px 40px;
 }
 </style>
 
+</html>
+
 <img src="figs/SPEAQeasy_workflow.png"  width="700px"  />
     <figcaption style="color: gray; line-height: 0.9; text-align: justify">
         <font size="-1.9">
             <b>Figure 1: Functional workflow. </b> Yellow coloring denotes steps which are optional or not always performed.
+            
         </font> 
    </figcaption>
    
-</html>
+
 
 
    
    
 SPEAQeasy starts with raw sequencing outputs in FASTQ format and ultimately produces [RangedSummarizedExperiment](https://bioconductor.org/packages/release/bioc/html/SummarizedExperiment.html) objects with raw and normalized counts for each feature type: genes, exons, exon-exon junctions, and transcripts.
 
+<html>
 
+<style>
+img {
+margin: 5px 5px;
+}
+</style>
+
+</html>
 <img src="figs/SummarizedExperiment_structure.svg" width="500px"  />
  <figcaption style="color: gray; line-height: 0.9; text-align: justify">
             <font size="-1.9">
@@ -273,6 +284,16 @@ cat(paste0(readLines(example_main_script), "\n"))
 
 The dataset that will be used for the DEA can be downloaded from the `smokingMouse` package. We will download the `rse_gene` object which contains the expression data at the gene level and is a direct output file of the SPEAQeasy pipeline. Visit [here](http://research.libd.org/smokingMouse/) for more details of the `smokingMouse` package.
 
+
+<html>
+
+<style>
+img {
+margin: 0px 0px;
+}
+</style>
+
+</html>
 
 <img src="figs/Data_overview_experiments.png" width="750px"  />
     <figcaption style="color: gray; line-height: 0.95; text-align: justify"><font size="-1.9"><b>Figure 3</b>: <b>Experimental design of the study. </b> The data was obtained from an experiment in which <b>A)</b> 6 pregnant dams and 17 non-pregnant female adult mice were administered nicotine by intraperitoneal injection (IP; n=12) or controls (n=11). A total of 42 pups were born to pregnant dams: 19 were born to mice that were administered nicotine and 23 to control mice. Samples from frontal cortices of P0 pups and adults were obtained. <b>B)</b> RNA was extracted from those samples and then RNA-seq libraries were prepared and sequenced to obtain the expression counts of the genes. At the end, a dataset of 65 samples (either from adult or pup brain) and 55,401 genes was generated. </font> 
