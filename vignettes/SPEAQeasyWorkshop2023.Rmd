@@ -1656,6 +1656,9 @@ Heatmap(logs_pup_nic,
 Check the material for the course of [Statistical Analysis of Genome Scale Data at CSHL 2023](https://lcolladotor.github.io/cshl_rstats_genome_scale_2023) for more exercises and explanations of the analyses for differential expression. 
 
 
+# Conclusion
+The SPEAQeasy pipeline offers an integrative, reproducible, documented and uniform way to process bulk RNA-seq data from FASTQs files. This workflow returns processed objects for direct use in analysis of expression and quantification, providing convenient and illuminating metrics for QCA and for the exploration of gene-level effects. With this workshop we have demonstrated all that can be done with the pipeline outputs and the relevant information that can be extracted from them. 
+
 
 # Reproducibility
 
